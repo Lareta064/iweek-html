@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--======= swipe =============-->
+  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+  <meta name="format-detection" content="telephone=no">
+  <!--===================favicon ==================================-->
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!--===================opengraf=======================================-->
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Кабинет клиента</title>
+</head>
+
+<body class="visitor-form-page" style="opacity:0;transition:opacity .7s;">
+  <div id="overlay"></div>
+  <header class="cabinet-header">
+    <div class="container-large">
+      <div class="cabinet-header__content flex-vertical-center">
+        <div class="cabinet-header__logo">
+          <a class="custom-logo" href="index.html">
+            <img src="./img/logo2.png" width="106" alt="logo" />
+          </a>
+        </div>
+        <div class="cabinet-header__menu">
+          <div class="myTabs-buttons">
+            <a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a>
+            <a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a>
+            <a class="btn-bt myTabs-btn active" href="visitor-page.html">Пациенты</a>
+            <a class="btn-bt myTabs-btn" href="employees-page.html">Сотрудники</a>
+          </div>
+        </div>
+        <div class="cabinet-header__profile flex-vertical-center gap-32">
+          <div class="select-work-place">
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
+              </div>
+            </div>
+          </div>
+          <div class="help-info">?</div>
+          <div class="customDrop customDrop--right drop-click-close">
+            <div class="customDrop__btn round-icon">
+              <div class="icon-notify"></div>
+            </div>
+            <div class="customDrop__list">
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Включить звук</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 15 минут</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 30 минут</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 1 час</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 8 часов</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="cabinet-header__avatar">ГМ</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--=========== основной контент редактирование пациента  ====================-->
+  <div class="cabinet-body">
+    <div class="container-large">
+      <div class="visitor-page-body">
+        <div class="visitor-page-sidebar">
+          <div class="visitor-page-sidebar-menu cab-menu">
+            <a class="active" href="visitor-page.html">Профиль</a>
+            <a href="visitor-page2.html">Посещения</a>
+          </div>
+        </div>
+        <div class="visitor-page-content">
+          <div class="visitor-page-content__head">
+            <a class="text-icon flex-box flex-y-center" href="visitor-page.html">
+              <div class="icon-btn arrow-left"></div>
+              <div class="text-16">К списку пациентов</div>
+            </a>
+          </div>
+          <div class="visitor-page-content__main">
+            <div class="visitor-name flex-box flex-y-center">
+              <div class="title-18">Миронов Роман Ильич</div>
+              <span class="text-gray3 text-14">35 лет</span>
+              <a class="edit-item" href="edit-profile-visitor.html"></a>
+            </div>
+            <div class="visitor-info-list">
+              <div class="text-row">
+                <div class="text-16 text-gray3">Дата рождения</div>
+                <div class="text-18">22.09.1987</div>
+              </div>
+              <div class="text-row">
+                <div class="text-16 text-gray3">Пол</div>
+                <div class="text-18">муж</div>
+              </div>
+              <div class="text-row">
+                <div class="text-16 text-gray3">Телефон</div>
+                <div class="text-18">+995 599 130 630</div>
+              </div>
+              <!-- .text-row-->
+              <!-- 		.text-16.text-gray3 Почта-->
+              <!--		.text-18 info@mail.ru-->
+            </div>
+            <!--===== Страховой полис ======-->
+            <div class="visitor-policy">
+              <div class="visitor-policy__title">
+                <div class="title-18">Страховой полис</div>
+              </div>
+              <div class="visitor-policy__content">
+                <div class="text-16 text-red">Нет ни одного полиса</div>
+                <div class="visitor-policy-add">
+                  <div class="text-icon flex-box flex-y-center" frame-btn="add-visitor-policy">
+                    <div class="symbol-plus">&#10010;</div>
+                    <span class="text-18">Добавить полис</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--==================добавить новый страховой полис пациента ==============-->
+  <div class="modal-frame-wrapper modal-frame-center w-700" frame-modal="add-visitor-policy">
+    <div class="modal-frame flex-column">
+      <div class="modal-frame__head flex-box flex-y-center flex-between">
+        <div class="text-24">Добавление полиса</div>
+        <div class="icon-close" frame-close></div>
+      </div>
+      <div class="modal-frame__body">
+        <div class="filters-modal__wrapper">
+          <form class="add-policy-form">
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Страховая компания" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <input class="mySelect-options" type="text" readonly="readonly" value="Мед-страхование" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Капитал-страхование" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="ГосСтрах" />
+              </div>
+            </div>
+            <div class="flex-form-fields gap-32">
+              <div class="form-item">
+                <input class="form-input" type="text" placeholder="Серия">
+              </div>
+              <div class="form-item">
+                <input class="form-input" type="text" placeholder="Номер">
+              </div>
+            </div>
+            <div class="add-policy-form__block">
+              <div class="title-16">Срок действия полиса</div>
+              <div class="flex-form-fields gap-32">
+                <div class="form-item">
+                  <div class="mydatepicker">
+                    <input class="form-input datepicker" type="text" value="Действует с">
+                  </div>
+                </div>
+                <div class="form-item">
+                  <div class="mydatepicker">
+                    <input class="form-input datepicker" type="text" value="Действует до">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex-vertical-center flex-between mt-40">
+              <button class="btn btn-44 btn--orange" frame-close>Отмена</button>
+              <button class="btn btn-44" frame-close>Добавить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--=============== jquery ===================-->
+  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== swiper ===================-->
+  <script src="./libs/swiper/swiper.js"></script>
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+  <!--=============== мои скрипты ===================-->
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

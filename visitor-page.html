@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--======= swipe =============-->
+  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+  <meta name="format-detection" content="telephone=no">
+  <!--===================favicon ==================================-->
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!--===================opengraf=======================================-->
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Кабинет клиента | Пациенты</title>
+</head>
+
+<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
+  <div id="overlay"></div>
+  <header class="cabinet-header">
+    <div class="container-large">
+      <div class="cabinet-header__content flex-vertical-center">
+        <div class="cabinet-header__logo">
+          <a class="custom-logo" href="index.html">
+            <img src="./img/logo2.png" width="106" alt="logo" />
+          </a>
+        </div>
+        <div class="cabinet-header__menu">
+          <div class="myTabs-buttons">
+            <a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a>
+            <a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a>
+            <a class="btn-bt myTabs-btn active" href="#!">Пациенты</a>
+            <a class="btn-bt myTabs-btn" href="employees-page.html">Сотрудники</a>
+          </div>
+        </div>
+        <div class="cabinet-header__profile flex-vertical-center gap-32">
+          <div class="select-work-place">
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
+              </div>
+            </div>
+          </div>
+          <div class="help-info">?</div>
+          <div class="customDrop customDrop--right drop-click-close">
+            <div class="customDrop__btn round-icon">
+              <div class="icon-notify"></div>
+            </div>
+            <div class="customDrop__list">
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Включить звук</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 15 минут</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 30 минут</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 1 час</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 8 часов</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="cabinet-header__avatar">ГМ</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--=========== основной контент вкладка Задачи ====================-->
+  <div class="cabinet-body">
+    <div class="visitor-page-header">
+      <div class="container-large">
+        <div class="visitor-page-header__content flex-vertical-center flex-between">
+          <div class="visitor-page-header-left flex-vertical-center gap-32">
+            <a class="btn" href="add-profile-visitor.html">Добавить пациента</a>
+            <button class="btn btn--orange">Добавить базу</button>
+          </div>
+          <div class="visitor-page-header-right flex-vertical-center gap-8">
+            <!--=======строка поиска =====-->
+            <div class="visitor-page-header__search">
+              <div class="form-box form-box--icon-left">
+                <div class="form-box-input">
+                  <div class="form-box__icon">
+                    <svg class="svg-search">
+                      <use href="./img/svg-sprite.svg#svg-search"></use>
+                    </svg>
+                  </div>
+                  <input class="form-input form-input-48" type="text" placeholder="Поисковый запрос">
+                </div>
+              </div>
+            </div>
+            <div class="visitor-page-header__filters customDrop-filters">
+              <div class="customDrop customDrop--right drop-click-close">
+                <div class="customDrop__btn">
+                  <div class="icon-filter"></div>
+                </div>
+                <div class="customDrop__list">
+                  <div class="customDrop__list-item">
+                    <label class="radiobutton-label flex-box">
+                      <input class="real-radio" type="radio" name="currency" value="name-ask">
+                      <span class="custom-radio"> </span>
+                      <span class="custom-radio__text">Сортировать от А-Я</span>
+                    </label>
+                  </div>
+                  <div class="customDrop__list-item">
+                    <label class="radiobutton-label flex-box">
+                      <input class="real-radio" type="radio" name="currency" value="name-desk">
+                      <span class="custom-radio"> </span>
+                      <span class="custom-radio__text">Сортировать от Я-А</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="visitor-page-body">
+      <div class="container-large">
+        <div class="visitor-page-table">
+          <div class="visitor-page-table-row visitor-page-table-head">
+            <p>ФИО пациента</p>
+            <p>Номер телефона</p>
+            <p>Карта 025/У</p>
+            <p>Карта 043/У</p>
+            <p>Последняя активность</p>
+          </div>
+          <div class="visitor-page-table-body">
+            <a class="visitor-page-table-row" href="visitor-edit-page.html">
+              <p>Миронов Роман Ильич</p>
+              <p>+995 599 130 630</p>
+              <p></p>
+              <p></p>
+              <p>
+                <span class="label-light label--gray">Неявка</span>
+              </p>
+            </a>
+            <a class="visitor-page-table-row" href="visitor-edit-page.html">
+              <p>Миронов Роман Ильич</p>
+              <p>+995 599 130 630</p>
+              <p></p>
+              <p></p>
+              <p>
+                <span class="label-light label--gray">Выполнен</span>
+              </p>
+            </a>
+            <a class="visitor-page-table-row" href="visitor-edit-page.html">
+              <p>Миронов Роман Ильич</p>
+              <p>+995 599 130 630</p>
+              <p></p>
+              <p></p>
+              <p>
+                <span class="label-light label--accent">Неявка</span>
+              </p>
+            </a>
+            <a class="visitor-page-table-row" href="visitor-edit-page.html">
+              <p>Миронов Роман Ильич</p>
+              <p>+995 599 130 630</p>
+              <p></p>
+              <p></p>
+              <p>
+                <span class="label-light label--gray">Выполнен</span>
+              </p>
+            </a>
+            <a class="visitor-page-table-row" href="visitor-edit-page.html">
+              <p>Миронов Роман Ильич</p>
+              <p>+995 599 130 630</p>
+              <p></p>
+              <p></p>
+              <p>
+                <span class="label-light label--accent">Нет активности</span>
+              </p>
+            </a>
+            <a class="visitor-page-table-row" href="visitor-edit-page.html">
+              <p>Миронов Роман Ильич</p>
+              <p>+995 599 130 630</p>
+              <p></p>
+              <p></p>
+              <p>
+                <span class="label-light label--gray">Выполнен</span>
+              </p>
+            </a>
+            <a class="visitor-page-table-row" href="visitor-edit-page.html">
+              <p>Миронов Роман Ильич</p>
+              <p>+995 599 130 630</p>
+              <p></p>
+              <p></p>
+              <p>
+                <span class="label-light label--accent">Неявка</span>
+              </p>
+            </a>
+            <a class="visitor-page-table-row" href="visitor-edit-page.html">
+              <p>Миронов Роман Ильич</p>
+              <p>+995 599 130 630</p>
+              <p></p>
+              <p></p>
+              <p>
+                <span class="label-light label--accent">Неявка</span>
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--=============== jquery ===================-->
+  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== swiper ===================-->
+  <script src="./libs/swiper/swiper.js"></script>
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+  <!--=============== мои скрипты ===================-->
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

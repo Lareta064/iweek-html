@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--====убрать синий цвет у ссылок в сафари ========-->
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <title>UI-KIT</title>
+</head>
+
+<body class="body-dashboard">
+  <button id="hide-panel">скрыть/показать панель</button>
+  <div class="ui-panel">
+    <div class="ui-panel-block">
+      <div class="ui-panel-block__part">
+        <a class="back-index" href="http://localhost:3000/">На Главную</a>
+        <h3>Базовые компоненты</h3>
+        <ul>
+          <li>
+            <a href="colors.html">Цветовая схема</a>
+          </li>
+          <li>
+            <a href="typography.html">Типографика</a>
+          </li>
+          <li>
+            <a href="positions-classes.html">Классы позиционирования</a>
+          </li>
+          <li>
+            <a href="icons.html">Иконки</a>
+          </li>
+          <li>
+            <a href="buttons.html">Кнопки</a>
+          </li>
+          <li>
+            <a href="forms.html">Элементы формы</a>
+          </li>
+          <li>
+            <a href="custom-select.html">Кастом селекты</a>
+          </li>
+          <li>
+            <a href="labels.html">Лейблы</a>
+          </li>
+          <li>
+            <a href="components-text.html">Текстовые компоненты</a>
+          </li>
+          <li>
+            <a href="page-nav.html">Менюшки</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Блоки</h3>
+        <ul>
+          <li>
+            <a href="header-contacts.html">Контакты в шапке</a>
+          </li>
+          <li>
+            <a href="benefits-items.html">Преимущества</a>
+          </li>
+          <li>
+            <a href="doc-card-items.html">Компонеты карточки врача</a>
+          </li>
+          <li>
+            <a href="filters-modal.html">Фильтры на моб версии (модальное окно)</a>
+          </li>
+          <li>
+            <a href="custom-drop.html">Кастомная выпадашка</a>
+          </li>
+          <li>
+            <a href="tooltip.html">Tooltip</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Секции</h3>
+        <ul>
+          <li>
+            <a href="header.html">Шапка</a>
+          </li>
+          <li>
+            <a href="doc-card.html">Карточка врача</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Страницы</h3>
+      </div>
+    </div>
+  </div>
+  <div class="container-dashboard">
+    <h2>Текстовые компоненты</h2>
+    <div class="container-dashboard__content">
+      <ul class="ui-components">
+        <li>
+          <div class="text-16 split-text">
+            <p>с 15:00 - до 19:00 </p>
+            <p>Постоянно</p>
+          </div>
+          <pre>.text-16.split-text
+	p с 15:00 - до 19:00 
+	p Постоянно</pre>
+        </li>
+        <li>
+          <div class="text-row">
+            <div class="text-16 text-gray3">Дата рождения</div>
+            <div class="text-18">22.09.2022</div>
+          </div>
+          <pre>.text-row
+	.text-16.text-gray3 Дата рождения
+	.text-18 22.09.2022</pre>
+        </li>
+        <li>
+          <div class="text-column">
+            <div class="text-16 text-gray3">Дата рождения</div>
+            <div class="text-18">22.09.2022</div>
+          </div>
+          <pre>.text-row
+	.text-16.text-gray3 Дата рождения
+	.text-18 22.09.2022</pre>
+        </li>
+        <li>
+          <div class="text-32">Поиск специалиста<sup>327</sup>
+          </div>
+          <pre>.text-32 Поиск специалиста
+	sup 327	</pre>
+        </li>
+        <li>
+          <div class="text-icon flex-box flex-y-center">
+            <div class="text-icon__img">
+              <svg class="svg-extra" width="20" height="20">
+                <use href="../svg-sprite.svg#extra"></use>
+              </svg>
+            </div>
+            <div class="text-red text-14">Экстренная ситуация</div>
+          </div>
+          <pre>.text-icon.flex-box.flex-y-center
+	.text-icon__img
+		svg.svg-extra(width="20" height="20" )
+			use(href="./svg-sprite.svg#extra")
+	.text-red.text-14 Экстренная ситуация</pre>
+        </li>
+        <li>
+          <div class="text-icon text-extrim">
+            <div class="text-red text-14">Экстренная ситуация</div>
+          </div>
+          <pre>.text-icon.text-extrim
+	.text-red.text-14 Экстренная ситуация</pre>
+        </li>
+        <li>
+          <div class="text-icon flex-box flex-y-center">
+            <div class="text-icon__img">
+              <object type="image/svg+xml" data="../img/maximize.svg"></object>
+            </div>
+            <div class="text-14">Открыть на карте</div>
+          </div>
+          <pre>.text-icon.flex-box.flex-y-center
+	.text-icon__img
+		object(type="image/svg+xml" data="../img/maximize.svg" )
+	.text-14 Открыть на карте
+</pre>
+        </li>
+        <li>
+          <a class="text-icon text-phone" href="#!">+995 551 90 01 17</a>
+          <pre>a(href="#!").text-icon.text-phone.text-medium +995 551 90 01 17</pre>
+        </li>
+        <li>
+          <div class="li-box" style="background-color: blue;padding:10px;padding-bottom:10px">
+            <a class="text-icon text-phone text-white" href="#!">+995 551 90 01 17</a>
+          </div>
+          <pre>a(href="#!").text-icon.text-phone.text-white +995 551 90 01 17
+</pre>
+        </li>
+        <li>
+          <a class="text-icon text-address" href="#!">ул. Мелашвили 4</a>
+          <pre>a(href="#!").text-icon.text-address ул. Мелашвили 4</pre>
+        </li>
+        <li>
+          <a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span>
+          </a>
+          <pre>a(href="#!").text-icon.text-address ул. Мелашвили 4
+	span.text-gray3 (3,5 км от вас)
+</pre>
+        </li>
+        <li>
+          <div class="li-box" style="background: linear-gradient(225deg, #578DF6 22.38%, #5757F6 75.99%);padding:10px;padding-bottom:10px">
+            <div class="header-title">
+              <h1 class="text-44 text-white">Лучшие специалисты в сфере стоматологии</h1>
+              <div class="text-24">Оказываем экстренную помощь</div>
+            </div>
+          </div>
+          <pre>.header-title
+	h1.text-44.text-white Лучшие специалисты в сфере стоматологии
+	.text-24 Оказываем экстренную помощь
+
+</pre>
+        </li>
+        <li>
+          <div class="card-header">
+            <div class="flex-vertical-center gap-16">
+              <div class="text-14 text-gray">Мушкудиани Т.</div>
+              <div class="text-14 text-gray3">Работаем со страховкой</div>
+            </div>
+            <div class="text-24 mb-8">Антадзе Тамар</div>
+            <div class="card-header__list">
+              <div class="text-14 text-gray3">Стаж 17 лет</div>
+              <div class="text-14 text-gray3">Высшая категория</div>
+            </div>
+          </div>
+          <pre>+card-header('Мушкудиани Т.', 'Антадзе Тамар', 'Стаж 17 лет')</pre>
+        </li>
+        <li>
+          <div class="card-serv-item">
+            <div class="text-14 text-gray3">Консультация</div>
+            <div class="text-18">Бесплатно</div>
+          </div>
+          <pre>+card-price('Консультация', 'Бесплатно')
+</pre>
+        </li>
+        <li>
+          <div class="card-serv-item">
+            <div class="text-icon text-extrim">
+              <div class="text-red text-14">Экстренная ситуация</div>
+            </div>
+            <div class="text-18">от 5 700 &#8382;</div>
+          </div>
+          <pre>.card-serv-item
+	.text-icon.text-extrim
+		.text-red.text-14 Экстренная ситуация
+	.text-18 от 5 700 &#8382;</pre>
+        </li>
+        <li>
+          <div class="card-serv-wrapper flex-box">
+            <div class="card-serv-item">
+              <div class="text-14 text-gray3">Консультация</div>
+              <div class="text-18">Бесплатно</div>
+            </div>
+            <div class="card-serv-item">
+              <div class="text-14 text-gray3">Консультация</div>
+              <div class="text-18">Бесплатно</div>
+            </div>
+            <div class="card-serv-item">
+              <div class="text-14 text-gray3">Консультация</div>
+              <div class="text-18">Бесплатно</div>
+            </div>
+            <div class="card-serv-item">
+              <div class="text-icon text-extrim">
+                <div class="text-red text-14">Экстренная ситуация</div>
+              </div>
+              <div class="text-18">от 5 700 &#8382;</div>
+            </div>
+          </div>
+          <pre>.card-serv-wrapper.flex-box
+	+card-price('Консультация', 'Бесплатно')
+	+card-price('Консультация', 'Бесплатно')
+	+card-price('Консультация', 'Бесплатно')
+	
+	.card-serv-item
+		.text-icon.text-extrim
+			.text-red.text-14 Экстренная ситуация
+		.text-18 от 5 700 &#8382;</pre>
+        </li>
+        <li>
+          <div class="sale-block text-indigo">
+            <div class="text-icon flex-box flex-y-center text-indigo">
+              <div class="text-icon__img">
+                <svg class="svg-flag" width="20" height="20">
+                  <use href="../svg-sprite.svg#svg-flag"></use>
+                </svg>
+              </div>
+              <div class="text-14">Акции</div>
+            </div>
+            <div class="text-18">Лечение 8 зуба — бесплатно!</div>
+          </div>
+          <pre>.sale-block.text-indigo
+	.text-icon.flex-box.flex-y-center.text-indigo
+		.text-icon__img
+			svg.svg-flag(width="20" height="20" )
+				use(href="../svg-sprite.svg#svg-flag")
+		.text-14 Акции
+		
+	.text-18 Лечение 8 зуба — бесплатно!</pre>
+        </li>
+        <li>
+          <div class="benefit-item flex-box flex-y-center gap-12">
+            <div class="benefit-item__img flex-box flex-center">
+              <object type="image/svg+xml" data="./img/user2.svg"></object>
+            </div>
+            <div class="benefit-item__text">
+              <div class="text-medium">Врачи, которым доверяют</div>
+              <div class="text-12 text-gray3">Средний стаж от 7 лет</div>
+            </div>
+          </div>
+          <pre>+benefitItem('user2', 'Врачи, которым доверяют', 'Средний стаж от 7 лет')</pre>
+        </li>
+        <li>
+          <div class="li-box" style="background: linear-gradient(225deg, #578DF6 22.38%, #5757F6 75.99%);padding:10px;padding-bottom:10px">
+            <div class="title-group">
+              <div class="text-32 text-white">Очень важный баннер</div>
+              <div class="text-orange text-16 text-medium">Сообщает о прекрасной клинике</div>
+            </div>
+          </div>
+          <pre>.title-group
+	.text-32.text-white Очень важный баннер
+	.text-orange.text-16.text-medium Сообщает о прекрасной клинике</pre>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--====убрать синий цвет у ссылок в сафари ========-->
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <title>UI-KIT</title>
+</head>
+
+<body class="body-dashboard page-404">
+  <button id="hide-panel">скрыть/показать панель</button>
+  <div class="ui-panel">
+    <div class="ui-panel-block">
+      <div class="ui-panel-block__part">
+        <a class="back-index" href="http://localhost:3000/">На Главную</a>
+        <h3>Базовые компоненты</h3>
+        <ul>
+          <li>
+            <a href="colors.html">Цветовая схема</a>
+          </li>
+          <li>
+            <a href="typography.html">Типографика</a>
+          </li>
+          <li>
+            <a href="positions-classes.html">Классы позиционирования</a>
+          </li>
+          <li>
+            <a href="icons.html">Иконки</a>
+          </li>
+          <li>
+            <a href="buttons.html">Кнопки</a>
+          </li>
+          <li>
+            <a href="forms.html">Элементы формы</a>
+          </li>
+          <li>
+            <a href="custom-select.html">Кастом селекты</a>
+          </li>
+          <li>
+            <a href="labels.html">Лейблы</a>
+          </li>
+          <li>
+            <a href="components-text.html">Текстовые компоненты</a>
+          </li>
+          <li>
+            <a href="page-nav.html">Менюшки</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Блоки</h3>
+        <ul>
+          <li>
+            <a href="header-contacts.html">Контакты в шапке</a>
+          </li>
+          <li>
+            <a href="benefits-items.html">Преимущества</a>
+          </li>
+          <li>
+            <a href="doc-card-items.html">Компонеты карточки врача</a>
+          </li>
+          <li>
+            <a href="filters-modal.html">Фильтры на моб версии (модальное окно)</a>
+          </li>
+          <li>
+            <a href="custom-drop.html">Кастомная выпадашка</a>
+          </li>
+          <li>
+            <a href="tooltip.html">Tooltip</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Секции</h3>
+        <ul>
+          <li>
+            <a href="header.html">Шапка</a>
+          </li>
+          <li>
+            <a href="doc-card.html">Карточка врача</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Страницы</h3>
+      </div>
+    </div>
+  </div>
+  <header class="header flex-box">
+    <div class="header-content">
+      <div class="container">
+        <!--========= header top ==========-->
+        <div class="header-top flex-box flex-between">
+          <div class="header-top__left">
+            <a class="custom-logo" href="#!">
+              <object class="logo" type="image/svg+xml" data=".img/svg-logo.svg"></object>
+            </a>
+            <div class="toggle-menu" id="toggle-menu"></div>
+          </div>
+          <!--========= header top  right ==========-->
+          <div class="header-top__right" id="header-mobile-menu">
+            <div class="header-wrapper flex-box flex-y-center">
+              <div class="header-contacts flex-box flex-y-center">
+                <div class="soc-block flex-box flex-y-center">
+                  <a href="#!">
+                    <svg class="svg-tg" width="24" height="24">
+                      <use href="../svg-sprite.svg#svg-tg"></use>
+                    </svg>
+                  </a>
+                  <a href="#!">
+                    <svg class="svg-wa" width="24" height="24">
+                      <use href="../svg-sprite.svg#svg-wa"></use>
+                    </svg>
+                  </a>
+                </div>
+                <div class="phone-block">
+                  <a class="text-icon text-phone text-white" href="#!">+995 551 280 221</a>
+                </div>
+              </div>
+              <div class="btn btn-mini">
+                <object type="image/svg+xml" data="../img/person.svg" width="16" height="16"></object>
+                <div class="text-white">Кабинет</div>
+              </div>
+            </div>
+            <!--========== mobile-visible block ==========-->
+            <div class="mobile-menu-block">
+              <!--========== mobile-menu ==========-->
+              <div class="page-nav-mobile">
+                <ul>
+                  <li>
+                    <a href="#">Клиники</a>
+                  </li>
+                  <li>
+                    <a href="#">Цены</a>
+                  </li>
+                  <li>
+                    <a href="#">Детская стоматология</a>
+                  </li>
+                  <li>
+                    <a href="#">О нас</a>
+                  </li>
+                </ul>
+              </div>
+              <!--========== btn-coopyright ==========-->
+              <buttin class="btn-coopyright flex-between" type="button">
+                <span class="text-18 text-white">Сотрудничать с нами </span>
+                <div class="icon-plus"></div>
+              </buttin>
+            </div>
+          </div>
+        </div>
+        <!--========= header center ==========-->
+        <div class="header-center">
+          <div class="header-title text-white">
+            <h1 class="text-404 flex-box flex-y-center">
+              <span>404</span>
+              <object type="image/svg+xml" data="../img/emoji.svg"></object>
+            </h1>
+            <div class="text-44">Страница не найдена</div>
+          </div>
+          <div class="header-center-group">
+            <div class="text-24 text-white">Возможно, вы ищете что-то подобное</div>
+            <div class="header-categories flex-box">
+              <a class="category-label" href="#!">
+                <object type="image/svg+xml" data="./img/diagnost.svg"></object>
+                <span class="text-medium">Диагностика</span>
+              </a>
+              <a class="category-label" href="#!">
+                <object type="image/svg+xml" data="./img/terap.svg"></object>
+                <span class="text-medium">Терапия</span>
+              </a>
+              <a class="category-label" href="#!">
+                <object type="image/svg+xml" data="./img/hirurg.svg"></object>
+                <span class="text-medium">Хирургия</span>
+              </a>
+              <a class="category-label" href="#!">
+                <object type="image/svg+xml" data="./img/implant.svg"></object>
+                <span class="text-medium">Имплантация</span>
+              </a>
+              <a class="category-label" href="#!">
+                <object type="image/svg+xml" data="./img/apple.svg"></object>
+                <span class="text-medium">Детская стоматология</span>
+              </a>
+              <a class="category-label" href="#!">
+                <object type="image/svg+xml" data="./img/paradent.svg"></object>
+                <span class="text-medium">Пародонтология</span>
+              </a>
+            </div>
+          </div>
+          <div class="header-button">
+            <div class="btn btn--accent">
+              <object type="image/svg+xml" data="../img/extra-white.svg" width="24"></object>
+              <span>У меня экстренная ситуация</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--========= header-menu ==========-->
+    <div class="header-menu flex-box flex-between">
+      <div class="container">
+        <div class="header-menu-content flex-box flex-between flex-y-center">
+          <div class="page-nav">
+            <ul>
+              <li>
+                <a href="#">Клиники</a>
+              </li>
+              <li class="active">
+                <a href="#">Цены</a>
+              </li>
+              <li>
+                <a href="#">Детская стоматология</a>
+              </li>
+              <li>
+                <a href="#">О нас</a>
+              </li>
+            </ul>
+          </div>
+          <buttin class="btn-coopyright" type="button">
+            <div class="icon-plus"></div>
+            <span class="text-18 text-white">Сотрудничать с нами </span>
+          </buttin>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--=============== jquery ===================-->
+  <script src="../libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== owlCarousel ===================-->
+  <script src="../libs/swiper/swiper.js"></script>
+  <script>
+			const hidePanel = document.querySelector('#hide-panel');
+			hidePanel.addEventListener('click',function(){
+				document.body.classList.toggle('full-screen');
+			});
+			
+		</script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

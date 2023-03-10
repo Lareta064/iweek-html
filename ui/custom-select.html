@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--====убрать синий цвет у ссылок в сафари ========-->
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <title>UI-KIT</title>
+</head>
+
+<body class="body-dashboard" style="background-color: lightblue; min-height:100vh">
+  <button id="hide-panel">скрыть/показать панель</button>
+  <div class="ui-panel">
+    <div class="ui-panel-block">
+      <div class="ui-panel-block__part">
+        <a class="back-index" href="http://localhost:3000/">На Главную</a>
+        <h3>Базовые компоненты</h3>
+        <ul>
+          <li>
+            <a href="colors.html">Цветовая схема</a>
+          </li>
+          <li>
+            <a href="typography.html">Типографика</a>
+          </li>
+          <li>
+            <a href="positions-classes.html">Классы позиционирования</a>
+          </li>
+          <li>
+            <a href="icons.html">Иконки</a>
+          </li>
+          <li>
+            <a href="buttons.html">Кнопки</a>
+          </li>
+          <li>
+            <a href="forms.html">Элементы формы</a>
+          </li>
+          <li>
+            <a href="custom-select.html">Кастом селекты</a>
+          </li>
+          <li>
+            <a href="labels.html">Лейблы</a>
+          </li>
+          <li>
+            <a href="components-text.html">Текстовые компоненты</a>
+          </li>
+          <li>
+            <a href="page-nav.html">Менюшки</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Блоки</h3>
+        <ul>
+          <li>
+            <a href="header-contacts.html">Контакты в шапке</a>
+          </li>
+          <li>
+            <a href="benefits-items.html">Преимущества</a>
+          </li>
+          <li>
+            <a href="doc-card-items.html">Компонеты карточки врача</a>
+          </li>
+          <li>
+            <a href="filters-modal.html">Фильтры на моб версии (модальное окно)</a>
+          </li>
+          <li>
+            <a href="custom-drop.html">Кастомная выпадашка</a>
+          </li>
+          <li>
+            <a href="tooltip.html">Tooltip</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Секции</h3>
+        <ul>
+          <li>
+            <a href="header.html">Шапка</a>
+          </li>
+          <li>
+            <a href="doc-card.html">Карточка врача</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Страницы</h3>
+      </div>
+    </div>
+  </div>
+  <div class="container-dashboard">
+    <h2>Кастомные селекты</h2>
+    <div class="container-dashboard__content">
+      <ul class="ui-components">
+        <li>
+          <div class="state-select state-select--opentop">
+            <div class="state-select-current" data-state="state-started">Начат прием</div>
+            <div class="state-select-drop">
+              <div class="state-select-drop__item" data-state="state-started">Начат прием</div>
+              <div class="state-select-drop__item" data-state="state-confirm">Подтвержден</div>
+              <div class="state-select-drop__item" data-state="state-notconfirm">Не подтвержден</div>
+              <div class="state-select-drop__item" data-state="state-done">Выполнен</div>
+              <div class="state-select-drop__item" data-state="state-cancel"> Отменен</div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="mySelect mySelect--38  mySelect--absolute">
+            <div class="mySelect-input">
+              <input class="selectValue form-input" type="text" readonly="" value="Услуга" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="" value="Ортодонт" />
+            </div>
+          </div>
+          <pre>+mySelect({addClass: 'mySelect--absolute', val:'Услуга', itemsArr:['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт']})
+</pre>
+        </li>
+        <li>
+          <h3>выпадашка высотой 64 пикс с иконкой слева</h3>
+          <br>
+          <div class="mySelect mySelect--absolute mySelect-input--icon mySelect--64">
+            <div class="mySelect-input form-box-input">
+              <div class="form-box__icon">
+                <svg class=" svg-location">
+                  <use href="./img/svg-sprite.svg#svg-location"></use>
+                </svg>
+              </div>
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Батуми" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+            </div>
+          </div>
+          <pre>+custom-select-icon(placeText, items, addClass,  iconName, labelText)
+
++custom-select-icon('Батуми', ['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт'], 'mySelect--absolute mySelect-input--icon  mySelect--64',  'svg-location', '')
+</pre>
+        </li>
+        <li>
+          <h3>выпадашка высотой 64 пикс</h3>
+          <br>
+          <div class="mySelect mySelect--absolute mySelect--64">
+            <div class="mySelect-input form-box-input">
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Специалист" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+            </div>
+          </div>
+          <pre>+custom-select-icon('Специалист', ['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт'], 'mySelect--absolute mySelect--64')
+</pre>
+        </li>
+        <li>
+          <h3>выпадашка высотой 44 пикс</h3>
+          <br>
+          <div class="mySelect mySelect--absolute">
+            <div class="mySelect-input form-box-input">
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Специалист" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+            </div>
+          </div>
+          <pre>+custom-select-icon('Специалист', ['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт'], 'mySelect--absolute')</pre>
+        </li>
+        <li>
+          <h3>выпадашка высотой 44 пикс + icon</h3>
+          <br>
+          <div class="mySelect mySelect--absolute mySelect-input--icon">
+            <div class="mySelect-input form-box-input">
+              <div class="form-box__icon">
+                <svg class=" svg-location">
+                  <use href="./img/svg-sprite.svg#svg-location"></use>
+                </svg>
+              </div>
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Специалист" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+            </div>
+          </div>
+          <pre>+custom-select-icon('Специалист', ['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт'], 'mySelect--absolute')</pre>
+        </li>
+        <li>
+          <h3>выпадашка высотой 38 пикс</h3>
+          <br>
+          <div class="mySelect mySelect--absolute mySelect--38">
+            <div class="mySelect-input form-box-input">
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Специалист" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+            </div>
+          </div>
+          <pre>+custom-select-icon('Специалист', ['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт'], 'mySelect--absolute mySelect--38')</pre>
+        </li>
+        <li>
+          <h3>выпадашка высотой 38 пикс темная</h3>
+          <br>
+          <div class="mySelect mySelect--absolute mySelect-input--icon mySelect--dark mySelect--38">
+            <div class="mySelect-input form-box-input">
+              <div class="form-box__icon">
+                <svg class=" svg-map">
+                  <use href="./img/svg-sprite.svg#svg-map"></use>
+                </svg>
+              </div>
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Специалист" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+            </div>
+          </div>
+          <pre>+custom-select-icon('Специалист', ['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт'], 'mySelect--absolute mySelect--38', 'svg-map')</pre>
+        </li>
+        <li>
+          <h3>выпадашка c лейблом</h3>
+          <br>
+          <div class="mySelect mySelect--absolute">
+            <label class="text-16 text-gray3">текст лейбла
+            </label>
+            <div class="mySelect-input form-box-input">
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Специалист" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+            </div>
+          </div>
+          <pre>+custom-select-icon('Специалист', ['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт'], 'mySelect--absolute', '','текст лейбла')</pre>
+        </li>
+        <li>
+          <h3>выпадашка c лейблом и иконкой</h3>
+          <br>
+          <div class="mySelect mySelect--absolute mySelect-input--icon mySelect--38">
+            <label class="text-16 text-gray3">Введите текст для поиска
+            </label>
+            <div class="mySelect-input form-box-input">
+              <div class="form-box__icon">
+                <svg class=" svg-search">
+                  <use href="./img/svg-sprite.svg#svg-search"></use>
+                </svg>
+              </div>
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Специалист" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+            </div>
+          </div>
+          <pre>+custom-select-icon('Специалист', ['Стоматолог', 'Ортодонт', 'Консультация имплантолога', 'Аллерголог', 'Терапевт'], 'mySelect--absolute mySelect-input--icon mySelect--38', 'svg-search','Введите текст для поиска')
+
+
+
+
+
+
+</pre>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--=============== jquery ===================-->
+  <script src="../libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== owlCarousel ===================-->
+  <script src="../libs/swiper/swiper.js"></script>
+  <script>
+			const hidePanel = document.querySelector('#hide-panel');
+			hidePanel.addEventListener('click',function(){
+				document.body.classList.toggle('full-screen');
+			});
+			
+		</script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

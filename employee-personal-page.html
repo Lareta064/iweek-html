@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--======= swipe =============-->
+  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+  <meta name="format-detection" content="telephone=no">
+  <!--===================favicon ==================================-->
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!--===================opengraf=======================================-->
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Страница врача</title>
+</head>
+
+<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
+  <div id="overlay"></div>
+  <header class="cabinet-header">
+    <div class="container-large">
+      <div class="cabinet-header__content flex-vertical-center">
+        <div class="cabinet-header__logo">
+          <a class="custom-logo" href="index.html">
+            <img src="./img/logo2.png" width="106" alt="logo" />
+          </a>
+        </div>
+        <div class="cabinet-header__menu">
+          <div class="myTabs-buttons">
+            <a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a>
+            <a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a>
+            <a class="btn-bt myTabs-btn" href="visitor-page.html">Пациенты</a>
+            <a class="btn-bt myTabs-btn active" href="employees-page.html">Сотрудники</a>
+          </div>
+        </div>
+        <div class="cabinet-header__profile flex-vertical-center gap-32">
+          <div class="select-work-place">
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
+              </div>
+            </div>
+          </div>
+          <div class="help-info">?</div>
+          <div class="customDrop customDrop--right drop-click-close">
+            <div class="customDrop__btn round-icon">
+              <div class="icon-notify"></div>
+            </div>
+            <div class="customDrop__list">
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Включить звук</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 15 минут</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 30 минут</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 1 час</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 8 часов</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="cabinet-header__avatar">ГМ</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--=========== основной контент страница одного врача ====================-->
+  <div class="cabinet-body">
+    <div class="employee-personal-content">
+      <div class="employee-personal__head border-b">
+        <div class="container-medium">
+          <a class="text-icon flex-vertical-center" href="employees-page.html">
+            <div class="icon-btn arrow-left"></div>
+            <div class="text-16">Сотрудники</div>
+          </a>
+        </div>
+      </div>
+      <div class="employee-personal-card">
+        <div class="container-medium">
+          <div class="employee-personal-header flex-box border-b">
+            <div class="card-header">
+              <div class="flex-vertical-center gap-16">
+                <div class="text-14 text-gray">Стоматолог</div>
+              </div>
+              <div class="text-24 mb-8">Голетиани Мариам</div>
+              <div class="text-row mb-8">
+                <div class="text-14 text-gray3">Эл. почта</div>
+                <div class="text-16">doctor@gmail.com</div>
+              </div>
+              <div class="text-row mb-8">
+                <div class="text-14 text-gray3">Телефон</div>
+                <div class="text-16">+995 556 333 232</div>
+              </div>
+              <div class="card-header__list">
+                <div class="text-14 text-gray3">Стаж 17 лет</div>
+                <div class="text-14 text-gray3">Высшая категория</div>
+                <div class="text-14 text-gray3">Кандидат наук</div>
+              </div>
+            </div>
+            <div class="employee-personal-options flex-box gap-32">
+              <div class="edit-item" title="Редактировать" frame-btn="edit-empl-profile"></div>
+              <div class="icon-delete" title="Удалить профиль" frame-btn="confirm-action"></div>
+            </div>
+          </div>
+          <div class="employee-personal-place">
+            <div class="employee-personal-tabs__title">
+              <div class="text-18">Данные по филиалу Ваш доктор, Блюхера 56</div>
+            </div>
+            <div class="employee-personal-place__toggle">
+              <div class="btn btn-32">Основная информация</div>
+              <a class="label-light label-light--large" href="empl-schedule.html">График работы</a>
+            </div>
+            <div class="employee-personal-place__acordion">
+              <div class="employee-acordion-content">
+                <div class="acor-container">
+                  <!--=========== single block =============-->
+                  <div class="acor-item">
+                    <input id="acor1" type="checkbox" name="acor">
+                    <label class="text-20 text-medium text-indigo" for="acor1">Стоматолог</label>
+                    <div class="acor-body">
+                      <div class="label-light  label--gray">
+                        <span class="text-medium">пациенты с 10 лет</span>
+                      </div>
+                      <div class="flex-box flex-between mt-16">
+                        <div class="text-column">
+                          <div class="title-18">Стоматолог</div>
+                          <div class="text-16">Блюхера, 56</div>
+                        </div>
+                        <div class="employee-personal-options flex-box gap-32">
+                          <div class="edit-item" title="Редактировать" frame-btn="edit-empl-place"></div>
+                          <div class="icon-delete" title="Удалить" frame-btn="confirm-action"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--=========== single block =============-->
+                  <div class="acor-item">
+                    <input id="acor2" type="checkbox" name="acor">
+                    <label class="text-20 text-medium text-indigo" for="acor2">Ортодонт</label>
+                    <div class="acor-body">
+                      <div class="label-light  label--gray">
+                        <span class="text-medium">пациенты с 10 лет</span>
+                      </div>
+                      <div class="flex-box flex-between mt-16">
+                        <div class="text-column">
+                          <div class="title-18">Ортодонт</div>
+                          <div class="text-16">Герцена, 16</div>
+                        </div>
+                        <div class="employee-personal-options flex-box gap-32">
+                          <div class="edit-item" title="Редактировать" frame-btn="edit-empl-place"></div>
+                          <div class="icon-delete" title="Удалить" frame-btn="confirm-action"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="employee-personal-place__btn mt-32">
+                <div class="text-icon flex-box flex-y-center" frame-btn="add-empl-place">
+                  <div class="symbol-plus">&#10010;</div>
+                  <span class="text-18">Добавить</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--================== добавить рабочее место сотрудника ==============-->
+  <div class="modal-frame-wrapper modal-frame-right column-modal" frame-modal="add-empl-place">
+    <div class="modal-frame flex-column">
+      <div class="modal-frame__head flex-box flex-y-center flex-between">
+        <div class="text-24">Новое рабочее место</div>
+        <div class="icon-close" frame-close></div>
+      </div>
+      <div class="modal-frame__body">
+        <form class="add-place-form flex-column gap-32">
+          <div class="add-place-form__fields flex-vertical-center gap-32">
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Специальность" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Стоматолог</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Ортодонт</span>
+                </label>
+              </div>
+            </div>
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Клиника" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Блюхера, 56</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">ИП Вердашев</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Клиника &quot;Сова&quot;</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Гиппократ</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Зеленое яблоко</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Добрый доктор</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="add-place-form__fields flex-vertical-center gap-32">
+            <div class="form-item">
+              <input class="form-input" type="text" placeholder="Возраст пациента от">
+            </div>
+            <div class="form-item">
+              <input class="form-input" type="text" placeholder="Возраст пациента до">
+            </div>
+          </div>
+          <div class="form-textarea">
+            <textarea placeholder="Комментарий к пациенту"></textarea>
+          </div>
+          <div class="form-btns flex-vertical-center gap-32 flex-between mt-auto">
+            <button class="btn btn--orange" frame-close>Отменить</button>
+            <button class="btn btn--primary" type="submit">Добавить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--================== редактировать рабочее место сотрудника ==============-->
+  <div class="modal-frame-wrapper modal-frame-right column-modal" frame-modal="edit-empl-place">
+    <div class="modal-frame flex-column">
+      <div class="modal-frame__head flex-box flex-y-center flex-between">
+        <div class="text-24">Редактировать рабочее место</div>
+        <div class="icon-close" frame-close></div>
+      </div>
+      <div class="modal-frame__body">
+        <form class="add-place-form flex-column gap-32">
+          <div class="add-place-form__fields flex-vertical-center gap-32">
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Специальность" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Стоматолог</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Аллерголог</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Терапевт</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Кардиолог</span>
+                </label>
+              </div>
+            </div>
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Клиника" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Блюхера, 56</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">ИП Вердашев</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Клиника &quot;Сова&quot;</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Гиппократ</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Зеленое яблоко</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Добрый доктор</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="add-place-form__fields flex-vertical-center gap-32">
+            <div class="form-item">
+              <input class="form-input" type="text" placeholder="Возраст пациента от">
+            </div>
+            <div class="form-item">
+              <input class="form-input" type="text" placeholder="Возраст пациента до">
+            </div>
+          </div>
+          <div class="form-textarea">
+            <textarea placeholder="Комментарий к пациенту"></textarea>
+          </div>
+          <div class="form-btns flex-vertical-center gap-32 flex-between mt-auto">
+            <button class="btn btn--orange" frame-close>Отменить</button>
+            <button class="btn btn--primary" type="submit">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--================== редактировать профиль  сотрудника ==============-->
+  <div class="modal-frame-wrapper modal-frame-right" frame-modal="edit-empl-profile">
+    <div class="modal-frame flex-column">
+      <div class="modal-frame__head flex-box flex-y-center flex-between">
+        <div class="text-24">Редактирование сотрудника</div>
+        <div class="icon-close" frame-close></div>
+      </div>
+      <div class="modal-frame__body">
+        <form class="edit-empl-form">
+          <div class="cabinet-form__name mb-32">
+            <div class="form-box">
+              <label class="text-16">Фамилия</label>
+              <input class="form-input" type="text" value="Антадзе">
+            </div>
+            <div class="form-box">
+              <label class="text-16">Имя</label>
+              <input class="form-input" type="text" value="Тама">
+            </div>
+            <div class="form-box">
+              <label class="text-16">Отчество</label>
+              <input class="form-input" type="text">
+            </div>
+          </div>
+          <div class="cabinet-form__gender flex-vertical-center gap-32 mb-32">
+            <div class="form-box">
+              <label class="text-16">Пол</label>
+              <div class="flex-vertical-center gap-32">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" value="men" name="gender-radio" checked>
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Мужской</span>
+                </label>
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" value="woomen" name="gender-radio">
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Женский</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-box">
+              <label class="text-16">Дата рождения</label>
+              <div class="mydatepicker">
+                <input class="form-input datepicker" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="cabinet-form__contacts mb-32">
+            <div class="form-box">
+              <label class="text-16">Контакты</label>
+              <input class="form-input" type="text" value="+995 595 250 123">
+            </div>
+            <div class="form-box mt-16">
+              <label class="text-16">E-mail</label>
+              <input class="form-input" type="text" value="doctor@gmail.com">
+            </div>
+          </div>
+          <div class="cabinet-form__langs mb-32">
+            <div class="title-18 mb-24">Языки</div>
+            <div class="form-box flex-vertical-center gap-32 mb-32">
+              <div class="form-box">
+                <div class="flex-vertical-center gap-32">
+                  <label class="checkbox-label flex-box flex-y-center">
+                    <input class="real-checkbox" type="checkbox" name="" checked>
+                    <span class="custom-checkbox"> </span>
+                    <span class="custom-checkbox__text">Грузинский</span>
+                  </label>
+                  <label class="checkbox-label flex-box flex-y-center">
+                    <input class="real-checkbox" type="checkbox" name="">
+                    <span class="custom-checkbox"> </span>
+                    <span class="custom-checkbox__text">Английский</span>
+                  </label>
+                  <label class="checkbox-label flex-box flex-y-center">
+                    <input class="real-checkbox" type="checkbox" name="">
+                    <span class="custom-checkbox"> </span>
+                    <span class="custom-checkbox__text">Русский</span>
+                  </label>
+                  <label class="checkbox-label flex-box flex-y-center">
+                    <input class="real-checkbox" type="checkbox" name="">
+                    <span class="custom-checkbox"> </span>
+                    <span class="custom-checkbox__text">Турецкий</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cabinet-form__duration mb-32">
+            <div class="title-18 mb-24">Длительность приема</div>
+            <div class="form-box flex-vertical-center gap-32">
+              <div class="mySelect mySelect--absolute">
+                <div class="mySelect-input form-box-input">
+                  <input class="selectValue form-input" type="text" readonly="readonly" value="Часы" />
+                </div>
+                <div class="mySelect-drop scroll-vertical">
+                  <input class="mySelect-options" type="text" readonly="readonly" value="0" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="1" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="2" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="3" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="4" />
+                </div>
+              </div>
+              <div class="mySelect mySelect--absolute">
+                <div class="mySelect-input form-box-input">
+                  <input class="selectValue form-input" type="text" readonly="readonly" value="Минуты" />
+                </div>
+                <div class="mySelect-drop scroll-vertical">
+                  <input class="mySelect-options" type="text" readonly="readonly" value="0" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="10" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="15" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="20" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="25" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="30" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="35" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="40" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="45" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="50" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="55" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cabinet-form__qual flex-vertical-center gap-32 mb-32">
+            <div class="form-box">
+              <label class="text-16 text-medium">Стаж</label>
+              <input class="form-input" type="text" value="17 лет">
+            </div>
+            <div class="mySelect mySelect--absolute">
+              <label class="text-16">Категория
+              </label>
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Высшая категория" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <input class="mySelect-options" type="text" readonly="readonly" value="Без категории" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Высшая категория" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Первая категория" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Вторая категория" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Третья категория" />
+              </div>
+            </div>
+            <div class="mySelect mySelect--absolute">
+              <label class="text-16">Ученая степень
+              </label>
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Кандидат м.н." />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <input class="mySelect-options" type="text" readonly="readonly" value="Без степени" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Аспирант" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Кандидат м.н." />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Доктор м.н." />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Профессор" />
+              </div>
+            </div>
+          </div>
+          <div class="cabinet-form__status mb-32">
+            <label class="switch-toggle flex-box flex-y-center">
+              <input class="toggle-switch" type="checkbox" checked>
+              <span class="real-switch"></span>
+              <span class="custom-switch__text">Приходящий</span>
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-frame__footer mt-auto border-top flex-vertical-center flex-between">
+        <button class="btn btn-44 btn--orange" frame-close>Отмена</button>
+        <button class="btn btn-44">Сохранить</button>
+      </div>
+    </div>
+  </div>
+  <!--==================модальное окно Подтверждение удаления ==============-->
+  <div class="modal-frame-wrapper modal-frame-center confirm-modal" frame-modal="confirm-action">
+    <div class="modal-frame flex-column">
+      <div class="modal-frame__head">
+        <div class="icon-close" frame-close></div>
+      </div>
+      <div class="modal-frame__body">
+        <div class="title-20 text-center">Вы уверены, что хотите удалить?</div>
+        <div class="form-btns flex-vertical-center gap-32 mt-32">
+          <button class="btn btn--orange" frame-close>Отменить</button>
+          <button class="btn btn--primary" type="submit">Подтверждаю</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--=============== jquery ===================-->
+  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== swiper ===================-->
+  <script src="./libs/swiper/swiper.js"></script>
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+  <!--=============== мои скрипты ===================-->
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

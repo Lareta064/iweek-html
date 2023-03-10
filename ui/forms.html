@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--====убрать синий цвет у ссылок в сафари ========-->
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <title>UI-KIT</title>
+</head>
+
+<body class="body-dashboard">
+  <button id="hide-panel">скрыть/показать панель</button>
+  <div class="ui-panel">
+    <div class="ui-panel-block">
+      <div class="ui-panel-block__part">
+        <a class="back-index" href="http://localhost:3000/">На Главную</a>
+        <h3>Базовые компоненты</h3>
+        <ul>
+          <li>
+            <a href="colors.html">Цветовая схема</a>
+          </li>
+          <li>
+            <a href="typography.html">Типографика</a>
+          </li>
+          <li>
+            <a href="positions-classes.html">Классы позиционирования</a>
+          </li>
+          <li>
+            <a href="icons.html">Иконки</a>
+          </li>
+          <li>
+            <a href="buttons.html">Кнопки</a>
+          </li>
+          <li>
+            <a href="forms.html">Элементы формы</a>
+          </li>
+          <li>
+            <a href="custom-select.html">Кастом селекты</a>
+          </li>
+          <li>
+            <a href="labels.html">Лейблы</a>
+          </li>
+          <li>
+            <a href="components-text.html">Текстовые компоненты</a>
+          </li>
+          <li>
+            <a href="page-nav.html">Менюшки</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Блоки</h3>
+        <ul>
+          <li>
+            <a href="header-contacts.html">Контакты в шапке</a>
+          </li>
+          <li>
+            <a href="benefits-items.html">Преимущества</a>
+          </li>
+          <li>
+            <a href="doc-card-items.html">Компонеты карточки врача</a>
+          </li>
+          <li>
+            <a href="filters-modal.html">Фильтры на моб версии (модальное окно)</a>
+          </li>
+          <li>
+            <a href="custom-drop.html">Кастомная выпадашка</a>
+          </li>
+          <li>
+            <a href="tooltip.html">Tooltip</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Секции</h3>
+        <ul>
+          <li>
+            <a href="header.html">Шапка</a>
+          </li>
+          <li>
+            <a href="doc-card.html">Карточка врача</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Страницы</h3>
+      </div>
+    </div>
+  </div>
+  <div class="container-dashboard">
+    <h2>Форма</h2>
+    <div class="container-dashboard__content">
+      <ul class="ui-components">
+        <li>
+          <div class="inputs-group">
+            <div class="form-box form-box--icon-left">
+              <div class="form-box-input">
+                <div class="form-box__icon">
+                  <svg class="svg-search">
+                    <use href="./img/svg-sprite.svg#svg-search"></use>
+                  </svg>
+                </div>
+                <input class="form-input form-input--64" type="text" placeholder="Поисковый запрос">
+              </div>
+            </div>
+            <!--===== выпадашка с городами =====-->
+            <div class="mySelect mySelect--absolute mySelect-input--icon  mySelect--64">
+              <div class="mySelect-input form-box-input">
+                <div class="form-box__icon">
+                  <svg class=" svg-location">
+                    <use href="./img/svg-sprite.svg#svg-location"></use>
+                  </svg>
+                </div>
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Батуми" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+              </div>
+            </div>
+          </div>
+          <pre>.inputs-group
+	.form-box.form-box--icon-left
+		.form-box-input
+			.form-box__icon
+				svg.svg-search
+					use(href="./img/svg-sprite.svg#svg-search")
+			input(type="text" placeholder="Поисковый запрос").form-input.form-input--64
+</pre>
+          <!--===== выпадашка с городами =====-->
+          <div class="mySelect mySelect--absolute mySelect-input--icon  mySelect--64">
+            <div class="mySelect-input form-box-input">
+              <div class="form-box__icon">
+                <svg class=" svg-location">
+                  <use href="./img/svg-sprite.svg#svg-location"></use>
+                </svg>
+              </div>
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Батуми" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Консультация имплантолога" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Аллерголог" />
+              <input class="mySelect-options" type="text" readonly="readonly" value="Терапевт" />
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="mySelect mySelect--absolute">
+            <div class="mySelect-input form-box-input">
+              <input class="selectValue form-input" type="text" readonly="readonly" value="Пациент" />
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <label class="checkbox-label flex-box flex-y-center">
+                <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                <span class="custom-checkbox"> </span>
+                <span class="custom-checkbox__text">Беридзе Н.</span>
+              </label>
+              <label class="checkbox-label flex-box flex-y-center">
+                <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                <span class="custom-checkbox"> </span>
+                <span class="custom-checkbox__text">Чикрадзе Э.</span>
+              </label>
+              <label class="checkbox-label flex-box flex-y-center">
+                <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                <span class="custom-checkbox"> </span>
+                <span class="custom-checkbox__text">Кипиани Д.</span>
+              </label>
+            </div>
+          </div>
+          <pre>+custom-select-checkbox('Пациент',['Беридзе Н.', 'Чикрадзе Э.', 'Кипиани Д.'], 'mySelect--absolute' )
+</pre>
+        </li>
+        <li>
+          <div class="form-box form-box--icon-right">
+            <label class="text-16 text-gray3">инпут с иконкой справа</label>
+            <div class="form-box-input">
+              <div class="form-box__icon">
+                <svg class="svg-location">
+                  <use href="../img/svg-sprite.svg#svg-location"></use>
+                </svg>
+              </div>
+              <input class="form-input form-input--64" type="text" placeholder="Поисковый запрос">
+            </div>
+            <pre>.form-box.form-box--icon-right
+	label.text-16.text-gray3 строка поиска
+	.form-box-input
+		.form-box__icon
+			svg.svg-location
+				use(href="./img/svg-sprite.svg#svg-location")
+		input(type="text" placeholder="Поисковый запрос").form-input.form-input--64</pre>
+          </div>
+        </li>
+        <li>
+          <div class="form-box form-box--icon-left">
+            <label class="text-16 text-gray3">инпут с иконкой слева</label>
+            <div class="form-box-input">
+              <div class="form-box__icon">
+                <svg class="svg-search">
+                  <use href="../img/svg-sprite.svg#svg-search"></use>
+                </svg>
+              </div>
+              <input class="form-input form-input--64" type="text" placeholder="Поисковый запрос">
+            </div>
+            <pre>.form-box.form-box--icon-left
+	label.text-16.text-gray3 строка поиска
+	.form-box-input
+		.form-box__icon
+			svg.svg-search
+				use(href="./img/svg-sprite.svg#svg-search")
+		input(type="text" placeholder="Поисковый запрос").form-input.form-input--64</pre>
+          </div>
+        </li>
+        <li>
+          <div class="form-box">
+            <label class="text-16 text-gray3">label text</label>
+            <input class="form-input" type="text" placeholder="Фамилия">
+          </div>
+          <pre>.form-box
+	label.text-16.text-gray3 label text
+	input(type="text" placeholder="Фамилия").form-input</pre>
+        </li>
+        <li>
+          <div class="form-box">
+            <label class="text-16 text-gray3">Инпут высотой 48пикс</label>
+            <input class="form-input form-input-48" type="text" placeholder="Фамилия">
+          </div>
+          <pre>.form-box
+	label.text-16.text-gray3 label text
+	input(type="text" placeholder="Фамилия").form-input.form-input-48
+</pre>
+        </li>
+        <li>
+          <div class="form-box">
+            <label class="text-16 text-gray3">label text</label>
+            <input class="form-input input-notvalid" type="text" placeholder="Фамилия">
+            <div class="error-text">Какой-то текст ошибки</div>
+          </div>
+          <pre>.form-box
+	label.text-16.text-gray3 label text
+	input(type="text" placeholder="Фамилия").form-input.input-notvalid
+	.error-text Какой-то текст ошибки
+</pre>
+        </li>
+        <br>
+        <li>
+          <div class="mySelect mySelect--absolute mySelect--dark mySelect--radio mySelect--currency">
+            <div class="mySelect-input">
+              <input class="selectValue input-slim" type="text" readonly="" value="RU • RUB">
+            </div>
+            <div class="mySelect-drop scroll-vertical">
+              <div class="mySelect-drop__row">
+                <label class="radiobutton-label flex-box role-country">
+                  <input class="real-radio" type="radio" name="country" value="EN" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">English</span>
+                </label>
+                <label class="radiobutton-label flex-box role-currency">
+                  <input class="real-radio" type="radio" name="currency" value="USD" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">USD</span>
+                </label>
+              </div>
+              <div class="mySelect-drop__row">
+                <label class="radiobutton-label flex-box role-country">
+                  <input class="real-radio" type="radio" name="country" value="RU" checked="checked" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Русский</span>
+                </label>
+                <label class="radiobutton-label flex-box role-currency">
+                  <input class="real-radio" type="radio" name="currency" value="RUB" checked="checked" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">RUB</span>
+                </label>
+              </div>
+              <div class="mySelect-drop__row">
+                <label class="radiobutton-label flex-box role-country">
+                  <input class="real-radio" type="radio" name="country" value="GE" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Georgian</span>
+                </label>
+                <label class="radiobutton-label flex-box role-currency">
+                  <input class="real-radio" type="radio" name="currency" value="GEL" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">GEL</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h3>Чекбоксы</h3>
+          <label class="checkbox-label flex-box flex-y-center">
+            <input class="real-checkbox" type="checkbox" name="form-checkbox">
+            <span class="custom-checkbox"> </span>
+            <span class="custom-checkbox__text">Normal on</span>
+          </label>
+          <pre>label.checkbox-label.flex-box.flex-y-center
+	input(type='checkbox' name='form-checkbox' )
+	span.custom-checkbox 
+	span.custom-checkbox__text Normal on</pre>
+        </li>
+        <li>
+          <h3>Радиокнопки</h3>
+          <label class="radiobutton-label flex-box">
+            <input class="real-radio" type="radio" name="currency" value="usd">
+            <span class="custom-radio"> </span>
+            <span class="custom-radio__text">USD</span>
+          </label>
+          <label class="radiobutton-label flex-box">
+            <input class="real-radio" type="radio" name="currency" value="gel">
+            <span class="custom-radio"></span>
+            <span class="custom-radio__text">GEL</span>
+          </label>
+          <label class="radiobutton-label flex-box">
+            <input class="real-radio" type="radio" name="currency" value="rub">
+            <span class="custom-radio"></span>
+            <span class="custom-radio__text">RUB</span>
+          </label>
+          <pre>label.radiobutton-label.flex-box
+	input(type='radio' name='currency' value='usd' class='real-radio') 
+	span.custom-radio 
+	span.custom-radio__text USD
+label.flex-box
+	input(type='radio' name='currency' value='gel' class='real-radio')
+	span.custom-radio
+	span.custom-radio__text GEL
+label.flex-box
+	input(type='radio' name='currency' value='rub' class='real-radio')
+	span.custom-radio
+	span.custom-radio__text RUB</pre>
+        </li>
+        <li>
+          <h3>Switch-toggle</h3>
+          <label class="switch-toggle flex-box flex-y-center">
+            <input class="toggle-switch" type="checkbox">
+            <span class="real-switch"></span>
+            <span class="custom-switch__text">Normal on</span>
+          </label>
+          <pre>label.switch-toggle.flex-box.flex-y-center
+	input(type='checkbox'  class='toggle-switch')
+	span.real-switch
+	span.custom-switch__text Normal on</pre>
+        </li>
+        <li>
+          <label class="radiobutton-badge">
+            <input class="label-radio" type="radio" name="date-radiobtn">
+            <span class="label-light">Суббота, 22</span>
+          </label>
+        </li>
+        <li>
+          <h3>Чекбокс время приема к врачу</h3>
+          <div class="radiobutton-time__group">
+            <label class="radiobutton-time flex-box flex-y-center">
+              <input class="timetable-radiobtn" type="radio" name="time-radiobtn">
+              <span class="radiobutton-checkbox">15:20</span>
+            </label>
+          </div>
+          <pre>.radiobutton-time__group
+	label.radiobutton-time.flex-box.flex-y-center
+		input(type='radio' name='time-radiobtn' class='timetable-radiobtn')
+		span.radiobutton-checkbox 15:20</pre>
+        </li>
+        <li>
+          <h3>Переключатель фильтра</h3>
+          <div class="filter-toggle__block flex-box-inline">
+            <label class="filter-toggle-item filter-toggle-item--left">
+              <input class="filter-radiobtn" type="radio" name="toggle-radiobtn">
+              <span>По рейтингу</span>
+            </label>
+            <label class="filter-toggle-item filter-toggle-item--center">
+              <input class="filter-radiobtn" type="radio" name="toggle-radiobtn">
+              <span>По стоимости</span>
+            </label>
+            <label class="filter-toggle-item filter-toggle-item--right">
+              <input class="filter-radiobtn" type="radio" name="toggle-radiobtn">
+              <span>По отзывам</span>
+            </label>
+          </div>
+          <pre>.filter-toggle__block.flex-box.flex-y-center
+	label.filter-toggle-item.filter-toggle-item--left
+		input(type='radio' name='toggle-radiobtn' class='filter-radiobtn') 
+		span.filter-toggle-text По рейтингу
+	label.filter-toggle-item.filter-toggle-item--center
+		input(type='radio' name='toggle-radiobtn' class='filter-radiobtn')
+		span.filter-toggle-text По стоимости
+	label.filter-toggle-item.filter-toggle-item--right
+		input(type='radio' name='toggle-radiobtn' class='filter-radiobtn')
+		span.filter-toggle-text По отзывам
+
+</pre>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--=============== jquery ===================-->
+  <script src="../libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== owlCarousel ===================-->
+  <script src="../libs/swiper/swiper.js"></script>
+  <script>
+			const hidePanel = document.querySelector('#hide-panel');
+			hidePanel.addEventListener('click',function(){
+				document.body.classList.toggle('full-screen');
+			});
+			
+		</script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
