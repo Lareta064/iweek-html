@@ -123,23 +123,34 @@
       <div class="employee-personal-card">
         <div class="container-medium">
           <div class="employee-personal-header flex-box border-b">
-            <div class="card-header">
-              <div class="flex-vertical-center gap-16">
-                <div class="text-14 text-gray">Стоматолог</div>
-              </div>
-              <div class="text-24 mb-8">Голетиани Мариам</div>
-              <div class="text-row mb-8">
-                <div class="text-14 text-gray3">Эл. почта</div>
-                <div class="text-16">doctor@gmail.com</div>
-              </div>
-              <div class="text-row mb-8">
-                <div class="text-14 text-gray3">Телефон</div>
-                <div class="text-16">+995 556 333 232</div>
-              </div>
-              <div class="card-header__list">
-                <div class="text-14 text-gray3">Стаж 17 лет</div>
-                <div class="text-14 text-gray3">Высшая категория</div>
-                <div class="text-14 text-gray3">Кандидат наук</div>
+            <div class="flex-box gap-32">
+              <form class="avatar-form" enctype="multipart/form-data">
+                <div class="employee-personal-foto">
+                  <img src="./img/avatar.svg" width="155" height="155" alt="foto">
+                </div>
+                <fieldset>
+                  <input class="inputfile" id="file" type="file" multiple>
+                  <label class="btn-32 btn--orange" for="file">Загрузить фото</label>
+                </fieldset>
+              </form>
+              <div class="card-header">
+                <div class="flex-vertical-center gap-16">
+                  <div class="text-14 text-gray">Стоматолог</div>
+                </div>
+                <div class="text-24 mb-8">Голетиани Мариам</div>
+                <div class="text-row mb-8">
+                  <div class="text-14 text-gray3">Эл. почта</div>
+                  <div class="text-16">doctor@gmail.com</div>
+                </div>
+                <div class="text-row mb-8">
+                  <div class="text-14 text-gray3">Телефон</div>
+                  <div class="text-16">+995 556 333 232</div>
+                </div>
+                <div class="card-header__list">
+                  <div class="text-14 text-gray3">Стаж 17 лет</div>
+                  <div class="text-14 text-gray3">Высшая категория</div>
+                  <div class="text-14 text-gray3">Кандидат наук</div>
+                </div>
               </div>
             </div>
             <div class="employee-personal-options flex-box gap-32">
@@ -288,7 +299,7 @@
           <div class="form-textarea">
             <textarea placeholder="Комментарий к пациенту"></textarea>
           </div>
-          <div class="form-btns flex-vertical-center gap-32 flex-between mt-auto">
+          <div class="form-btns flex-vertical-center gap-20 mt-auto">
             <button class="btn btn--orange" frame-close>Отменить</button>
             <button class="btn btn--primary" type="submit">Добавить</button>
           </div>
@@ -382,7 +393,7 @@
           <div class="form-textarea">
             <textarea placeholder="Комментарий к пациенту"></textarea>
           </div>
-          <div class="form-btns flex-vertical-center gap-32 flex-between mt-auto">
+          <div class="form-btns flex-vertical-center gap-20 mt-auto">
             <button class="btn btn--orange" frame-close>Отменить</button>
             <button class="btn btn--primary" type="submit">Сохранить</button>
           </div>
@@ -553,9 +564,9 @@
           </div>
         </form>
       </div>
-      <div class="modal-frame__footer mt-auto border-top flex-vertical-center flex-between">
-        <button class="btn btn-44 btn--orange" frame-close>Отмена</button>
+      <div class="modal-frame__footer mt-auto border-top flex-vertical-center gap-20">
         <button class="btn btn-44">Сохранить</button>
+        <button class="btn btn-44 btn--orange" frame-close>Отменить</button>
       </div>
     </div>
   </div>
@@ -567,7 +578,7 @@
       </div>
       <div class="modal-frame__body">
         <div class="title-20 text-center">Вы уверены, что хотите удалить?</div>
-        <div class="form-btns flex-vertical-center gap-32 mt-32">
+        <div class="form-btns flex-vertical-center gap-20 mt-32">
           <button class="btn btn--orange" frame-close>Отменить</button>
           <button class="btn btn--primary" type="submit">Подтверждаю</button>
         </div>

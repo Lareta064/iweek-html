@@ -637,6 +637,106 @@ document.addEventListener("DOMContentLoaded", function (){
 			}, interval_sec * 1000)
 		}
 	}
+	/**======================= поле ввода смс-кода =============*/
+	$('.sms-input:first-child').focus();
 
+	$('.sms-input').on('keydown', function(e) {
+	let value = $(this).val();
+	let len = value.length;
+	let curTabIndex = parseInt($(this).attr('tabindex'));
+	let nextTabIndex = curTabIndex + 1;
+	let prevTabIndex = curTabIndex - 1;
+	if (len > 0) {
+		$(this).val(value.substr(0, 1));
+		$('[tabindex=' + nextTabIndex + ']').focus();
+	} else if (len == 0 && prevTabIndex !== 0) {
+		$('[tabindex=' + prevTabIndex + ']').focus();
+	}
+	});
 
+	   /*====== PASSWORD VISIBLE/HIDE=============*/
+	document.querySelectorAll(".toggle-pass").forEach(el=>{
+		const tglBtn = el.querySelector(".form-item__icon");
+		const inputField = el.querySelector("input");
+
+		tglBtn.addEventListener("click", (e)=>{
+			const icon1 = tglBtn.querySelector(".ic-visible");
+			const icon2 = tglBtn.querySelector(".ic-hide");
+
+			if(inputField.type === "password")
+				inputField.type = "text"
+			else inputField.type = "password";
+
+			icon1.classList.toggle("d-none");
+			icon2.classList.toggle("d-none");
+		});
+	});
+    /*********оценить врача - рейтинг*********** */
+	const ratingStar = document.querySelectorAll('.set-rating');
+	if(ratingStar.length > 0){
+		for (item of ratingStar){
+			const starLabel = item.querySelectorAll('label');
+			for(let i = 0; i < starLabel.length; i++){
+				starLabel[i].addEventListener('click', function(){
+					
+					for(let j = 0; j < starLabel.length; ++j)
+					{
+						console.log(i)
+						const inputEl = starLabel[j].querySelector('input');
+						inputEl.checked = false;
+						if(j <= i)inputEl.checked = true;
+					}
+
+				})
+			}
+		}
+	}
+
+	/*====подсветка обязательных полей по наведению на кнопку отправки=== */
+	const reqInputsForms = document.querySelectorAll('.required-inputs-form');
+	if(reqInputsForms.length > 0){
+		const emailRegex = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+		
+		const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
+
+		const validate = (regex, email) => {
+			if(!regex instanceof RegExp)return false;
+
+			return regex.test(String(email).toLowerCase());
+		}
+
+		for(let frm of  reqInputsForms){
+			const  requiredElems = frm.querySelectorAll('.required-input');
+			const frmBtn = frm.querySelector('.display-required');
+
+			frmBtn.addEventListener('mouseenter', function(){
+				requiredElems.forEach((el) => {
+					if ( !el.value || 
+						(el.type === 'email' && !validate(emailRegex,el.value)) || 
+						(el.type === 'tel' && !validate(phoneRegex, el.value))) {
+							
+							el.classList.add('required-input-novalid');
+					}
+				});
+			});
+
+			frmBtn.addEventListener('mouseleave', function(){
+				for(let i=0; i<  requiredElems.length; i++){
+					requiredElems[i].classList.remove('required-input-novalid')
+				}
+			});
+		}
+
+	}
+	/* close tooltip-modal стр Задачи, редактирования времени*/
+	const tooltipModal = document.querySelectorAll('.tooltip-modal');
+	if(tooltipModal.length > 0){
+		for(item of tooltipModal){
+			const itemCloseBtn = item.querySelector('.tooltip-close');
+			itemCloseBtn.addEventListener('click', (e)=>{
+				e.preventDefault();
+				item.classList.remove('visible');
+			})
+		}
+	}
 });

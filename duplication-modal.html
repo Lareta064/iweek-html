@@ -153,11 +153,13 @@
             <div class="form-fieldset">
               <div class="grid-form-fields gap-32">
                 <div class="form-box">
-                  <label class="text-16">Фамилия</label>
+                  <label class="text-16">Фамилия<sup class="text-red">*</sup>
+                  </label>
                   <input class="form-input" type="text" placeholder="Фамилия">
                 </div>
                 <div class="form-box">
-                  <label class="text-16">Имя</label>
+                  <label class="text-16">Имя<sup class="text-red">*</sup>
+                  </label>
                   <input class="form-input" type="text" placeholder="Имя">
                 </div>
                 <div class="form-box">
@@ -208,7 +210,8 @@
                   </div>
                 </div>
                 <div class="form-box">
-                  <label class="text-16">Дата рождения</label>
+                  <label class="text-16">Дата рождения<sup class="text-red"> *</sup>
+                  </label>
                   <div class="mydatepicker">
                     <input class="form-input datepicker" type="text" value="01.01.2022">
                   </div>
@@ -314,9 +317,9 @@
           <!--==== .content-list-->
           <!--==== 		ul-->
           <!--====			li-->
-          <div class="flex-vertical-center flex-between mt-40">
-            <button class="btn btn-44 btn--orange" frame-close>Отмена</button>
+          <div class="flex-vertical-center gap-20 mt-40">
             <button class="btn btn-44" frame-close>Сохранить</button>
+            <button class="btn btn-44 btn--orange" frame-close>Отменить</button>
           </div>
         </form>
       </div>
@@ -343,9 +346,9 @@
           <!--==== .content-list-->
           <!--==== 		ul-->
           <!--====			li-->
-          <div class="flex-vertical-center flex-between mt-40">
-            <button class="btn btn-44 btn--orange" frame-close>Отмена</button>
+          <div class="flex-vertical-center gap-20 mt-40">
             <button class="btn btn-44" frame-close>Сохранить</button>
+            <button class="btn btn-44 btn--orange" frame-close>Отменить</button>
           </div>
         </form>
       </div>
@@ -357,12 +360,10 @@
 		-->
   <!--=============================================================================-->
   <div class="modal-frame-wrapper modal-frame-center visible" frame-modal="duplication-modal">
-    <div class="modal-frame flex-column p-16">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="icon-close ml-auto" frame-close></div>
-      </div>
+    <div class="modal-frame flex-column p-32 pos-rel">
+      <div class="icon-close pos-abs" frame-close></div>
       <div class="modal-frame__body text-center">
-        <p class="text-16 mb-32">Пользователь с такими данными уже зарегистрирован в системе!</p>
+        <p class="text-16">Пользователь с такими данными уже зарегистрирован в системе!</p>
       </div>
     </div>
   </div>

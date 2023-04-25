@@ -355,15 +355,23 @@
     </div>
   </div>
   <!--============================================================================= 
-		Модальное окно Пользователь с таким телеф уже есть!
-		Если для его отображения не требуется клик по кнопке с атрибутом frame-btn="login-error" , то атрибут frame-modal="login-error"  можно удалить.
+		Модальное окно Успешная регистрация
+		Если для его отображения не требуется клик по кнопке с атрибутом frame-btn="ssuccess-reg-empl" , то атрибут frame-modal="success-reg-empl"  можно удалить.
 		-->
   <!--=============================================================================-->
-  <div class="modal-frame-wrapper modal-frame-center visible" frame-modal="login-error">
+  <div class="modal-frame-wrapper modal-frame-center visible w-1000" frame-modal="success-reg-empl">
     <div class="modal-frame flex-column p-32 pos-rel">
       <div class="icon-close pos-abs" frame-close></div>
-      <div class="modal-frame__body text-center">
-        <p class="text-16"> Пользователь с таким мобильным телефоном уже зарегистрирован, введите другой мобильный телефон или воспользуйтесь восстановлением пароля.</p>
+      <div class="modal-frame__body">
+        <div class="flex-column flex-center gap-12 text-center">
+          <div class="title-20">Благодарим за проявленный интерес к нашему сервису.</div>
+          <div class="text-20 flex-column flex-center gap-8">
+            <p>На сегодняшний день, сотрудничество с исполнителями,</p>
+            <p> предоставляющими свои услуги осуществляется в рамках Публичной Оферты.</p>
+            <p>Размещение на портале бесплатно, вы платите только за записанного пациента.</p>
+            <p>Более подробную информацию мы уже отправляем Вам на email.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
