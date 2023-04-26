@@ -2196,8 +2196,15 @@
           </div>
           <div class="appoint-form__body">
             <div class="form-box">
-              <label class="text-14 text-gray3">Специальность</label>
-              <input class="form-input" type="text" readonly value="Стоматолог">
+              <div class="mySelect mySelect--absolute">
+                <div class="mySelect-input form-box-input">
+                  <input class="selectValue form-input" type="text" readonly="readonly" value="Специальность" />
+                </div>
+                <div class="mySelect-drop scroll-vertical">
+                  <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
+                </div>
+              </div>
             </div>
             <div class="form-box form-box--icon-right">
               <label class="text-14 text-gray3">Дата и время приёма</label>
