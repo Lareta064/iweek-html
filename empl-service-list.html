@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--======= swipe =============-->
+  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+  <meta name="format-detection" content="telephone=no">
+  <!--===================favicon ==================================-->
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!--===================opengraf=======================================-->
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Кабинет сотрудника | Услуги</title>
+</head>
+
+<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
+  <div id="overlay"></div>
+  <header class="cabinet-header">
+    <div class="container-large">
+      <div class="cabinet-header__content flex-vertical-center">
+        <div class="cabinet-header__logo">
+          <a class="custom-logo" href="index.html">
+            <img src="./img/logo2.png" width="106" alt="logo" />
+          </a>
+        </div>
+        <div class="cabinet-header__menu">
+          <div class="myTabs-buttons">
+            <a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a>
+            <a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a>
+            <a class="btn-bt myTabs-btn" href="visitor-page.html">Пациенты</a>
+            <a class="btn-bt myTabs-btn active" href="employees-page.html">Сотрудники</a>
+          </div>
+        </div>
+        <div class="cabinet-header__profile flex-vertical-center gap-32">
+          <div class="select-work-place">
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
+              </div>
+              <div class="mySelect-drop scroll-vertical">
+                <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
+                <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
+              </div>
+            </div>
+          </div>
+          <div class="help-info">?</div>
+          <div class="customDrop customDrop--right drop-click-close">
+            <div class="customDrop__btn round-icon">
+              <div class="icon-notify"></div>
+            </div>
+            <div class="customDrop__list">
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Включить звук</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 15 минут</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 30 минут</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 1 час</span>
+                </label>
+              </div>
+              <div class="customDrop__list-item">
+                <label class="radiobutton-label flex-box">
+                  <input class="real-radio" type="radio" name="currency" value="" />
+                  <span class="custom-radio"></span>
+                  <span class="custom-radio__text">Выключить на 8 часов</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="cabinet-header__avatar">ГМ</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--=========== основной контент вкладка расписание ====================-->
+  <div class="cabinet-body">
+    <div class="container-slim">
+      <main class="employee-page-content">
+        <div class="employee-page-content__head">
+          <a class="text-icon flex-box flex-y-center" href="employee-personal-page.html">
+            <div class="icon-btn arrow-left"></div>
+            <div class="text-16">Выбор услуг</div>
+          </a>
+        </div>
+        <div class="employee-page-services">
+          <div class="employee-page-services__block flex-box gap-20">
+            <div class="form-box">
+              <div class="form-box-input pos-rel">
+                <div class="mySelect mySelect--absolute">
+                  <div class="mySelect-input form-box-input">
+                    <input class="selectValue form-input" type="text" readonly="readonly" value="Выбрать услугу (не более 10)" />
+                  </div>
+                  <div class="mySelect-drop scroll-vertical">
+                    <label class="checkbox-label flex-box flex-y-center">
+                      <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                      <span class="custom-checkbox"> </span>
+                      <span class="custom-checkbox__text">Стоматология</span>
+                    </label>
+                    <label class="checkbox-label flex-box flex-y-center">
+                      <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                      <span class="custom-checkbox"> </span>
+                      <span class="custom-checkbox__text">Ортодонтия</span>
+                    </label>
+                    <label class="checkbox-label flex-box flex-y-center">
+                      <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                      <span class="custom-checkbox"> </span>
+                      <span class="custom-checkbox__text">Хирургия</span>
+                    </label>
+                    <label class="checkbox-label flex-box flex-y-center">
+                      <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                      <span class="custom-checkbox"> </span>
+                      <span class="custom-checkbox__text">Хирургия</span>
+                    </label>
+                    <label class="checkbox-label flex-box flex-y-center">
+                      <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                      <span class="custom-checkbox"> </span>
+                      <span class="custom-checkbox__text">Стоматология</span>
+                    </label>
+                    <label class="checkbox-label flex-box flex-y-center">
+                      <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                      <span class="custom-checkbox"> </span>
+                      <span class="custom-checkbox__text">Ортодонтия</span>
+                    </label>
+                    <label class="checkbox-label flex-box flex-y-center">
+                      <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                      <span class="custom-checkbox"> </span>
+                      <span class="custom-checkbox__text">Хирургия</span>
+                    </label>
+                    <label class="checkbox-label flex-box flex-y-center">
+                      <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                      <span class="custom-checkbox"> </span>
+                      <span class="custom-checkbox__text">Хирургия</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn--orange btn-38">Добавить</button>
+          </div>
+          <!--====service-table-->
+          <div class="services-table">
+            <div class="services-table-row">
+              <label class="checkbox-label flex-box flex-y-center">
+                <input class="real-checkbox" type="checkbox" name="">
+                <span class="custom-checkbox"></span>
+                <span class="custom-checkbox__text">Выбрать все</span>
+              </label>
+            </div>
+            <!--====table single row ====	-->
+            <div class="services-table-row">
+              <label class="checkbox-label flex-box flex-y-center">
+                <input class="real-checkbox" type="checkbox" name="">
+                <span class="custom-checkbox"></span>
+                <span class="custom-checkbox__text">Консультация</span>
+              </label>
+              <!--==== ввести стоимость услуги ====-->
+              <div class="form-box service-price-val">
+                <input type="text" placeholder="0">
+              </div>
+              <!--===== выбор валюты ===-->
+              <div class="mySelect mySelect--absolute mySelect--slim">
+                <div class="mySelect-input form-box-input">
+                  <input class="selectValue form-input" type="text" readonly="readonly" value="₾" />
+                </div>
+                <div class="mySelect-drop scroll-vertical">
+                  <input class="mySelect-options" type="text" readonly="readonly" value="₾" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="$" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="₽" />
+                </div>
+              </div>
+              <!--=== иконка Удалить ====-->
+              <div class="icon-delete"></div>
+            </div>
+            <!--====table single row ====	-->
+            <div class="services-table-row">
+              <label class="checkbox-label flex-box flex-y-center">
+                <input class="real-checkbox" type="checkbox" name="">
+                <span class="custom-checkbox"></span>
+                <span class="custom-checkbox__text">Первичный прием</span>
+              </label>
+              <!--==== ввести стоимость услуги ====-->
+              <div class="form-box service-price-val">
+                <input type="text" placeholder="0">
+              </div>
+              <!--===== выбор валюты ===-->
+              <div class="mySelect mySelect--absolute mySelect--slim">
+                <div class="mySelect-input form-box-input">
+                  <input class="selectValue form-input" type="text" readonly="readonly" value="₾" />
+                </div>
+                <div class="mySelect-drop scroll-vertical">
+                  <input class="mySelect-options" type="text" readonly="readonly" value="₾" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="$" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="₽" />
+                </div>
+              </div>
+              <!--=== иконка Удалить ====-->
+              <div class="icon-delete"></div>
+            </div>
+            <!--====table single row ====	-->
+            <div class="services-table-row">
+              <label class="checkbox-label flex-box flex-y-center">
+                <input class="real-checkbox" type="checkbox" name="">
+                <span class="custom-checkbox"></span>
+                <span class="custom-checkbox__text">Вторичный прием</span>
+              </label>
+              <!--==== ввести стоимость услуги ====-->
+              <div class="form-box service-price-val">
+                <input type="text" placeholder="0">
+              </div>
+              <!--===== выбор валюты ===-->
+              <div class="mySelect mySelect--absolute mySelect--slim">
+                <div class="mySelect-input form-box-input">
+                  <input class="selectValue form-input" type="text" readonly="readonly" value="₾" />
+                </div>
+                <div class="mySelect-drop scroll-vertical">
+                  <input class="mySelect-options" type="text" readonly="readonly" value="₾" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="$" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="₽" />
+                </div>
+              </div>
+              <!--=== иконка Удалить ====-->
+              <div class="icon-delete"></div>
+            </div>
+            <!--====table single row ====	-->
+            <div class="services-table-row">
+              <label class="checkbox-label flex-box flex-y-center">
+                <input class="real-checkbox" type="checkbox" name="">
+                <span class="custom-checkbox"></span>
+                <span class="custom-checkbox__text">Вторичный прием</span>
+              </label>
+              <!--==== ввести стоимость услуги ====-->
+              <div class="form-box service-price-val">
+                <input type="text" placeholder="0">
+              </div>
+              <!--===== выбор валюты ===-->
+              <div class="mySelect mySelect--absolute mySelect--slim">
+                <div class="mySelect-input form-box-input">
+                  <input class="selectValue form-input" type="text" readonly="readonly" value="₾" />
+                </div>
+                <div class="mySelect-drop scroll-vertical">
+                  <input class="mySelect-options" type="text" readonly="readonly" value="₾" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="$" />
+                  <input class="mySelect-options" type="text" readonly="readonly" value="₽" />
+                </div>
+              </div>
+              <!--=== иконка Удалить ====-->
+              <div class="icon-delete"></div>
+            </div>
+            <!--====== кнопка Сохранить =====-->
+            <div class="mt-40 flex-x-right">
+              <button class="btn btn--primary">Сохранить</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <!--=============== jquery ===================-->
+  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== swiper ===================-->
+  <script src="./libs/swiper/swiper.js"></script>
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+  <!--=============== мои скрипты ===================-->
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

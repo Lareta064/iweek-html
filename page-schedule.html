@@ -950,9 +950,17 @@
           <div class="fieldset-group mb-24">
             <div class="title-18 mb-24">Данные пациента</div>
             <div class="cabinet-form__name mb-24">
-              <div class="form-box">
+              <div class="form-box pos-rel">
                 <label class="text-16">Фамилия</label>
                 <input class="form-input" type="text">
+                <!--====== .autocomplit-list -заготовка под блок с фамилиями для автоподстановки. Скрыта через класс d-none. -->
+                <div class="autocomplete-list scroll-vertical d-none">
+                  <ul>
+                    <li>Иванидзе</li>
+                    <li>Иванидзе</li>
+                    <li>Иванидзе</li>
+                  </ul>
+                </div>
               </div>
               <div class="form-box">
                 <label class="text-16">Имя</label>
@@ -988,9 +996,17 @@
             </div>
           </div>
           <div class="cabinet-form__contacts mb-24 flex-vertical-center gap-32 flex-grow">
-            <div class="form-box">
+            <div class="form-box pos-rel">
               <label class="text-16">Телефон</label>
               <input class="form-input" type="text">
+              <!--====== .autocomplit-list -заготовка под блок с фамилиями для автоподстановки. Скрыта через класс d-none -->
+              <div class="autocomplete-list scroll-vertical">
+                <ul>
+                  <li>+9995888777</li>
+                  <li>+9995888777</li>
+                  <li>+9995888777</li>
+                </ul>
+              </div>
             </div>
             <div class="form-box">
               <label class="text-16">Дополнительный телефон</label>
