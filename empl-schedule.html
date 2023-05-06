@@ -927,7 +927,7 @@
               <form class="empl-schedule-form tab-item" ct-content="2">
                 <div class="category-wrapper flex-column gap-16">
                   <label class="radiobutton-label flex-box flex-y-center">
-                    <input class="real-radio" type="radio" name="free-day">
+                    <input class="real-radio" type="radio" name="free-day" checked>
                     <span class="custom-radio"></span>
                     <span class="custom-radio__text">Отпуск</span>
                   </label>
@@ -943,72 +943,22 @@
                   </label>
                 </div>
                 <div class="time-wrapper flex-vertical-center gap-32 pt-32">
-                  <div class="form-item">
-                    <div class="mySelect mySelect--absolute">
-                      <div class="mySelect-input form-box-input">
-                        <input class="selectValue form-input" type="text" readonly="readonly" value="Начало" />
-                      </div>
-                      <div class="mySelect-drop scroll-vertical">
-                        <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="11:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="12:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="12:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="13:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="13:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="14:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="14:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="15:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="15:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="16:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="16:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="17:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="17:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="18:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="18:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="19:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="19:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="20:00" />
-                      </div>
+                  <div class="form-box form-box--260">
+                    <label class="text-16">Начало</label>
+                    <div class="mydatepicker">
+                      <input class="form-input datepicker" type="text" placeholder="Выбрать дату">
                     </div>
                   </div>
-                  <div class="form-item">
-                    <div class="mySelect mySelect--absolute">
-                      <div class="mySelect-input form-box-input">
-                        <input class="selectValue form-input" type="text" readonly="readonly" value="Окончание" />
-                      </div>
-                      <div class="mySelect-drop scroll-vertical">
-                        <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="11:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="12:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="12:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="13:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="13:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="14:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="14:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="15:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="15:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="16:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="16:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="17:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="17:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="18:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="18:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="19:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="19:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="20:00" />
-                      </div>
+                  <div class="form-box form-box--260 pos-rel">
+                    <label class="text-16">Окончание</label>
+                    <!--===== Если пользователь выбрал дату Окончание раньше, чем дата Начало , инпуту добавляется класс input-notvalid, который задает красный цвет рамки и текста у инпута. Так же показывается тултип с классом tooltip-error-text. Сейчас это окно видимо, за счет класса visible-->
+                    <div class="mydatepicker">
+                      <input class="form-input input-notvalid datepicker" type="text" placeholder="Выбрать дату">
+                    </div>
+                    <div class="tooltip-error-text tooltip-modal tooltip-modal--mini text-12 visible">
+                      <p>Дата <strong>Окончание</strong> не может быть раньше даты <strong>Начало</strong>
+                      </p>
+                      <div class="tooltip-close icon-close"></div>
                     </div>
                   </div>
                 </div>

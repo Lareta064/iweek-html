@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--====убрать синий цвет у ссылок в сафари ========-->
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <title>UI-KIT</title>
+</head>
+
+<body class="body-dashboard">
+  <button id="hide-panel">скрыть/показать панель</button>
+  <div class="ui-panel">
+    <div class="ui-panel-block">
+      <div class="ui-panel-block__part">
+        <a class="back-index" href="http://localhost:3000/">На Главную</a>
+        <h3>Базовые компоненты</h3>
+        <ul>
+          <li>
+            <a href="colors.html">Цветовая схема</a>
+          </li>
+          <li>
+            <a href="typography.html">Типографика</a>
+          </li>
+          <li>
+            <a href="positions-classes.html">Классы позиционирования</a>
+          </li>
+          <li>
+            <a href="icons.html">Иконки</a>
+          </li>
+          <li>
+            <a href="buttons.html">Кнопки</a>
+          </li>
+          <li>
+            <a href="forms.html">Элементы формы</a>
+          </li>
+          <li>
+            <a href="custom-select.html">Кастом селекты</a>
+          </li>
+          <li>
+            <a href="labels.html">Лейблы</a>
+          </li>
+          <li>
+            <a href="components-text.html">Текстовые компоненты</a>
+          </li>
+          <li>
+            <a href="page-nav.html">Менюшки</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Блоки</h3>
+        <ul>
+          <li>
+            <a href="header-contacts.html">Контакты в шапке</a>
+          </li>
+          <li>
+            <a href="benefits-items.html">Преимущества</a>
+          </li>
+          <li>
+            <a href="doc-card-items.html">Компонеты карточки врача</a>
+          </li>
+          <li>
+            <a href="filters-modal.html">Фильтры на моб версии (модальное окно)</a>
+          </li>
+          <li>
+            <a href="custom-drop.html">Кастомная выпадашка</a>
+          </li>
+          <li>
+            <a href="tooltip.html">Tooltip</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Секции</h3>
+        <ul>
+          <li>
+            <a href="header.html">Шапка</a>
+          </li>
+          <li>
+            <a href="doc-card.html">Карточка врача</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-panel-block__part">
+        <h3>Страницы</h3>
+      </div>
+    </div>
+  </div>
+  <div class="container-dashboard">
+    <h2>Компоненты карточки</h2>
+    <div class="container-dashboard__content">
+      <ul class="ui-components">
+        <li>
+          <div class="checkboxes-wrapper flex-wrapper flex-y-center">
+            <!--====single item ======-->
+            <label class="checkbox-label flex-box flex-y-center">
+              <input class="real-checkbox" type="checkbox" name="form-checkbox">
+              <span class="custom-checkbox"> </span>
+              <span class="custom-checkbox__text">Врачи поблизости</span>
+            </label>
+            <!--====single item ======-->
+            <label class="checkbox-label flex-box flex-y-center">
+              <input class="real-checkbox" type="checkbox" name="form-checkbox">
+              <span class="custom-checkbox"> </span>
+              <span class="custom-checkbox__text">Круглосуточно 24/7</span>
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="doc-card-cat">
+            <div class="label-light-wrapper gap-8 flex-wrapper">
+              <div class="label-light">
+                <span class="text-medium">Диагностика</span>
+              </div>
+              <div class="label-light">
+                <span class="text-medium">Хирургия</span>
+              </div>
+              <div class="label-light">
+                <span class="text-medium">Пародонтология</span>
+              </div>
+            </div>
+          </div>
+          <pre>.doc-card-cat
+	.label-light-wrapper.gap-8.flex-wrapper
+		+label-light('Диагностика')
+		+label-light('Хирургия')
+		+label-light('Пародонтология')
+</pre>
+        </li>
+        <li>
+          <div class="doc-card__foto">
+            <label class="check-label flex-center flex-box">
+              <input type="checkbox">
+              <svg class="svg-heart" width="16" height="16">
+                <use href="../svg-sprite.svg#svg-heart"></use>
+              </svg>
+            </label>
+            <img src="../img/doctor.png" width="140" height="140" alt="alt">
+          </div>
+          <pre>.doc-card__foto
+	label.check-label.flex-center.flex-box
+		input(type="checkbox")
+		svg.svg-heart(width="16" height="16" )
+			use(href="../svg-sprite.svg#svg-heart")
+	img(src="../img/doctor.png", width="140" height="140" alt="alt")
+</pre>
+        </li>
+        <li>
+          <h4>рейтинг</h4>
+          <div class="rating-group">
+            <p class="rating-block" data-rating="data-rating">
+              <span class="rating-block-passive">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+              <span class="rating-block-active" data-count="4.4">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+            </p>
+            <a class="text-14 text-indigo" href="#!">9 отзывов</a>
+          </div>
+          <pre>.rating-group
+	+starRating('4.4')
+	a(href="#!").text-14.text-indigo 9 отзывов</pre>
+        </li>
+        <li>
+          <div class="doc-card__filter-group flex-box gap-16">
+            <!--========= single filter select =======-->
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input">
+                <div class="mySelect-icon icon-carret-mini"></div>
+                <input class="selectValue input-slim" type="text" readonly="" value="Услуга">
+              </div>
+              <div class="mySelect-drop">
+                <input class="mySelect-options" type="text" readonly="" value="Стоматолог">
+                <input class="mySelect-options" type="text" readonly="" value="Ортодонт">
+                <input class="mySelect-options" type="text" readonly="" value="Консультация имплантолога">
+                <input class="mySelect-options" type="text" readonly="" value="Аллерголог">
+              </div>
+            </div>
+            <!--========= single filter select =======-->
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input">
+                <div class="mySelect-icon icon-carret-mini"></div>
+                <input class="selectValue input-slim" type="text" readonly="" value="Ближайшее время приема">
+              </div>
+              <div class="mySelect-drop">
+                <input class="mySelect-options" type="text" readonly="" value="Ближайшее время приема">
+                <input class="mySelect-options" type="text" readonly="" value="Ортодонт">
+                <input class="mySelect-options" type="text" readonly="" value="Консультация имплантолога">
+                <input class="mySelect-options" type="text" readonly="" value="Аллерголог">
+              </div>
+            </div>
+            <!--========= switch-toggle =======-->
+            <label class="switch-toggle flex-box flex-y-center">
+              <input class="toggle-switch" type="checkbox">
+              <span class="real-switch"></span>
+              <span class="custom-switch__text">Экстренная помощь</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--=============== jquery ===================-->
+  <script src="../libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== owlCarousel ===================-->
+  <script src="../libs/swiper/swiper.js"></script>
+  <script>
+			const hidePanel = document.querySelector('#hide-panel');
+			hidePanel.addEventListener('click',function(){
+				document.body.classList.toggle('full-screen');
+			});
+			
+		</script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
