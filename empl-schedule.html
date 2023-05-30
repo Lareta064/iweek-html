@@ -249,10 +249,10 @@
                 <!--========одна дата =======-->
                 <div class="calendar__date-item not-empty-cell">
                   <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
+                    <div class="text-holiday">8:00 - 20:00</div>
                   </div>
                   <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
+                    <div class="svg-plus"></div>
                   </div>
                   <div class="calendar__date-row" frame-btn="empl-schedule-edit">
                     <div class="svg-plus"></div>
@@ -262,10 +262,10 @@
                 <!--========одна дата =======-->
                 <div class="calendar__date-item not-empty-cell">
                   <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
+                    <div class="text-holiday">8:00 - 20:00</div>
                   </div>
                   <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
+                    <div class="svg-plus"></div>
                   </div>
                   <div class="calendar__date-row" frame-btn="empl-schedule-edit">
                     <div class="svg-plus"></div>
@@ -411,7 +411,26 @@
               </div>
             </div>
             <div class="employee-schedule-markers">
-              <div class="flex-vertical-center gap-32"></div>
+              <div class="flex-vertical-center gap-32">
+                <div class="green-marker">
+                  <div class="markers-item">
+                    <span></span>
+                    <p>График по правилам</p>
+                  </div>
+                </div>
+                <div class="orange-marker">
+                  <div class="markers-item">
+                    <span></span>
+                    <p>Индивидуальный график</p>
+                  </div>
+                </div>
+                <div class="red-marker">
+                  <div class="markers-item">
+                    <span></span>
+                    <p>Отпуск/Отгул</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -980,6 +999,7 @@
   <!--======= кастомный плагин выбра даты в инпуте =============-->
   <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
   <!--=============== мои скрипты ===================-->
+  <script src="./js/quiz.js"></script>
   <script src="./js/main.js"></script>
 </body>
 

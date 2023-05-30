@@ -180,7 +180,6 @@
                       </div>
                       <div class="flex-box flex-between mt-16">
                         <div class="text-column">
-                          <div class="title-18">Стоматолог</div>
                           <div class="text-16">Блюхера, 56</div>
                         </div>
                         <div class="employee-personal-options flex-box gap-32">
@@ -460,31 +459,43 @@
           </div>
           <div class="cabinet-form__langs mb-32">
             <div class="title-18 mb-24">Языки</div>
-            <div class="form-box flex-vertical-center gap-32 mb-32">
-              <div class="form-box">
-                <div class="flex-vertical-center gap-32">
-                  <label class="checkbox-label flex-box flex-y-center">
-                    <input class="real-checkbox" type="checkbox" name="" checked>
-                    <span class="custom-checkbox"> </span>
-                    <span class="custom-checkbox__text">Грузинский</span>
-                  </label>
-                  <label class="checkbox-label flex-box flex-y-center">
-                    <input class="real-checkbox" type="checkbox" name="">
-                    <span class="custom-checkbox"> </span>
-                    <span class="custom-checkbox__text">Английский</span>
-                  </label>
-                  <label class="checkbox-label flex-box flex-y-center">
-                    <input class="real-checkbox" type="checkbox" name="">
-                    <span class="custom-checkbox"> </span>
-                    <span class="custom-checkbox__text">Русский</span>
-                  </label>
-                  <label class="checkbox-label flex-box flex-y-center">
-                    <input class="real-checkbox" type="checkbox" name="">
-                    <span class="custom-checkbox"> </span>
-                    <span class="custom-checkbox__text">Турецкий</span>
-                  </label>
-                </div>
+            <div class="mySelect mySelect--absolute">
+              <div class="mySelect-input form-box-input">
+                <input class="selectValue form-input" type="text" readonly="readonly" value="Выбрать язык" />
               </div>
+              <div class="mySelect-drop scroll-vertical">
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Грузинский</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Английский</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Русский</span>
+                </label>
+                <label class="checkbox-label flex-box flex-y-center">
+                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
+                  <span class="custom-checkbox"> </span>
+                  <span class="custom-checkbox__text">Турецкий</span>
+                </label>
+              </div>
+            </div>
+            <!--==== Блок в который добавляются выбранные языки, с возможностью удаления по клику на иконку-крестик-->
+            <div class="langs-wrapper flex-vertical-center gap-32 mt-8">
+              <button class="btn-reset">
+                <span>Грузинский</span>
+                <div class="icon-close"></div>
+              </button>
+              <button class="btn-reset">
+                <span>Английский</span>
+                <div class="icon-close"></div>
+              </button>
             </div>
           </div>
           <div class="cabinet-form__duration mb-32">
@@ -593,6 +604,7 @@
   <!--======= кастомный плагин выбра даты в инпуте =============-->
   <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
   <!--=============== мои скрипты ===================-->
+  <script src="./js/quiz.js"></script>
   <script src="./js/main.js"></script>
 </body>
 

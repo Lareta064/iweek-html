@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--======= swipe =============-->
+  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+  <meta name="format-detection" content="telephone=no">
+  <!--===================favicon ==================================-->
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!--===================opengraf=======================================-->
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Регистрация</title>
+</head>
+
+<body style="opacity:0;transition:opacity .7s;">
+  <div id="overlay"></div>
+  <div class="empl-quiz">
+    <div class="container-600">
+      <!--====  reg quiz ======-->
+      <div class="registr-quiz" id="registr-quiz">
+        <!--======step #1 =======-->
+        <div class="quiz-plate plate_3 quiz-plate--active">
+          <!--====== progress =======-->
+          <div class="quiz-progress">
+            <span></span>
+          </div>
+          <div class="quiz-plate__body">
+            <div class="quiz-plate__title">
+              <div class="h2">Какие услуги вы предоставляете?</div>
+              <p>Выберите одну или несколько категорий услуг. Изменить их можно будет в вашем профиле после прохождения регистрации.</p>
+            </div>
+            <div class="catalog-menu" id="cat-menu">
+              <a class="btn" href="#!">
+                <span>Выбрать услугу</span>
+              </a>
+              <!--==== меню Уровень #1 =====-->
+              <div class="catalog-menu-drop">
+                <ul class="scroll-y">
+                  <li>
+                    <a href="#!">
+                      <span>Медицинские</span>
+                    </a>
+                    <!--==== меню Уровень #1 =====-->
+                    <div class="catalog-menu-submenu">
+                      <ul class="scroll-y">
+                        <li>
+                          <input type="text" readonly value="AV ресиверы">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="MP3 плееры">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Акустические системы (колонки)">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Музыкальные центры">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Наушники и гарнитуры">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Системы домашнего кинотеатра">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Усилители">
+                          <div class="carret-right"></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="#!">
+                      <span>Туристические</span>
+                    </a>
+                    <!--==== меню Уровень #1 =====-->
+                    <div class="catalog-menu-submenu">
+                      <ul class="scroll-y">
+                        <li>
+                          <input type="text" readonly value="Встраиваемая техника">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Вытяжки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Варочные поверхности</a>
+                              </li>
+                              <li>
+                                <a href="#!">Духовые шкафы</a>
+                              </li>
+                              <li>
+                                <a href="#!">Посудомоечные машины</a>
+                              </li>
+                              <li>
+                                <a href="#!">Подогреватели посуды</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Для дачи и сада">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Климатическая техника">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Обогреватели</a>
+                              </li>
+                              <li>
+                                <a href="#!">Вентиляторы</a>
+                              </li>
+                              <li>
+                                <a href="#!">Увлажнители воздуха</a>
+                              </li>
+                              <li>
+                                <a href="#!">Очистители воздуха</a>
+                              </li>
+                              <li>
+                                <a href="#!">Осушители воздуха</a>
+                              </li>
+                              <li>
+                                <a href="#!">Кондинционеры</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Крупная бытовая техника">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Холодильники</a>
+                              </li>
+                              <li>
+                                <a href="#!">Стиральные машины</a>
+                              </li>
+                              <li>
+                                <a href="#!">Газовые и электроплиты</a>
+                              </li>
+                              <li>
+                                <a href="#!">Морозильные камеры</a>
+                              </li>
+                              <li>
+                                <a href="#!">Сушильные машины</a>
+                              </li>
+                              <li>
+                                <a href="#!">Стирально-сушильные машины</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Мелкая бытовая техника">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Соковыжималки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Минимойки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Ломтерезки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Швейные машинки и оверлоки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Фритюрницы</a>
+                              </li>
+                              <li>
+                                <a href="#!">Кухонные комбайны</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Посуда">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Столовые приборы</a>
+                                <!--==== меню Уровень #3 =====-->
+                                <div class="catalog-menu-submenu">
+                                  <ul class="scroll-y">
+                                    <li>
+                                      <a href="#!">Ложки</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="#!">Кухонные инструменты</a>
+                                <!--==== меню Уровень #3 =====-->
+                                <div class="catalog-menu-submenu">
+                                  <ul class="scroll-y">
+                                    <li>
+                                      <a href="#!">Шумовки, ложки</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="#!">Кухонная посуда</a>
+                                <!--==== меню Уровень #3 =====-->
+                                <div class="catalog-menu-submenu">
+                                  <ul class="scroll-y">
+                                    <li>
+                                      <a href="#!">Чайники</a>
+                                    </li>
+                                    <li>
+                                      <a href="#!">Чашки, кружки, бокалы</a>
+                                    </li>
+                                    <li>
+                                      <a href="#!">Заварочные чайники, кофейники</a>
+                                    </li>
+                                    <li>
+                                      <a href="#!">Миски</a>
+                                    </li>
+                                    <li>
+                                      <a href="#!">Сковороды, воки, сотейники, овалы</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="#!">Распродажа посуды</a>
+                              </li>
+                              <li>
+                                <a href="#!">Аксессуары</a>
+                                <!--==== меню Уровень #3 =====-->
+                                <div class="catalog-menu-submenu">
+                                  <ul class="scroll-y">
+                                    <li>
+                                      <a href="#!">Мельницы, солонки, наборы для масла и уксуса</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Тонометры">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Электроинструмент">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Измерительный инструмент</a>
+                              </li>
+                              <li>
+                                <a href="#!">Аксессуары для электроинструментов</a>
+                              </li>
+                              <li>
+                                <a href="#!">Дрели</a>
+                              </li>
+                              <li>
+                                <a href="#!">Технические фены</a>
+                              </li>
+                              <li>
+                                <a href="#!">Шуруповерты</a>
+                              </li>
+                              <li>
+                                <a href="#!">Электроотвертки</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="#!">
+                      <span>Фото и видео</span>
+                    </a>
+                    <!--==== меню Уровень #1 =====-->
+                    <div class="catalog-menu-submenu">
+                      <ul class="scroll-y">
+                        <li>
+                          <input type="text" readonly value="Выбрать все подкатегории">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Фотосъемка</a>
+                              </li>
+                              <li>
+                                <a href="#!">Видеосъемка</a>
+                              </li>
+                              <li>
+                                <a href="#!">Запись аудио</a>
+                              </li>
+                              <li>
+                                <a href="#!">Обработка фотографий</a>
+                              </li>
+                              <li>
+                                <a href="#!">Модели для съемок</a>
+                              </li>
+                              <li>
+                                <a href="#!">Монтаж и цветокоррекция</a>
+                              </li>
+                              <li>
+                                <a href="#!">Аренда оборудования </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--======step #2 =======-->
+        <div class="quiz-plate plate_2">
+          <!--====== progress =======-->
+          <div class="quiz-progress">
+            <span></span>
+          </div>
+          <div class="quiz-plate__body">
+            <div class="quiz-plate__title">
+              <div class="text-24">Заполните контактные данные о себе</div>
+              <div class="text-18">Эти данные необходимы для работы на сервисе, и для связи с заказчиками. Мы не передаем ваши данные третьим лицам. </div>
+            </div>
+            <div class="quiz-plate__form">
+              <div class="form-box">
+                <label class="text-16 text-gray3">Ваш город </label>
+                <input class="form-input" type="text">
+              </div>
+              <div class="form-box">
+                <label class="text-16 text-gray3">Имя </label>
+                <input class="form-input" type="text">
+              </div>
+              <div class="form-box">
+                <label class="text-16 text-gray3">Фамилия </label>
+                <input class="form-input" type="text">
+              </div>
+              <div class="form-box">
+                <label class="text-16 text-gray3">Дата рождения</label>
+                <div class="mydatepicker">
+                  <input class="form-input datepicker" type="text">
+                </div>
+              </div>
+              <div class="form-box">
+                <label class="text-16 text-gray3">Номер телефона </label>
+                <input class="form-input" type="text">
+              </div>
+              <div class="form-box">
+                <label class="text-16 text-gray3">Электронная почта </label>
+                <input class="form-input" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="quiz-plate__footer flex-vertical-center gap-20">
+            <button class="btn btn--primary" data-back>Назад</button>
+            <button class="btn btn--orange" data-next>Далее</button>
+          </div>
+          <div class="confirm-text mt-8">
+            <p class="text-12">Продолжая верификацию, вы подтверждаете, что проходите ее впервые, указываете достоверную информацию о себе и своих услугах, и соглашаетесь на обработку <a href="#!">персональных данных</a>
+            </p>
+          </div>
+        </div>
+        <!--======step #3 =======-->
+        <div class="quiz-plate plate_3 quiz-plate--active">
+          <!--====== progress =======-->
+          <div class="quiz-progress">
+            <span></span>
+          </div>
+          <div class="quiz-plate__body">
+            <div class="quiz-plate__title">
+              <div class="h2">Какие услуги вы предоставляете?</div>
+              <p>Выберите одну или несколько категорий услуг. Изменить их можно будет в вашем профиле после прохождения регистрации.</p>
+            </div>
+            <div class="catalog-menu" id="cat-menu">
+              <a class="btn" href="#!">
+                <span>Выбрать услугу</span>
+              </a>
+              <!--==== меню Уровень #1 =====-->
+              <div class="catalog-menu-drop">
+                <ul class="scroll-y">
+                  <li>
+                    <a href="#!">
+                      <span>Медицинские</span>
+                    </a>
+                    <!--==== меню Уровень #1 =====-->
+                    <div class="catalog-menu-submenu">
+                      <ul class="scroll-y">
+                        <li>
+                          <input type="text" readonly value="AV ресиверы">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="MP3 плееры">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Акустические системы (колонки)">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Музыкальные центры">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Наушники и гарнитуры">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Системы домашнего кинотеатра">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Усилители">
+                          <div class="carret-right"></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="#!">
+                      <span>Туристические</span>
+                    </a>
+                    <!--==== меню Уровень #1 =====-->
+                    <div class="catalog-menu-submenu">
+                      <ul class="scroll-y">
+                        <li>
+                          <input type="text" readonly value="Встраиваемая техника">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Вытяжки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Варочные поверхности</a>
+                              </li>
+                              <li>
+                                <a href="#!">Духовые шкафы</a>
+                              </li>
+                              <li>
+                                <a href="#!">Посудомоечные машины</a>
+                              </li>
+                              <li>
+                                <a href="#!">Подогреватели посуды</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Для дачи и сада">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Климатическая техника">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Обогреватели</a>
+                              </li>
+                              <li>
+                                <a href="#!">Вентиляторы</a>
+                              </li>
+                              <li>
+                                <a href="#!">Увлажнители воздуха</a>
+                              </li>
+                              <li>
+                                <a href="#!">Очистители воздуха</a>
+                              </li>
+                              <li>
+                                <a href="#!">Осушители воздуха</a>
+                              </li>
+                              <li>
+                                <a href="#!">Кондинционеры</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Крупная бытовая техника">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Холодильники</a>
+                              </li>
+                              <li>
+                                <a href="#!">Стиральные машины</a>
+                              </li>
+                              <li>
+                                <a href="#!">Газовые и электроплиты</a>
+                              </li>
+                              <li>
+                                <a href="#!">Морозильные камеры</a>
+                              </li>
+                              <li>
+                                <a href="#!">Сушильные машины</a>
+                              </li>
+                              <li>
+                                <a href="#!">Стирально-сушильные машины</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Мелкая бытовая техника">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Соковыжималки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Минимойки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Ломтерезки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Швейные машинки и оверлоки</a>
+                              </li>
+                              <li>
+                                <a href="#!">Фритюрницы</a>
+                              </li>
+                              <li>
+                                <a href="#!">Кухонные комбайны</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Посуда">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Столовые приборы</a>
+                                <!--==== меню Уровень #3 =====-->
+                                <div class="catalog-menu-submenu">
+                                  <ul class="scroll-y">
+                                    <li>
+                                      <a href="#!">Ложки</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="#!">Кухонные инструменты</a>
+                                <!--==== меню Уровень #3 =====-->
+                                <div class="catalog-menu-submenu">
+                                  <ul class="scroll-y">
+                                    <li>
+                                      <a href="#!">Шумовки, ложки</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="#!">Кухонная посуда</a>
+                                <!--==== меню Уровень #3 =====-->
+                                <div class="catalog-menu-submenu">
+                                  <ul class="scroll-y">
+                                    <li>
+                                      <a href="#!">Чайники</a>
+                                    </li>
+                                    <li>
+                                      <a href="#!">Чашки, кружки, бокалы</a>
+                                    </li>
+                                    <li>
+                                      <a href="#!">Заварочные чайники, кофейники</a>
+                                    </li>
+                                    <li>
+                                      <a href="#!">Миски</a>
+                                    </li>
+                                    <li>
+                                      <a href="#!">Сковороды, воки, сотейники, овалы</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="#!">Распродажа посуды</a>
+                              </li>
+                              <li>
+                                <a href="#!">Аксессуары</a>
+                                <!--==== меню Уровень #3 =====-->
+                                <div class="catalog-menu-submenu">
+                                  <ul class="scroll-y">
+                                    <li>
+                                      <a href="#!">Мельницы, солонки, наборы для масла и уксуса</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Тонометры">
+                          <div class="carret-right"></div>
+                        </li>
+                        <li>
+                          <input type="text" readonly value="Электроинструмент">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Измерительный инструмент</a>
+                              </li>
+                              <li>
+                                <a href="#!">Аксессуары для электроинструментов</a>
+                              </li>
+                              <li>
+                                <a href="#!">Дрели</a>
+                              </li>
+                              <li>
+                                <a href="#!">Технические фены</a>
+                              </li>
+                              <li>
+                                <a href="#!">Шуруповерты</a>
+                              </li>
+                              <li>
+                                <a href="#!">Электроотвертки</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="#!">
+                      <span>Фото и видео</span>
+                    </a>
+                    <!--==== меню Уровень #1 =====-->
+                    <div class="catalog-menu-submenu">
+                      <ul class="scroll-y">
+                        <li>
+                          <input type="text" readonly value="Выбрать все подкатегории">
+                          <div class="carret-right"></div>
+                          <!--==== меню Уровень #2 =====-->
+                          <div class="catalog-menu-submenu">
+                            <ul class="scroll-y">
+                              <li>
+                                <a href="#!">Фотосъемка</a>
+                              </li>
+                              <li>
+                                <a href="#!">Видеосъемка</a>
+                              </li>
+                              <li>
+                                <a href="#!">Запись аудио</a>
+                              </li>
+                              <li>
+                                <a href="#!">Обработка фотографий</a>
+                              </li>
+                              <li>
+                                <a href="#!">Модели для съемок</a>
+                              </li>
+                              <li>
+                                <a href="#!">Монтаж и цветокоррекция</a>
+                              </li>
+                              <li>
+                                <a href="#!">Аренда оборудования </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--=============== jquery ===================-->
+  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+  <!--=============== swiper ===================-->
+  <script src="./libs/swiper/swiper.js"></script>
+  <!--======= кастомный плагин выбра даты в инпуте =============-->
+  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+  <!--=============== мои скрипты ===================-->
+  <script src="./js/quiz.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
