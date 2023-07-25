@@ -1,485 +1,402 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--======= swipe =============-->
-  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
-  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
-  <meta name="format-detection" content="telephone=no">
-  <!--===================favicon ==================================-->
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="./img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!--===================opengraf=======================================-->
-  <link rel="stylesheet" href="./fonts/fonts.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <title>Кабинет пациента | Записи</title>
-</head>
-
-<body class="patient-cabinet" style="opacity:0;transition:opacity .7s;">
-  <div id="overlay"></div>
-  <header class="cabinet-header">
-    <div class="container-large">
-      <div class="cabinet-header__content flex-vertical-center">
-        <div class="cabinet-header__burger" frame-btn="cabinet-sidebar">
-          <span></span>
-        </div>
-        <div class="cabinet-header__logo">
-          <a class="custom-logo" href="index.html">
-            <img src="./img/logo2.png" width="106" alt="logo" />
-          </a>
-        </div>
-        <div class="cabinet-header__notify">
-          <span>5</span>
-          <svg class="svg-notify">
-            <use href="./img/svg-sprite.svg#svg-notify"></use>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!--=========== основной контент  ====================-->
-  <div class="cabinet-body pt-40">
-    <div class="container container-slim">
-      <div class="patient-profile-title mb-32">
-        <a class="icon-btn arrow-left pos-abs" href="patient-main.html"></a>
-        <div class="text-20">Записи</div>
-      </div>
-      <div class="patient-acor">
-        <div class="acor-container">
-          <!--=========== single block =============-->
-          <div class="acor-item">
-            <input id="acor2" type="checkbox" name="acor" checked>
-            <label class="text-20 text-indigo" for="acor2">Предстоящие</label>
-            <div class="acor-body flex-column gap-16">
-              <div class="cabinet-card w-100 flex-box gap-16">
-                <div class="cabinet-card__img">
-                  <img src="./img/doctor2.png" width="100" height="100" alt="doc">
-                </div>
-                <div class="cabinet-card__block flex-box">
-                  <div class="cabinet-card__text">
-                    <div class="title-20">Голетиани М.К.</div>
-                    <div class="text-16">Стоматолог</div>
-                    <div class="cabinet-card__btn">
-                      <button class="btn btn--orange btn-32" frame-btn="cancel-appointment"> Отменить</button>
-                    </div>
-                  </div>
-                  <div class="cabinet-card__date">
-                    <div class="text-16">"Клинк-Orto"</div>
-                    <div class="flex-box">
-                      <div class="text-16">15 Апреля 2023г</div>
-                      <div class="text-16">11:30</div>
-                    </div>
-                    <div class="label-light text-green">
-                      <span class="text-medium">Подтвержден</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--=========== single block =============-->
-          <div class="acor-item">
-            <input id="acor1" type="checkbox" name="acor">
-            <label class="text-20 gray-3" for="acor1">Архив</label>
-            <div class="acor-body flex-column gap-16">
-              <div class="cabinet-card w-100 flex-box gap-16">
-                <div class="cabinet-card__img">
-                  <img src="./img/doctor.png" width="100" height="100" alt="doc">
-                </div>
-                <div class="cabinet-card__block flex-box">
-                  <div class="cabinet-card__text">
-                    <div class="title-20">Лордкипиани Т.Г.</div>
-                    <div class="text-16">Стоматолог</div>
-                    <div class="cabinet-card__btn">
-                      <button class="btn btn--primary btn-32" frame-btn="patient-add-review">Оставить отзыв</button>
-                    </div>
-                  </div>
-                  <div class="cabinet-card__date">
-                    <div class="text-16">"Орто-Дент"</div>
-                    <div class="flex-box">
-                      <div class="text-16">10 Ноября 2022г</div>
-                      <div class="text-16">18:30</div>
-                    </div>
-                    <div class="label-light text-gray">
-                      <span class="text-medium">Завершен</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="cabinet-card w-100 flex-box gap-16">
-                <div class="cabinet-card__img">
-                  <img src="./img/doctor.png" width="100" height="100" alt="doc">
-                </div>
-                <div class="cabinet-card__block flex-box">
-                  <div class="cabinet-card__text">
-                    <div class="title-20">Лордкипиани Т.Г.</div>
-                    <div class="text-16">Стоматолог</div>
-                  </div>
-                  <div class="cabinet-card__date">
-                    <div class="text-16">"Орто-Дент"</div>
-                    <div class="flex-box">
-                      <div class="text-16">15 Ноября 2022г</div>
-                      <div class="text-16">10:30</div>
-                    </div>
-                    <div class="label-light text-red">
-                      <span class="text-medium">Отменен</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="cabinet-card w-100 flex-box gap-16">
-                <div class="cabinet-card__img">
-                  <img src="./img/doctor.png" width="100" height="100" alt="doc">
-                </div>
-                <div class="cabinet-card__block flex-box">
-                  <div class="cabinet-card__text">
-                    <div class="title-20">Лордкипиани Т.Г.</div>
-                    <div class="text-16">Стоматолог</div>
-                  </div>
-                  <div class="cabinet-card__date">
-                    <div class="text-16">"Орто-Дент"</div>
-                    <div class="flex-box">
-                      <div class="text-16">20 Ноября 2022г</div>
-                      <div class="text-16">14:00</div>
-                    </div>
-                    <div class="label-light text-red">
-                      <span class="text-medium">Неявка</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--================== добавить отзыв ==============-->
-    <div class="modal-frame-wrapper modal-frame-right" frame-modal="patient-add-review">
-      <div class="modal-frame flex-column">
-        <div class="modal-frame__head flex-box flex-y-center flex-between">
-          <div class="title-wrapper">
-            <div class="text-18 mb-8">Оставить отзыв о</div>
-            <div class="text-24">Лордкипанидзе Тамрико Георгиевна</div>
-          </div>
-          <div class="icon-close" frame-close></div>
-        </div>
-        <div class="modal-frame__body">
-          <form>
-            <!--=======выбор звездочек работает через скрипт в main.js  строка 674 (комментарий: оценить врача - рейтинг) ===========-->
-            <div class="rating-wrapper">
-              <div class="set-rating-item">
-                <div class="text-18">Тщательность обследования</div>
-                <div class="set-rating">
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-1">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-1">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-1">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-1">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-1">
-                    <span></span>
-                  </label>
-                </div>
-              </div>
-              <div class="set-rating-item">
-                <div class="text-18">Эффективность лечения</div>
-                <div class="set-rating">
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-2">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-2">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-2">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-2">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-2">
-                    <span></span>
-                  </label>
-                </div>
-              </div>
-              <div class="set-rating-item">
-                <div class="text-18">Отношение к пациенту</div>
-                <div class="set-rating">
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-3">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-3">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-3">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-3">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-3">
-                    <span></span>
-                  </label>
-                </div>
-              </div>
-              <div class="set-rating-item">
-                <div class="text-18">Информирование пациента</div>
-                <div class="set-rating">
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-4">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-4">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-4">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-4">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-4">
-                    <span></span>
-                  </label>
-                </div>
-              </div>
-              <div class="set-rating-item">
-                <div class="text-18">Посоветуете ли Вы врача?</div>
-                <div class="set-rating">
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-5">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-5">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-5">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-5">
-                    <span></span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input class="real-checkbox" type="checkbox" name="rating-5">
-                    <span></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="form-box mt-24">
-              <label class="text-16">Клиника</label>
-              <div class="mySelect mySelect--absolute">
-                <div class="mySelect-input form-box-input">
-                  <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
-                </div>
-                <div class="mySelect-drop scroll-vertical">
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
-                </div>
-              </div>
-            </div>
-            <div class="form-box mt-24">
-              <label class="text-16">Дата посещения</label>
-              <div class="mydatepicker">
-                <input class="form-input datepicker" type="text" value="01.10.2022">
-              </div>
-            </div>
-            <div class="form-box mt-24">
-              <label class="text-16">Как прошел прием</label>
-              <div class="form-textarea">
-                <textarea placeholder="Расскажите, как обратились к врачу, как прошел прием, помогло ли лечение."></textarea>
-              </div>
-            </div>
-            <div class="form-box mt-24">
-              <label class="text-16">Понравилось</label>
-              <div class="form-textarea">
-                <textarea placeholder="Здесь можно указать главные плюсы"></textarea>
-              </div>
-            </div>
-            <div class="form-box mt-24">
-              <label class="text-16">Не понравилось</label>
-              <div class="form-textarea">
-                <textarea placeholder="Какие недостатки вы отметили"></textarea>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-frame__footer mt-auto border-top flex-vertical-center flex-between">
-          <button class="btn btn-44 btn--orange" frame-close>Отменить</button>
-          <button class="btn btn-44">Сохранить</button>
-        </div>
-      </div>
-    </div>
-    <!--============================================================================= 
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!--======= swipe =============-->
+		<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+		<!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+		<meta name="format-detection" content="telephone=no">
+		<!--===================favicon ==================================-->
+		<link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+		<link rel="manifest" href="./img/favicon/site.webmanifest">
+		<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./img/favicon/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+		<!--===================opengraf=======================================-->
+		<link rel="stylesheet" href="./fonts/fonts.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<title>Кабинет пациента | Записи</title>
+	</head>
+	<body class="patient-cabinet" style="opacity:0;transition:opacity .7s;">
+		<div id="overlay"></div>
+		<header class="cabinet-header">
+			<div class="container-large">
+				<div class="cabinet-header__content flex-vertical-center">
+					<div class="cabinet-header__burger" frame-btn="cabinet-sidebar"><span></span></div>
+					<div class="cabinet-header__logo"><a class="custom-logo" href="index.html"><img src="./img/logo2.png" width="106" alt="logo"/></a></div>
+					<div class="cabinet-header__notify"><span>5</span>
+						<svg class="svg-notify">
+							<use href="./img/svg-sprite.svg#svg-notify"></use>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--=========== основной контент  ====================-->
+		<div class="cabinet-body pt-40">
+			<div class="container container-slim">
+				<div class="patient-profile-title mb-32"><a class="icon-btn arrow-left pos-abs" href="patient-main.html"></a>
+					<div class="text-20">Записи</div>
+				</div>
+				<div class="patient-acor">
+					<div class="acor-container">
+						<!--=========== single block =============-->
+						<div class="acor-item">
+							<input id="acor2" type="checkbox" name="acor" checked>
+							<label class="text-20 text-indigo" for="acor2">Предстоящие</label>
+							<div class="acor-body flex-column gap-16">
+								<div class="cabinet-card w-100 flex-box gap-16">
+									<div class="cabinet-card__img"><img src="./img/doctor2.png" width="100" height="100" alt="doc"></div>
+									<div class="cabinet-card__block flex-box">
+										<div class="cabinet-card__text">
+											<div class="title-20">Голетиани М.К.</div>
+											<div class="text-16">Стоматолог</div>
+											<div class="cabinet-card__btn">
+												<button class="btn btn--orange btn-32" frame-btn="cancel-appointment">	Отменить</button>
+											</div>
+										</div>
+										<div class="cabinet-card__date">
+											<div class="text-16">"Клинк-Orto"</div>
+											<div class="flex-box">
+												<div class="text-16">15 Апреля 2023г</div>
+												<div class="text-16">11:30</div>
+											</div>
+											<div class="label-light text-green"><span class="text-medium">Подтвержден</span></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--=========== single block =============-->
+						<div class="acor-item">
+							<input id="acor1" type="checkbox" name="acor">
+							<label class="text-20 gray-3" for="acor1">Архив</label>
+							<div class="acor-body flex-column gap-16">
+								<div class="cabinet-card w-100 flex-box gap-16">
+									<div class="cabinet-card__img"><img src="./img/doctor.png" width="100" height="100" alt="doc"></div>
+									<div class="cabinet-card__block flex-box">
+										<div class="cabinet-card__text">
+											<div class="title-20">Лордкипиани Т.Г.</div>
+											<div class="text-16">Стоматолог</div>
+											<div class="cabinet-card__btn">
+												<button class="btn btn--primary btn-32" frame-btn="patient-add-review">Оставить отзыв</button>
+											</div>
+										</div>
+										<div class="cabinet-card__date">
+											<div class="text-16">"Орто-Дент"</div>
+											<div class="flex-box">
+												<div class="text-16">10 Ноября 2022г</div>
+												<div class="text-16">18:30</div>
+											</div>
+											<div class="label-light text-gray"><span class="text-medium">Завершен</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="cabinet-card w-100 flex-box gap-16">
+									<div class="cabinet-card__img"><img src="./img/doctor.png" width="100" height="100" alt="doc"></div>
+									<div class="cabinet-card__block flex-box">
+										<div class="cabinet-card__text">
+											<div class="title-20">Лордкипиани Т.Г.</div>
+											<div class="text-16">Стоматолог</div>
+										</div>
+										<div class="cabinet-card__date">
+											<div class="text-16">"Орто-Дент"</div>
+											<div class="flex-box">
+												<div class="text-16">15 Ноября 2022г</div>
+												<div class="text-16">10:30</div>
+											</div>
+											<div class="label-light text-red"><span class="text-medium">Отменен</span></div>
+										</div>
+									</div>
+								</div>
+								<div class="cabinet-card w-100 flex-box gap-16">
+									<div class="cabinet-card__img"><img src="./img/doctor.png" width="100" height="100" alt="doc"></div>
+									<div class="cabinet-card__block flex-box">
+										<div class="cabinet-card__text">
+											<div class="title-20">Лордкипиани Т.Г.</div>
+											<div class="text-16">Стоматолог</div>
+										</div>
+										<div class="cabinet-card__date">
+											<div class="text-16">"Орто-Дент"</div>
+											<div class="flex-box">
+												<div class="text-16">20 Ноября 2022г</div>
+												<div class="text-16">14:00</div>
+											</div>
+											<div class="label-light text-red"><span class="text-medium">Неявка</span></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--================== добавить отзыв ==============-->
+			<div class="modal-frame-wrapper modal-frame-right" frame-modal="patient-add-review">
+				<div class="modal-frame flex-column">
+					<div class="modal-frame__head flex-box flex-y-center flex-between">
+						<div class="title-wrapper">
+							<div class="text-18 mb-8">Оставить отзыв о</div>
+							<div class="text-24">Лордкипанидзе Тамрико Георгиевна</div>
+						</div>
+						<div class="icon-close" frame-close></div>
+					</div>
+					<div class="modal-frame__body">
+						<form>
+							<!--=======выбор звездочек работает через скрипт в main.js  строка 674 (комментарий: оценить врача - рейтинг) ===========-->
+							<div class="rating-wrapper">
+											<div class="set-rating-item">
+												<div class="text-18">Тщательность обследования</div>
+												<div class="set-rating">
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-1"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-1"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-1"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-1"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-1"><span></span>
+													</label>
+												</div>
+											</div>
+											<div class="set-rating-item">
+												<div class="text-18">Эффективность лечения</div>
+												<div class="set-rating">
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-2"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-2"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-2"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-2"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-2"><span></span>
+													</label>
+												</div>
+											</div>
+											<div class="set-rating-item">
+												<div class="text-18">Отношение к пациенту</div>
+												<div class="set-rating">
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-3"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-3"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-3"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-3"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-3"><span></span>
+													</label>
+												</div>
+											</div>
+											<div class="set-rating-item">
+												<div class="text-18">Информирование пациента</div>
+												<div class="set-rating">
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-4"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-4"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-4"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-4"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-4"><span></span>
+													</label>
+												</div>
+											</div>
+											<div class="set-rating-item">
+												<div class="text-18">Посоветуете ли Вы врача?</div>
+												<div class="set-rating">
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-5"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-5"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-5"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-5"><span></span>
+													</label>
+													<label class="checkbox-label">
+														<input class="real-checkbox" type="checkbox" name="rating-5"><span></span>
+													</label>
+												</div>
+											</div>
+							</div>
+							<div class="form-box mt-24">
+								<label class="text-16">Клиника</label>
+								<div class="mySelect mySelect--absolute">
+									<div class="mySelect-input form-box-input">
+										<input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56"/>
+									</div>
+									<div class="mySelect-drop scroll-vertical">
+										<input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор"/>
+									</div>
+								</div>
+							</div>
+							<div class="form-box mt-24">
+								<label class="text-16">Дата посещения</label>
+								<div class="mydatepicker">
+									<input class="form-input datepicker" type="text" value="01.10.2022">
+								</div>
+							</div>
+							<div class="form-box mt-24">
+								<label class="text-16">Как прошел прием</label>
+								<div class="form-textarea">
+									<textarea placeholder="Расскажите, как обратились к врачу, как прошел прием, помогло ли лечение."></textarea>
+								</div>
+							</div>
+							<div class="form-box mt-24">
+								<label class="text-16">Понравилось</label>
+								<div class="form-textarea">
+									<textarea placeholder="Здесь можно указать главные плюсы"></textarea>
+								</div>
+							</div>
+							<div class="form-box mt-24">
+								<label class="text-16">Не понравилось</label>
+								<div class="form-textarea">
+									<textarea placeholder="Какие недостатки вы отметили"></textarea>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-frame__footer mt-auto border-top flex-vertical-center flex-between">
+						<button class="btn btn-44 btn--orange" frame-close>Отменить</button>
+						<button class="btn btn-44">Сохранить</button>
+					</div>
+				</div>
+			</div>
+			<!--============================================================================= 
 			Модальное окно Подтверждение отмены записи
 			
 			-->
-    <!--=============================================================================-->
-    <div class="modal-frame-wrapper modal-frame-center" frame-modal="cancel-appointment">
-      <div class="modal-frame flex-column p-16">
-        <div class="modal-frame__head flex-box flex-y-center flex-between">
-          <div class="icon-close ml-auto" frame-close></div>
-        </div>
-        <div class="modal-frame__body text-center">
-          <p class="text-16 mb-24">Вы действительно хотите отменить запись?</p>
-          <div class="btn btn-44 mb-32" frame-close frame-btn="check-cancel-appointment">Подтвердить</div>
-        </div>
-      </div>
-    </div>
-    <!--============================================================================= Модальное окно Отмена подтверждена
+			<!--=============================================================================-->
+			<div class="modal-frame-wrapper modal-frame-center" frame-modal="cancel-appointment">
+				<div class="modal-frame flex-column p-16">
+					<div class="modal-frame__head flex-box flex-y-center flex-between">
+						<div class="icon-close ml-auto" frame-close></div>
+					</div>
+					<div class="modal-frame__body text-center">
+						<p class="text-16 mb-24">Вы действительно хотите отменить запись?</p>
+						<div class="btn btn-44 mb-32" frame-close frame-btn="check-cancel-appointment">Подтвердить</div>
+					</div>
+				</div>
+			</div>
+			<!--============================================================================= Модальное окно Отмена подтверждена
 			-->
-    <!--=============================================================================-->
-    <div class="modal-frame-wrapper modal-frame-center" frame-modal="check-cancel-appointment">
-      <div class="modal-frame flex-column p-16">
-        <div class="modal-frame__head flex-box flex-y-center flex-between">
-          <div class="icon-close ml-auto" frame-close></div>
-        </div>
-        <div class="modal-frame__body text-center">
-          <p class="text-16 mb-24">Запись отменена!</p>
-          <div class="btn btn-44 mb-32" frame-close>ок</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--================== cabinet-sidebar ==============-->
-  <div class="modal-frame-wrapper modal-frame-left" frame-modal="cabinet-sidebar">
-    <div class="modal-frame flex-column">
-      <div class="sidebar-panel">
-        <nav>
-          <a href="#!" frame-btn="select-city">
-            <span>
-              <svg class="svg-map">
-                <use href="./img/svg-sprite.svg#svg-map"></use>
-              </svg>
-            </span>
-            <span>Батуми</span>
-          </a>
-          <a href="patient-edit.html">
-            <span>
-              <svg class="svg-pacient">
-                <use href="./img/svg-sprite.svg#svg-pacient"></use>
-              </svg>
-            </span>
-            <span>Профиль</span>
-          </a>
-          <a href="patient-main.html">
-            <span>
-              <svg class="svg-home">
-                <use href="./img/svg-sprite.svg#svg-home"></use>
-              </svg>
-            </span>
-            <span>Главная кабинета</span>
-          </a>
-          <a class="active" href="patient-history.html">
-            <span>
-              <svg class="svg-calendar">
-                <use href="./img/svg-sprite.svg#svg-calendar"></use>
-              </svg>
-            </span>
-            <span>Записи на прием</span>
-          </a>
-          <a href="patient-reviews.html">
-            <span>
-              <svg class="svg-star">
-                <use href="./img/svg-sprite.svg#svg-star"></use>
-              </svg>
-            </span>
-            <span>Отзывы</span>
-          </a>
-          <a href="patient-favorite.html">
-            <span>
-              <svg class="svg-favorite">
-                <use href="./img/svg-sprite.svg#svg-heart"></use>
-              </svg>
-            </span>
-            <span>Избранное</span>
-          </a>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <!--============== модальное окно ПОИСК ГОРОДА =============-->
-  <div class="modal-frame-wrapper modal-frame-right" frame-modal="select-city">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="text-24">Город</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <!--============== строка поиска =============-->
-        <div class="search-block-wrapper flex-box">
-          <div class="form-box form-box--icon-left">
-            <div class="form-box-input">
-              <div class="form-box__icon">
-                <svg class="svg-search">
-                  <use href="./img/svg-sprite.svg#svg-search"></use>
-                </svg>
-              </div>
-              <input class="form-input form-input--64" type="text" placeholder="Название города">
-            </div>
-          </div>
-          <!--======== кнопка Найти ====-->
-          <div class="btn btn--gradient btn-64">Найти</div>
-        </div>
-        <div class="search-block-results pt-40 pl-24">
-          <p>Батуми</p>
-          <p>Поти</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--=============== jquery ===================-->
-  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
-  <!--=============== swiper ===================-->
-  <script src="./libs/swiper/swiper.js"></script>
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
-  <!--=============== мои скрипты ===================-->
-  <script src="./js/quiz.js"></script>
-  <script src="./js/main.js"></script>
-</body>
-
+			<!--=============================================================================-->
+			<div class="modal-frame-wrapper modal-frame-center" frame-modal="check-cancel-appointment">
+				<div class="modal-frame flex-column p-16">
+					<div class="modal-frame__head flex-box flex-y-center flex-between">
+						<div class="icon-close ml-auto" frame-close></div>
+					</div>
+					<div class="modal-frame__body text-center">
+						<p class="text-16 mb-24">Запись отменена!</p>
+						<div class="btn btn-44 mb-32" frame-close>ок</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--================== cabinet-sidebar ==============-->
+		<div class="modal-frame-wrapper modal-frame-left" frame-modal="cabinet-sidebar">
+			<div class="modal-frame flex-column">
+				<div class="sidebar-panel">
+					<nav><a href="#!" frame-btn="select-city"><span>
+								<svg class="svg-map">
+									<use href="./img/svg-sprite.svg#svg-map"></use>
+								</svg></span><span>Батуми</span></a><a href="patient-edit.html"><span>
+								<svg class="svg-pacient">
+									<use href="./img/svg-sprite.svg#svg-pacient"></use>
+								</svg></span><span>Профиль</span></a><a href="patient-main.html"><span>
+								<svg class="svg-home">
+									<use href="./img/svg-sprite.svg#svg-home"></use>
+								</svg></span><span>Главная кабинета</span></a><a class="active" href="patient-history.html"><span>
+								<svg class="svg-calendar">
+									<use href="./img/svg-sprite.svg#svg-calendar"></use>
+								</svg></span><span>Записи на прием</span></a><a href="patient-reviews.html"><span>
+								<svg class="svg-star">
+									<use href="./img/svg-sprite.svg#svg-star"></use>
+								</svg></span><span>Отзывы</span></a><a href="patient-favorite.html"><span>
+								<svg class="svg-favorite">
+									<use href="./img/svg-sprite.svg#svg-heart"></use>
+								</svg></span><span>Избранное</span></a></nav>
+				</div>
+			</div>
+		</div>
+		<!--============== модальное окно ПОИСК ГОРОДА =============-->
+		<div class="modal-frame-wrapper modal-frame-right" frame-modal="select-city">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head flex-box flex-y-center flex-between">
+					<div class="text-24">Город</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<!--============== строка поиска =============-->
+					<div class="search-block-wrapper flex-box">
+						<div class="form-box form-box--icon-left">
+							<div class="form-box-input">
+								<div class="form-box__icon">
+									<svg class="svg-search">
+										<use href="./img/svg-sprite.svg#svg-search"></use>
+									</svg>
+								</div>
+								<input class="form-input form-input--64" type="text" placeholder="Название города">
+							</div>
+						</div>
+						<!--======== кнопка Найти ====-->
+						<div class="btn btn--gradient btn-64">Найти</div>
+					</div>
+					<div class="search-block-results pt-40 pl-24">
+						<p>Батуми</p>
+						<p>Поти</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--=============== jquery ===================-->
+		<script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+		<!--=============== swiper ===================-->
+		<script src="./libs/swiper/swiper.js"></script>
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+		<!--=============== мои скрипты ===================-->
+		<script src="./js/quiz.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
 </html>

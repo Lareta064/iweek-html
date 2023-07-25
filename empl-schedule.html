@@ -1,1006 +1,894 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--======= swipe =============-->
-  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
-  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
-  <meta name="format-detection" content="telephone=no">
-  <!--===================favicon ==================================-->
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="./img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!--===================opengraf=======================================-->
-  <link rel="stylesheet" href="./fonts/fonts.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <title>Кабинет сотрудника | График работы</title>
-</head>
-
-<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
-  <div id="overlay"></div>
-  <header class="cabinet-header">
-    <div class="container-large">
-      <div class="cabinet-header__content flex-vertical-center">
-        <div class="cabinet-header__logo">
-          <a class="custom-logo" href="index.html">
-            <img src="./img/logo2.png" width="106" alt="logo" />
-          </a>
-        </div>
-        <div class="cabinet-header__menu">
-          <div class="myTabs-buttons">
-            <a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a>
-            <a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a>
-            <a class="btn-bt myTabs-btn" href="visitor-page.html">Пациенты</a>
-            <a class="btn-bt myTabs-btn active" href="employees-page.html">Сотрудники</a>
-          </div>
-        </div>
-        <div class="cabinet-header__profile flex-vertical-center gap-32">
-          <div class="select-work-place">
-            <div class="mySelect mySelect--absolute">
-              <div class="mySelect-input form-box-input">
-                <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
-              </div>
-            </div>
-          </div>
-          <div class="help-info">?</div>
-          <div class="customDrop customDrop--right drop-click-close">
-            <div class="customDrop__btn round-icon">
-              <div class="icon-notify"></div>
-            </div>
-            <div class="customDrop__list">
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Включить звук</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 15 минут</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 30 минут</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 1 час</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 8 часов</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="cabinet-header__avatar">ГМ</div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!--=========== основной контент вкладка расписание ====================-->
-  <div class="cabinet-body">
-    <div class="container-slim">
-      <main class="employee-page-content">
-        <div class="employee-page-content__head">
-          <a class="text-icon flex-box flex-y-center" href="employee-personal-page.html">
-            <div class="icon-btn arrow-left"></div>
-            <div class="text-16">К профилю сотрудника</div>
-          </a>
-        </div>
-        <div class="employee-page-card">
-          <header class="border-b">
-            <div class="title-18">Голетиани Мариам</div>
-            <div class="employee-page-card__row">
-              <div class="text-icon flex-box flex-y-center" frame-btn="rules-info">
-                <div class="symbol-plus">&#10010;</div>
-                <span class="text-18">Добавить правило</span>
-              </div>
-            </div>
-            <div class="flex-vertical-center flex-between" frame-btn="schedule-rules">
-              <div class="text-column">
-                <div class="text-16">Правила графиков работы</div>
-                <div class="text-14 text-gray3">Задано 2 правила</div>
-              </div>
-              <div class="icon-btn arrow-right"></div>
-            </div>
-          </header>
-          <div class="employee-page-schedule">
-            <div class="employee-schedule-header flex-vertical-center flex-x-right gap-32 border-b">
-              <div class="icon-btn arrow-left"></div>
-              <div class="title-20"> Декабрь</div>
-              <div class="icon-btn arrow-right"></div>
-            </div>
-            <div class="employee-schedule-calendar">
-              <div class="employee-schedule-calendar__day">
-                <div class="text-14">Понедельник</div>
-                <div class="text-14">Вторник</div>
-                <div class="text-14">Среда</div>
-                <div class="text-14">Четверг</div>
-                <div class="text-14">Пятница</div>
-                <div class="text-14">Суббота</div>
-                <div class="text-14">Воскресенье</div>
-              </div>
-              <div class="employee-schedule-calendar__date">
-                <!--======== Все ячейки имеют класс "calendar__date-item".  Ячейка для даты, в которую нельзя сделать запись, имеет дополнительный класс " without-date".  Ячейка, в которую внесли хотя бы одну запись, имеет дополнительный класс "not-empty-cell"-->
-                <div class="calendar__date-item without-date"></div>
-                <div class="calendar__date-item without-date"></div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">01</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">02</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">03</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">04</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">05</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">06</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">07</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">08</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-holiday">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">09</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-holiday">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">10</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">11</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">12</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">13</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">14</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item not-empty-cell">
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-individual">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="text-rule">8:00 - 20:00</div>
-                  </div>
-                  <div class="calendar__date-row" frame-btn="empl-schedule-edit">
-                    <div class="svg-plus"></div>
-                  </div>
-                  <span class="date-value">15</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">16</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">17</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">18</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">19</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">20</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">21</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">22</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">23</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">24</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">25</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">26</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">27</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">28</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">29</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">30</span>
-                </div>
-                <!--========одна дата =======-->
-                <div class="calendar__date-item" frame-btn="empl-schedule-edit">
-                  <div class="svg-plus"></div>
-                  <span class="date-value">31</span>
-                </div>
-              </div>
-            </div>
-            <div class="employee-schedule-markers">
-              <div class="flex-vertical-center gap-32">
-                <div class="green-marker">
-                  <div class="markers-item">
-                    <span></span>
-                    <p>График по правилам</p>
-                  </div>
-                </div>
-                <div class="orange-marker">
-                  <div class="markers-item">
-                    <span></span>
-                    <p>Индивидуальный график</p>
-                  </div>
-                </div>
-                <div class="red-marker">
-                  <div class="markers-item">
-                    <span></span>
-                    <p>Отпуск/Отгул</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  </div>
-  <!--================== Правило работы сотрудника-modal ==============-->
-  <div class="modal-frame-wrapper modal-frame-right rules-modal" frame-modal="rules-info">
-    <div class="modal-frame flex-column flex-box">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="text-24">Добавление правила графиков работы</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <form class="rules-form flex-column flex-box">
-        <div class="modal-frame__body">
-          <div class="rules-form-block">
-            <div class="mySelect mySelect--absolute">
-              <div class="mySelect-input form-box-input">
-                <input class="selectValue form-input" type="text" readonly="readonly" value="Специальности" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
-              </div>
-            </div>
-          </div>
-          <div class="rules-form-block">
-            <div class="title-16 mb-16">Период работы</div>
-            <label class="switch-toggle flex-box flex-y-center">
-              <input class="toggle-switch" type="checkbox">
-              <span class="real-switch"></span>
-              <span class="custom-switch__text">Повторять</span>
-            </label>
-            <div class="flex-form-fields gap-32">
-              <div class="form-item">
-                <div class="mydatepicker">
-                  <input class="form-input datepicker" type="text" value="Начало">
-                </div>
-              </div>
-              <div class="form-item">
-                <div class="mydatepicker">
-                  <input class="form-input datepicker" type="text" value="Окончание">
-                </div>
-              </div>
-              <div class="form-item">
-                <div class="mySelect mySelect--absolute mySelect--multi" id="multi_day_picker">
-                  <div class="mySelect-input">
-                    <input class="selectValue input-slim" type="text" readonly="" value="Выбрать день" data-default="Выбрать день">
-                  </div>
-                  <div class="mySelect-drop">
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox1" data-thumbnail="Пн">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Понедельник</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox2" data-thumbnail="Вт">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Вторник</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Ср">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Среда</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Чт">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Четверг</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Пт">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Пятница</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Сб">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Суббота</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Вс">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Воскресенье</span>
-                    </label>
-                    <div class="mySelect-drop__btns flex-vertical-center gap-20 mt-16">
-                      <button class="btn btn-38 confirm">Добавить</button>
-                      <button class="btn btn-38 btn--orange cancel">Отменить</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="rules-form-block">
-            <div class="title-18 mb-24">Часы приема</div>
-            <div class="flex-vertical-center gap-32">
-              <div class="form-item">
-                <div class="mySelect mySelect--absolute">
-                  <div class="mySelect-input form-box-input">
-                    <input class="selectValue form-input" type="text" readonly="readonly" value="Начало" />
-                  </div>
-                  <div class="mySelect-drop scroll-vertical">
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="12:00" />
-                  </div>
-                </div>
-              </div>
-              <div class="form-item">
-                <div class="mySelect mySelect--absolute">
-                  <div class="mySelect-input form-box-input">
-                    <input class="selectValue form-input" type="text" readonly="readonly" value="Окончание" />
-                  </div>
-                  <div class="mySelect-drop scroll-vertical">
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="12:00" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="rules-form-block">
-            <div class="title-18 mb-24">Длительность приема</div>
-            <div class="flex-vertical-center gap-32">
-              <div class="form-box">
-                <label class="text-16 text-gray3">Часы</label>
-                <input class="form-input" type="number" name="">
-              </div>
-              <div class="form-box">
-                <label class="text-16 text-gray3">Минуты</label>
-                <input class="form-input" type="number" name="">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-frame__footer mt-auto flex-vertical-center gap-20">
-          <button class="btn btn-44">Добавить</button>
-          <button class="btn btn-44 btn--orange">Отменить</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <!--================== Правила графиков работы модалка ==============-->
-  <div class="modal-frame-wrapper modal-frame-right schedule-rules-modal" frame-modal="schedule-rules">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="text-24">Правила графиков работы</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <div class="schedule-rules-wrapper">
-          <!--======== одно правило ===========-->
-          <div class="schedule-rules-item">
-            <div class="label-light  label--gray">
-              <span class="text-medium">Пнб Вт</span>
-            </div>
-            <div class="flex-box flex-between mt-16">
-              <div class="text-column">
-                <div class="title-18">Ортодонт</div>
-                <div class="text-16 split-text">
-                  <p>с 15:00 - до 19:00 </p>
-                  <p>Постоянно</p>
-                </div>
-              </div>
-              <div class="employee-personal-options flex-box gap-32">
-                <div class="edit-item" title="Редактировать" frame-btn="edit-schedule-rules"></div>
-                <div class="icon-delete" title="Удалить" frame-btn="confirm-action"></div>
-              </div>
-            </div>
-          </div>
-          <!--======== одно правило ===========-->
-          <div class="schedule-rules-item">
-            <div class="label-light  label--gray">
-              <span class="text-medium">Пнб Вт</span>
-            </div>
-            <div class="flex-box flex-between mt-16">
-              <div class="text-column">
-                <div class="title-18">Стоматолог</div>
-                <div class="text-16 split-text">
-                  <p>с 15:00 - до 19:00 </p>
-                  <p>с 15.02.22 по 20.03.22 </p>
-                </div>
-              </div>
-              <div class="employee-personal-options flex-box gap-32">
-                <div class="edit-item" title="Редактировать" frame-btn="edit-schedule-rules"></div>
-                <div class="icon-delete" title="Удалить" frame-btn="confirm-action"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--==================модальное окно Подтверждение удаления ==============-->
-  <div class="modal-frame-wrapper modal-frame-center confirm-modal" frame-modal="confirm-action">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head">
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <div class="title-20 text-center">Вы уверены, что хотите удалить?</div>
-        <div class="form-btns flex-vertical-center gap-20 mt-32">
-          <button class="btn btn--orange" frame-close>Отменить</button>
-          <button class="btn btn--primary" type="submit">Подтверждаю</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--================== Редактировать Правило работы сотрудника==============-->
-  <div class="modal-frame-wrapper modal-frame-right rules-modal" frame-modal="edit-schedule-rules">
-    <div class="modal-frame flex-column flex-box">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="text-24">Редактирование правила графиков работы</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <form class="rules-form flex-column flex-box">
-        <div class="modal-frame__body">
-          <div class="rules-form-block">
-            <div class="mySelect mySelect--absolute">
-              <div class="mySelect-input form-box-input">
-                <input class="selectValue form-input" type="text" readonly="readonly" value="Стоматолог" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
-              </div>
-            </div>
-          </div>
-          <div class="rules-form-block">
-            <div class="title-16 mb-16">Период работы</div>
-            <label class="switch-toggle flex-box flex-y-center">
-              <input class="toggle-switch" type="checkbox" checked>
-              <span class="real-switch"></span>
-              <span class="custom-switch__text">Повторять</span>
-            </label>
-            <div class="flex-form-fields gap-32">
-              <div class="form-item">
-                <div class="mydatepicker">
-                  <input class="form-input datepicker" type="text" value="15.02.2022">
-                </div>
-              </div>
-              <div class="form-item">
-                <div class="mydatepicker">
-                  <input class="form-input datepicker" type="text" value="20.03.2022">
-                </div>
-              </div>
-              <div class="form-item">
-                <div class="mySelect mySelect--absolute mySelect--multi" id="multi_day_picker">
-                  <div class="mySelect-input">
-                    <input class="selectValue input-slim" type="text" readonly="" value="пн, Вт" data-default="">
-                  </div>
-                  <div class="mySelect-drop">
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox1" data-thumbnail="Пн" checked>
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Понедельник</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox2" data-thumbnail="Вт" checked>
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Вторник</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Ср">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Среда</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Чт">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Четверг</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Пт">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Пятница</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Сб">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Суббота</span>
-                    </label>
-                    <label class="checkbox-label flex-box flex-y-center">
-                      <input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Вс">
-                      <span class="custom-checkbox"> </span>
-                      <span class="custom-checkbox__text">Воскресенье</span>
-                    </label>
-                    <div class="mySelect-drop__btns flex-vertical-center gap-20 mt-16">
-                      <button class="btn btn-38 btn--orange cancel">Отменить</button>
-                      <button class="btn btn-38 confirm">Сохранить</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="rules-form-block">
-            <div class="title-18 mb-24">Часы приема</div>
-            <div class="flex-vertical-center gap-32">
-              <div class="form-item">
-                <div class="mySelect mySelect--absolute">
-                  <div class="mySelect-input form-box-input">
-                    <input class="selectValue form-input" type="text" readonly="readonly" value="15:00" />
-                  </div>
-                  <div class="mySelect-drop scroll-vertical">
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="12:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="12:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="13:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="13:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="14:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="14:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="15:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="15:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="16:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="16:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="17:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="17:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="18:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="18:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="19:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="19:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="20:00" />
-                  </div>
-                </div>
-              </div>
-              <div class="form-item">
-                <div class="mySelect mySelect--absolute">
-                  <div class="mySelect-input form-box-input">
-                    <input class="selectValue form-input" type="text" readonly="readonly" value="19:00" />
-                  </div>
-                  <div class="mySelect-drop scroll-vertical">
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="12:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="12:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="13:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="13:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="14:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="14:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="15:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="15:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="16:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="16:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="17:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="17:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="18:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="18:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="19:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="19:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="20:00" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-frame__footer mt-auto border-top flex-vertical-center gap-20">
-          <button class="btn btn-44">Сохранить</button>
-          <button class="btn btn-44 btn--orange">Отменить</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <!--================== редактировать личное расписание-календарь сотрудника  ==============-->
-  <div class="modal-frame-wrapper modal-frame-right column-modal empl-schedule-modal" frame-modal="empl-schedule-edit">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="text-24">Новое событие на 02 декабря</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <div class="flex-column gap-32 h-100">
-          <div class="tabs-wrapper h-100 flex-column" custom-tabs>
-            <div class="tabs filter-toggle__block flex-box-inline">
-              <label class="filter-toggle-item" ct-btn="1">
-                <input class="filter-radiobtn" type="radio" name="toggle-radiobtn" checked>
-                <span>График работы</span>
-              </label>
-              <label class="filter-toggle-item" ct-btn="2">
-                <input class="filter-radiobtn" type="radio" name="toggle-radiobtn">
-                <span>Отпуск</span>
-              </label>
-            </div>
-            <div class="tabs-content pt-32 flex-grow-1">
-              <form class="empl-schedule-form tab-item ct-content--active" ct-content="1">
-                <div class="category-wrapper flex-column gap-16">
-                  <label class="checkbox-label flex-box flex-y-center">
-                    <input class="real-checkbox" type="checkbox" name="empl-cat1">
-                    <span class="custom-checkbox"> </span>
-                    <span class="custom-checkbox__text">Аллерголог</span>
-                  </label>
-                  <label class="checkbox-label flex-box flex-y-center">
-                    <input class="real-checkbox" type="checkbox" name="empl-cat2">
-                    <span class="custom-checkbox"> </span>
-                    <span class="custom-checkbox__text">Гастроэнтеролог</span>
-                  </label>
-                  <label class="checkbox-label flex-box flex-y-center">
-                    <input class="real-checkbox" type="checkbox" name="empl-cat3">
-                    <span class="custom-checkbox"> </span>
-                    <span class="custom-checkbox__text">Диетолог</span>
-                  </label>
-                </div>
-                <div class="time-wrapper flex-vertical-center gap-32 pt-32">
-                  <div class="form-item">
-                    <div class="mySelect mySelect--absolute">
-                      <div class="mySelect-input form-box-input">
-                        <input class="selectValue form-input" type="text" readonly="readonly" value="Начало" />
-                      </div>
-                      <div class="mySelect-drop scroll-vertical">
-                        <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="11:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="12:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="12:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="13:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="13:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="14:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="14:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="15:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="15:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="16:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="16:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="17:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="17:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="18:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="18:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="19:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="19:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="20:00" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-item">
-                    <div class="mySelect mySelect--absolute">
-                      <div class="mySelect-input form-box-input">
-                        <input class="selectValue form-input" type="text" readonly="readonly" value="Окончание" />
-                      </div>
-                      <div class="mySelect-drop scroll-vertical">
-                        <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="11:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="12:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="12:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="13:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="13:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="14:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="14:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="15:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="15:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="16:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="16:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="17:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="17:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="18:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="18:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="19:00" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="19:30" />
-                        <input class="mySelect-options" type="text" readonly="readonly" value="20:00" />
-                      </div>
-                    </div>
-                  </div>
-                  <label class="switch-toggle flex-box flex-y-center">
-                    <input class="toggle-switch" type="checkbox">
-                    <span class="real-switch"></span>
-                    <span class="custom-switch__text">Весь день</span>
-                  </label>
-                </div>
-                <div class="form-btns flex-vertical-center gap-20 mt-auto">
-                  <button class="btn btn--primary" type="submit">Добавить</button>
-                  <button class="btn btn--orange" frame-close>Отменить</button>
-                  <button class="btn btn--accent" frame-close>Удалить</button>
-                </div>
-              </form>
-              <!--========вкладка Отпуск ======-->
-              <form class="empl-schedule-form tab-item" ct-content="2">
-                <div class="category-wrapper flex-column gap-16">
-                  <label class="radiobutton-label flex-box flex-y-center">
-                    <input class="real-radio" type="radio" name="free-day" checked>
-                    <span class="custom-radio"></span>
-                    <span class="custom-radio__text">Отпуск</span>
-                  </label>
-                  <label class="radiobutton-label flex-box flex-y-center">
-                    <input class="real-radio" type="radio" name="free-day">
-                    <span class="custom-radio"> </span>
-                    <span class="custom-radio__text">Отгул</span>
-                  </label>
-                  <label class="radiobutton-label flex-box flex-y-center">
-                    <input class="real-radio" type="radio" name="free-day">
-                    <span class="custom-radio"></span>
-                    <span class="custom-radio__text">Праздничный день</span>
-                  </label>
-                </div>
-                <div class="time-wrapper flex-vertical-center gap-32 pt-32">
-                  <div class="form-box form-box--260">
-                    <label class="text-16">Начало</label>
-                    <div class="mydatepicker">
-                      <input class="form-input datepicker" type="text" placeholder="Выбрать дату">
-                    </div>
-                  </div>
-                  <div class="form-box form-box--260 pos-rel">
-                    <label class="text-16">Окончание</label>
-                    <!--===== Если пользователь выбрал дату Окончание раньше, чем дата Начало , инпуту добавляется класс input-notvalid, который задает красный цвет рамки и текста у инпута. Так же показывается тултип с классом tooltip-error-text. Сейчас это окно видимо, за счет класса visible-->
-                    <div class="mydatepicker">
-                      <input class="form-input input-notvalid datepicker" type="text" placeholder="Выбрать дату">
-                    </div>
-                    <div class="tooltip-error-text tooltip-modal tooltip-modal--mini text-12 visible">
-                      <p>Дата <strong>Окончание</strong> не может быть раньше даты <strong>Начало</strong>
-                      </p>
-                      <div class="tooltip-close icon-close"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-btns flex-vertical-center gap-20 mt-auto">
-                  <button class="btn btn--primary" type="submit">Добавить</button>
-                  <button class="btn btn--orange" frame-close>Отменить</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--=============== jquery ===================-->
-  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
-  <!--=============== swiper ===================-->
-  <script src="./libs/swiper/swiper.js"></script>
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
-  <!--=============== мои скрипты ===================-->
-  <script src="./js/quiz.js"></script>
-  <script src="./js/main.js"></script>
-</body>
-
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!--======= swipe =============-->
+		<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+		<!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+		<meta name="format-detection" content="telephone=no">
+		<!--===================favicon ==================================-->
+		<link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+		<link rel="manifest" href="./img/favicon/site.webmanifest">
+		<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./img/favicon/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+		<!--===================opengraf=======================================-->
+		<link rel="stylesheet" href="./fonts/fonts.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<title>Кабинет сотрудника | График работы</title>
+	</head>
+	<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
+		<div id="overlay"></div>
+		<header class="cabinet-header">
+			<div class="container-large">
+				<div class="cabinet-header__content flex-vertical-center">
+					<div class="cabinet-header__logo"><a class="custom-logo" href="index.html"><img src="./img/logo2.png" width="106" alt="logo"/></a></div>
+					<div class="cabinet-header__menu">
+						<div class="myTabs-buttons"><a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a><a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a><a class="btn-bt myTabs-btn" href="visitor-page.html">Пациенты</a><a class="btn-bt myTabs-btn active" href="employees-page.html">Сотрудники</a>
+						</div>
+					</div>
+					<div class="cabinet-header__profile flex-vertical-center gap-32">
+						<div class="select-work-place">
+							<div class="mySelect mySelect--absolute">
+								<div class="mySelect-input form-box-input">
+									<input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор"/>
+								</div>
+							</div>
+						</div>
+						<div class="help-info">?</div>
+						<div class="customDrop customDrop--right drop-click-close">
+							<div class="customDrop__btn round-icon">
+								<div class="icon-notify"></div>
+							</div>
+							<div class="customDrop__list">
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Включить звук</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 15 минут</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 30 минут</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 1 час</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 8 часов</span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="cabinet-header__avatar">ГМ</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--=========== основной контент вкладка расписание ====================-->
+		<div class="cabinet-body">
+			<div class="container-slim">
+				<main class="employee-page-content">
+					<div class="employee-page-content__head"><a class="text-icon flex-box flex-y-center" href="employee-personal-page.html">
+							<div class="icon-btn arrow-left"></div>
+							<div class="text-16">К профилю сотрудника</div></a></div>
+					<div class="employee-page-card">
+						<header class="border-b">
+							<div class="title-18">Голетиани Мариам</div>
+							<div class="employee-page-card__row">
+								<div class="text-icon flex-box flex-y-center" frame-btn="rules-info">
+									<div class="symbol-plus">&#10010;</div><span class="text-18">Добавить правило</span>
+								</div>
+							</div>
+							<div class="flex-vertical-center flex-between" frame-btn="schedule-rules">
+								<div class="text-column">
+									<div class="text-16">Правила графиков работы</div>
+									<div class="text-14 text-gray3">Задано 2 правила</div>
+								</div>
+								<div class="icon-btn arrow-right"></div>
+							</div>
+						</header>
+						<div class="employee-page-schedule">
+							<div class="employee-schedule-header flex-vertical-center flex-x-right gap-32 border-b">
+								<div class="icon-btn arrow-left"></div>
+								<div class="title-20"> Декабрь</div>
+								<div class="icon-btn arrow-right"></div>
+							</div>
+							<div class="employee-schedule-calendar">
+								<div class="employee-schedule-calendar__day">
+									<div class="text-14">Понедельник</div>
+									<div class="text-14">Вторник</div>
+									<div class="text-14">Среда</div>
+									<div class="text-14">Четверг</div>
+									<div class="text-14">Пятница</div>
+									<div class="text-14">Суббота</div>
+									<div class="text-14">Воскресенье</div>
+								</div>
+								<div class="employee-schedule-calendar__date">
+									<!--======== Все ячейки имеют класс "calendar__date-item".  Ячейка для даты, в которую нельзя сделать запись, имеет дополнительный класс " without-date".  Ячейка, в которую внесли хотя бы одну запись, имеет дополнительный класс "not-empty-cell"-->
+									<div class="calendar__date-item without-date"></div>
+									<div class="calendar__date-item without-date"></div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">01</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">02</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">03</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">04</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">05</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">06</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">07</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">08</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-holiday">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">09</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-holiday">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">10</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">11</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">12</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">13</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">14</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item not-empty-cell">
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-individual">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="text-rule">8:00 - 20:00</div>
+										</div>
+										<div class="calendar__date-row" frame-btn="empl-schedule-edit">
+											<div class="svg-plus"></div>
+										</div><span class="date-value">15</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">16</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">17</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">18</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">19</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">20</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">21</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">22</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">23</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">24</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">25</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">26</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">27</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">28</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">29</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">30</span>
+									</div>
+									<!--========одна дата =======-->
+									<div class="calendar__date-item" frame-btn="empl-schedule-edit">
+										<div class="svg-plus"></div><span class="date-value">31</span>
+									</div>
+								</div>
+							</div>
+							<div class="employee-schedule-markers">
+								<div class="flex-vertical-center gap-32">
+									<div class="green-marker">
+										<div class="markers-item"><span></span>
+											<p>График по правилам</p>
+										</div>
+									</div>
+									<div class="orange-marker">
+										<div class="markers-item"><span></span>
+											<p>Индивидуальный график</p>
+										</div>
+									</div>
+									<div class="red-marker">
+										<div class="markers-item"><span></span>
+											<p>Отпуск/Отгул</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+		<!--================== Правило работы сотрудника-modal ==============-->
+		<div class="modal-frame-wrapper modal-frame-right rules-modal" frame-modal="rules-info">
+			<div class="modal-frame flex-column flex-box">
+				<div class="modal-frame__head flex-box flex-y-center flex-between">
+					<div class="text-24">Добавление правила графиков работы</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<form class="rules-form flex-column flex-box">
+					<div class="modal-frame__body">
+						<div class="rules-form-block">
+							<div class="mySelect mySelect--absolute">
+								<div class="mySelect-input form-box-input">
+									<input class="selectValue form-input" type="text" readonly="readonly" value="Специальности"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт"/>
+								</div>
+							</div>
+						</div>
+						<div class="rules-form-block">
+							<div class="title-16 mb-16">Период работы</div>
+							<label class="switch-toggle flex-box flex-y-center">
+								<input class="toggle-switch" type="checkbox"><span class="real-switch"></span><span class="custom-switch__text">Повторять</span>
+							</label>
+							<div class="flex-form-fields gap-32">
+								<div class="form-item">
+									<div class="mydatepicker">
+										<input class="form-input datepicker" type="text" value="Начало">
+									</div>
+								</div>
+								<div class="form-item">
+									<div class="mydatepicker">
+										<input class="form-input datepicker" type="text" value="Окончание">
+									</div>
+								</div>
+								<div class="form-item">
+									<div class="mySelect mySelect--absolute mySelect--multi" id="multi_day_picker">
+										<div class="mySelect-input">
+											<input class="selectValue input-slim" type="text" readonly="" value="Выбрать день" data-default="Выбрать день">
+										</div>
+										<div class="mySelect-drop">
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox1" data-thumbnail="Пн"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Понедельник</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox2" data-thumbnail="Вт"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Вторник</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Ср"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Среда</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Чт"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Четверг</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Пт"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Пятница</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Сб"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Суббота</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Вс"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Воскресенье</span>
+											</label>
+											<div class="mySelect-drop__btns flex-vertical-center gap-20 mt-16">
+												<button class="btn btn-38 confirm">Добавить</button>
+												<button class="btn btn-38 btn--orange cancel">Отменить</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="rules-form-block">
+							<div class="title-18 mb-24">Часы приема</div>
+							<div class="flex-vertical-center gap-32">
+								<div class="form-item">
+									<div class="mySelect mySelect--absolute">
+										<div class="mySelect-input form-box-input">
+											<input class="selectValue form-input" type="text" readonly="readonly" value="Начало"/>
+										</div>
+										<div class="mySelect-drop scroll-vertical">
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="12:00"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-item">
+									<div class="mySelect mySelect--absolute">
+										<div class="mySelect-input form-box-input">
+											<input class="selectValue form-input" type="text" readonly="readonly" value="Окончание"/>
+										</div>
+										<div class="mySelect-drop scroll-vertical">
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="12:00"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="rules-form-block">
+							<div class="title-18 mb-24">Длительность приема</div>
+							<div class="flex-vertical-center gap-32">
+								<div class="form-box">
+									<label class="text-16 text-gray3">Часы</label>
+									<input class="form-input" type="number" name="">
+								</div>
+								<div class="form-box">
+									<label class="text-16 text-gray3">Минуты</label>
+									<input class="form-input" type="number" name="">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-frame__footer mt-auto flex-vertical-center gap-20">
+						<button class="btn btn-44">Добавить</button>
+						<button class="btn btn-44 btn--orange">Отменить</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--================== Правила графиков работы модалка ==============-->
+		<div class="modal-frame-wrapper modal-frame-right schedule-rules-modal" frame-modal="schedule-rules">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head flex-box flex-y-center flex-between">
+					<div class="text-24">Правила графиков работы</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<div class="schedule-rules-wrapper">
+						<!--======== одно правило ===========-->
+						<div class="schedule-rules-item">
+							<div class="label-light  label--gray"><span class="text-medium">Пнб Вт</span></div>
+							<div class="flex-box flex-between mt-16">
+								<div class="text-column">
+									<div class="title-18">Ортодонт</div>
+									<div class="text-16 split-text">
+										<p>с 15:00 - до 19:00 </p>
+										<p>Постоянно</p>
+									</div>
+								</div>
+								<div class="employee-personal-options flex-box gap-32">
+									<div class="edit-item" title="Редактировать" frame-btn="edit-schedule-rules"></div>
+									<div class="icon-delete" title="Удалить" frame-btn="confirm-action"></div>
+								</div>
+							</div>
+						</div>
+						<!--======== одно правило ===========-->
+						<div class="schedule-rules-item">
+							<div class="label-light  label--gray"><span class="text-medium">Пнб Вт</span></div>
+							<div class="flex-box flex-between mt-16">
+								<div class="text-column">
+									<div class="title-18">Стоматолог</div>
+									<div class="text-16 split-text">
+										<p>с 15:00 - до 19:00 </p>
+										<p>с 15.02.22 по 20.03.22 </p>
+									</div>
+								</div>
+								<div class="employee-personal-options flex-box gap-32">
+									<div class="edit-item" title="Редактировать" frame-btn="edit-schedule-rules"></div>
+									<div class="icon-delete" title="Удалить" frame-btn="confirm-action"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--==================модальное окно Подтверждение удаления ==============-->
+		<div class="modal-frame-wrapper modal-frame-center confirm-modal" frame-modal="confirm-action">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head">
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<div class="title-20 text-center">Вы уверены, что хотите удалить?</div>
+					<div class="form-btns flex-vertical-center gap-20 mt-32">
+						<button class="btn btn--orange" frame-close>Отменить</button>
+						<button class="btn btn--primary" type="submit">Подтверждаю</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--================== Редактировать Правило работы сотрудника==============-->
+		<div class="modal-frame-wrapper modal-frame-right rules-modal" frame-modal="edit-schedule-rules">
+			<div class="modal-frame flex-column flex-box">
+				<div class="modal-frame__head flex-box flex-y-center flex-between">
+					<div class="text-24">Редактирование правила графиков работы</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<form class="rules-form flex-column flex-box">
+					<div class="modal-frame__body">
+						<div class="rules-form-block">
+							<div class="mySelect mySelect--absolute">
+								<div class="mySelect-input form-box-input">
+									<input class="selectValue form-input" type="text" readonly="readonly" value="Стоматолог"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт"/>
+								</div>
+							</div>
+						</div>
+						<div class="rules-form-block">
+							<div class="title-16 mb-16">Период работы</div>
+							<label class="switch-toggle flex-box flex-y-center">
+								<input class="toggle-switch" type="checkbox" checked><span class="real-switch"></span><span class="custom-switch__text">Повторять</span>
+							</label>
+							<div class="flex-form-fields gap-32">
+								<div class="form-item">
+									<div class="mydatepicker">
+										<input class="form-input datepicker" type="text" value="15.02.2022">
+									</div>
+								</div>
+								<div class="form-item">
+									<div class="mydatepicker">
+										<input class="form-input datepicker" type="text" value="20.03.2022">
+									</div>
+								</div>
+								<div class="form-item">
+									<div class="mySelect mySelect--absolute mySelect--multi" id="multi_day_picker">
+										<div class="mySelect-input">
+											<input class="selectValue input-slim" type="text" readonly="" value="пн, Вт" data-default="">
+										</div>
+										<div class="mySelect-drop">
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox1" data-thumbnail="Пн" checked><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Понедельник</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox2" data-thumbnail="Вт" checked><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Вторник</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Ср"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Среда</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Чт"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Четверг</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Пт"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Пятница</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Сб"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Суббота</span>
+											</label>
+											<label class="checkbox-label flex-box flex-y-center">
+												<input class="real-checkbox" type="checkbox" name="form-checkbox3" data-thumbnail="Вс"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Воскресенье</span>
+											</label>
+											<div class="mySelect-drop__btns flex-vertical-center gap-20 mt-16">
+												<button class="btn btn-38 btn--orange cancel">Отменить</button>
+												<button class="btn btn-38 confirm">Сохранить</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="rules-form-block">
+							<div class="title-18 mb-24">Часы приема</div>
+							<div class="flex-vertical-center gap-32">
+								<div class="form-item">
+									<div class="mySelect mySelect--absolute">
+										<div class="mySelect-input form-box-input">
+											<input class="selectValue form-input" type="text" readonly="readonly" value="15:00"/>
+										</div>
+										<div class="mySelect-drop scroll-vertical">
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="12:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="12:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="13:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="13:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="14:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="14:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="15:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="15:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="16:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="16:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="17:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="17:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="18:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="18:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="19:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="19:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="20:00"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-item">
+									<div class="mySelect mySelect--absolute">
+										<div class="mySelect-input form-box-input">
+											<input class="selectValue form-input" type="text" readonly="readonly" value="19:00"/>
+										</div>
+										<div class="mySelect-drop scroll-vertical">
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="12:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="12:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="13:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="13:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="14:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="14:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="15:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="15:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="16:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="16:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="17:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="17:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="18:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="18:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="19:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="19:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="20:00"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-frame__footer mt-auto border-top flex-vertical-center gap-20">
+						<button class="btn btn-44">Сохранить</button>
+						<button class="btn btn-44 btn--orange">Отменить</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--================== редактировать личное расписание-календарь сотрудника  ==============-->
+		<div class="modal-frame-wrapper modal-frame-right column-modal empl-schedule-modal" frame-modal="empl-schedule-edit">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head flex-box flex-y-center flex-between">
+					<div class="text-24">Новое событие на 02 декабря</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<div class="flex-column gap-32 h-100">
+						<div class="tabs-wrapper h-100 flex-column" custom-tabs>
+							<div class="tabs filter-toggle__block flex-box-inline">
+								<label class="filter-toggle-item" ct-btn="1">
+									<input class="filter-radiobtn" type="radio" name="toggle-radiobtn" checked><span>График работы</span>
+								</label>
+								<label class="filter-toggle-item" ct-btn="2">
+									<input class="filter-radiobtn" type="radio" name="toggle-radiobtn"><span>Отпуск</span>
+								</label>
+							</div>
+							<div class="tabs-content pt-32 flex-grow-1">
+								<form class="empl-schedule-form tab-item ct-content--active" ct-content="1">
+									<div class="category-wrapper flex-column gap-16">
+										<label class="checkbox-label flex-box flex-y-center">
+											<input class="real-checkbox" type="checkbox" name="empl-cat1"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Аллерголог</span>
+										</label>
+										<label class="checkbox-label flex-box flex-y-center">
+											<input class="real-checkbox" type="checkbox" name="empl-cat2"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Гастроэнтеролог</span>
+										</label>
+										<label class="checkbox-label flex-box flex-y-center">
+											<input class="real-checkbox" type="checkbox" name="empl-cat3"><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Диетолог</span>
+										</label>
+									</div>
+									<div class="time-wrapper flex-vertical-center gap-32 pt-32">
+										<div class="form-item">
+											<div class="mySelect mySelect--absolute">
+												<div class="mySelect-input form-box-input">
+													<input class="selectValue form-input" type="text" readonly="readonly" value="Начало"/>
+												</div>
+												<div class="mySelect-drop scroll-vertical">
+													<input class="mySelect-options" type="text" readonly="readonly" value="8:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="8:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="9:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="9:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="10:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="10:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="11:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="11:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="12:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="12:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="13:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="13:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="14:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="14:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="15:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="15:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="16:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="16:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="17:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="17:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="18:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="18:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="19:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="19:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="20:00"/>
+												</div>
+											</div>
+										</div>
+										<div class="form-item">
+											<div class="mySelect mySelect--absolute">
+												<div class="mySelect-input form-box-input">
+													<input class="selectValue form-input" type="text" readonly="readonly" value="Окончание"/>
+												</div>
+												<div class="mySelect-drop scroll-vertical">
+													<input class="mySelect-options" type="text" readonly="readonly" value="8:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="8:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="9:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="9:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="10:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="10:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="11:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="11:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="12:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="12:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="13:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="13:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="14:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="14:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="15:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="15:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="16:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="16:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="17:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="17:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="18:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="18:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="19:00"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="19:30"/>
+													<input class="mySelect-options" type="text" readonly="readonly" value="20:00"/>
+												</div>
+											</div>
+										</div>
+										<label class="switch-toggle flex-box flex-y-center">
+											<input class="toggle-switch" type="checkbox"><span class="real-switch"></span><span class="custom-switch__text">Весь день</span>
+										</label>
+									</div>
+									<div class="form-btns flex-vertical-center gap-20 mt-auto">
+										<button class="btn btn--primary" type="submit">Добавить</button>
+										<button class="btn btn--orange" frame-close>Отменить</button>
+										<button class="btn btn--accent" frame-close>Удалить</button>
+									</div>
+								</form>
+								<!--========вкладка Отпуск ======-->
+								<form class="empl-schedule-form tab-item" ct-content="2">
+									<div class="category-wrapper flex-column gap-16">
+										<label class="radiobutton-label flex-box flex-y-center">
+											<input class="real-radio" type="radio" name="free-day" checked><span class="custom-radio"></span><span class="custom-radio__text">Отпуск</span>
+										</label>
+										<label class="radiobutton-label flex-box flex-y-center">
+											<input class="real-radio" type="radio" name="free-day"><span class="custom-radio"> </span><span class="custom-radio__text">Отгул</span>
+										</label>
+										<label class="radiobutton-label flex-box flex-y-center">
+											<input class="real-radio" type="radio" name="free-day"><span class="custom-radio"></span><span class="custom-radio__text">Праздничный день</span>
+										</label>
+									</div>
+									<div class="time-wrapper flex-vertical-center gap-32 pt-32">
+										<div class="form-box form-box--260">
+											<label class="text-16">Начало</label>
+											<div class="mydatepicker">
+												<input class="form-input datepicker" type="text" placeholder="Выбрать дату">
+											</div>
+										</div>
+										<div class="form-box form-box--260 pos-rel">
+											<label class="text-16">Окончание</label>
+											<!--===== Если пользователь выбрал дату Окончание раньше, чем дата Начало , инпуту добавляется класс input-notvalid, который задает красный цвет рамки и текста у инпута. Так же показывается тултип с классом tooltip-error-text. Сейчас это окно видимо, за счет класса visible-->
+											<div class="mydatepicker">
+												<input class="form-input input-notvalid datepicker" type="text" placeholder="Выбрать дату">
+											</div>
+											<div class="tooltip-error-text tooltip-modal tooltip-modal--mini text-12 visible">
+												<p>Дата <strong>Окончание</strong> не может быть раньше даты <strong>Начало</strong></p>
+												<div class="tooltip-close icon-close"></div>
+											</div>
+										</div>
+									</div>
+									<div class="form-btns flex-vertical-center gap-20 mt-auto">
+										<button class="btn btn--primary" type="submit">Добавить</button>
+										<button class="btn btn--orange" frame-close>Отменить</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--=============== jquery ===================-->
+		<script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+		<!--=============== swiper ===================-->
+		<script src="./libs/swiper/swiper.js"></script>
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+		<!--=============== мои скрипты ===================-->
+		<script src="./js/quiz.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
 </html>

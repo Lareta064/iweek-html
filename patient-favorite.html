@@ -1,236 +1,186 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--======= swipe =============-->
-  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
-  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
-  <meta name="format-detection" content="telephone=no">
-  <!--===================favicon ==================================-->
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="./img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!--===================opengraf=======================================-->
-  <link rel="stylesheet" href="./fonts/fonts.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <title>Кабинет пациента | Избранное</title>
-</head>
-
-<body class="patient-cabinet" style="opacity:0;transition:opacity .7s;">
-  <div id="overlay"></div>
-  <header class="cabinet-header">
-    <div class="container-large">
-      <div class="cabinet-header__content flex-vertical-center">
-        <div class="cabinet-header__burger" frame-btn="cabinet-sidebar">
-          <span></span>
-        </div>
-        <div class="cabinet-header__logo">
-          <a class="custom-logo" href="index.html">
-            <img src="./img/logo2.png" width="106" alt="logo" />
-          </a>
-        </div>
-        <div class="cabinet-header__notify">
-          <span>5</span>
-          <svg class="svg-notify">
-            <use href="./img/svg-sprite.svg#svg-notify"></use>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!--=========== основной контент  ====================-->
-  <div class="cabinet-body pt-40">
-    <div class="container container-slim">
-      <div class="patient-profile">
-        <div class="patient-profile-title mb-32">
-          <a class="icon-btn arrow-left pos-abs" href="patient-main.html"></a>
-          <div class="text-20">Избранное</div>
-        </div>
-        <div class="patient-favorite">
-          <!--============ контент, если есть избранные врачи ===================-->
-          <!--====single favor card ====-->
-          <div class="cabinet-card flex-box gap-16">
-            <div class="cabinet-card__img">
-              <img src="./img/doctor.png" width="100" height="100" alt="doc">
-            </div>
-            <div class="cabinet-card__text">
-              <div class="title-20">Лордкипиани М.Г.</div>
-              <div class="text-16">Стоматолог</div>
-              <div class="text-16 mt-8">Клиника "Орто-Дент"</div>
-            </div>
-            <!--======icon=====-->
-            <label class="check-label flex-center flex-box">
-              <input type="checkbox" checked>
-              <svg class="svg-heart" width="16" height="16">
-                <use href="./img/svg-sprite.svg#svg-heart"></use>
-              </svg>
-            </label>
-          </div>
-          <!--====single favor card ====-->
-          <div class="cabinet-card flex-box gap-16">
-            <div class="cabinet-card__img">
-              <img src="./img/doctor2.png" width="100" height="100" alt="doc">
-            </div>
-            <div class="cabinet-card__text">
-              <div class="title-20">Голетиани М.И.</div>
-              <div class="text-16">Стоматолог</div>
-              <div class="text-16 mt-8">Клиника "Ваш Доктор"</div>
-            </div>
-            <!--======icon=====-->
-            <label class="check-label flex-center flex-box">
-              <input type="checkbox" checked>
-              <svg class="svg-heart" width="16" height="16">
-                <use href="./img/svg-sprite.svg#svg-heart"></use>
-              </svg>
-            </label>
-          </div>
-          <!--====single favor card ====-->
-          <div class="cabinet-card flex-box gap-16">
-            <div class="cabinet-card__img">
-              <img src="./img/doctor.png" width="100" height="100" alt="doc">
-            </div>
-            <div class="cabinet-card__text">
-              <div class="title-20">Мамишвилли Е.К.</div>
-              <div class="text-16">Стоматолог</div>
-              <div class="text-16 mt-8">"NewOrto"</div>
-            </div>
-            <!--======icon=====-->
-            <label class="check-label flex-center flex-box">
-              <input type="checkbox" checked>
-              <svg class="svg-heart" width="16" height="16">
-                <use href="./img/svg-sprite.svg#svg-heart"></use>
-              </svg>
-            </label>
-          </div>
-          <!--====single favor card ====-->
-          <div class="cabinet-card flex-box gap-16">
-            <div class="cabinet-card__img">
-              <img src="./img/doctor.png" width="100" height="100" alt="doc">
-            </div>
-            <div class="cabinet-card__text">
-              <div class="title-20">Антадзе Т.К.</div>
-              <div class="text-16">Стоматолог</div>
-              <div class="text-16 mt-8">"NewOrto"</div>
-            </div>
-            <!--======icon=====-->
-            <label class="check-label flex-center flex-box">
-              <input type="checkbox" checked>
-              <svg class="svg-heart" width="16" height="16">
-                <use href="./img/svg-sprite.svg#svg-heart"></use>
-              </svg>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--================== cabinet-sidebar ==============-->
-  <div class="modal-frame-wrapper modal-frame-left" frame-modal="cabinet-sidebar">
-    <div class="modal-frame flex-column">
-      <div class="sidebar-panel">
-        <nav>
-          <a href="#!" frame-btn="select-city">
-            <span>
-              <svg class="svg-map">
-                <use href="./img/svg-sprite.svg#svg-map"></use>
-              </svg>
-            </span>
-            <span>Батуми</span>
-          </a>
-          <a href="patient-edit.html">
-            <span>
-              <svg class="svg-pacient">
-                <use href="./img/svg-sprite.svg#svg-pacient"></use>
-              </svg>
-            </span>
-            <span>Профиль</span>
-          </a>
-          <a href="patient-main.html">
-            <span>
-              <svg class="svg-home">
-                <use href="./img/svg-sprite.svg#svg-home"></use>
-              </svg>
-            </span>
-            <span>Главная кабинета</span>
-          </a>
-          <a href="patient-history.html">
-            <span>
-              <svg class="svg-calendar">
-                <use href="./img/svg-sprite.svg#svg-calendar"></use>
-              </svg>
-            </span>
-            <span>Записи на прием</span>
-          </a>
-          <a href="patient-reviews.html">
-            <span>
-              <svg class="svg-star">
-                <use href="./img/svg-sprite.svg#svg-star"></use>
-              </svg>
-            </span>
-            <span>Отзывы</span>
-          </a>
-          <a class="active" href="patient-favorite.html">
-            <span>
-              <svg class="svg-favorite">
-                <use href="./img/svg-sprite.svg#svg-heart"></use>
-              </svg>
-            </span>
-            <span>Избранное</span>
-          </a>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <!--============== модальное окно ПОИСК ГОРОДА =============-->
-  <div class="modal-frame-wrapper modal-frame-right" frame-modal="select-city">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="text-24">Город</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <!--============== строка поиска =============-->
-        <div class="search-block-wrapper flex-box">
-          <div class="form-box form-box--icon-left">
-            <div class="form-box-input">
-              <div class="form-box__icon">
-                <svg class="svg-search">
-                  <use href="./img/svg-sprite.svg#svg-search"></use>
-                </svg>
-              </div>
-              <input class="form-input form-input--64" type="text" placeholder="Название города">
-            </div>
-          </div>
-          <!--======== кнопка Найти ====-->
-          <div class="btn btn--gradient btn-64">Найти</div>
-        </div>
-        <div class="search-block-results pt-40 pl-24">
-          <p>Батуми</p>
-          <p>Поти</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--=============== jquery ===================-->
-  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
-  <!--=============== swiper ===================-->
-  <script src="./libs/swiper/swiper.js"></script>
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
-  <!--=============== мои скрипты ===================-->
-  <script src="./js/quiz.js"></script>
-  <script src="./js/main.js"></script>
-</body>
-
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!--======= swipe =============-->
+		<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+		<!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+		<meta name="format-detection" content="telephone=no">
+		<!--===================favicon ==================================-->
+		<link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+		<link rel="manifest" href="./img/favicon/site.webmanifest">
+		<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./img/favicon/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+		<!--===================opengraf=======================================-->
+		<link rel="stylesheet" href="./fonts/fonts.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<title>Кабинет пациента | Избранное</title>
+	</head>
+	<body class="patient-cabinet" style="opacity:0;transition:opacity .7s;">
+		<div id="overlay"></div>
+		<header class="cabinet-header">
+			<div class="container-large">
+				<div class="cabinet-header__content flex-vertical-center">
+					<div class="cabinet-header__burger" frame-btn="cabinet-sidebar"><span></span></div>
+					<div class="cabinet-header__logo"><a class="custom-logo" href="index.html"><img src="./img/logo2.png" width="106" alt="logo"/></a></div>
+					<div class="cabinet-header__notify"><span>5</span>
+						<svg class="svg-notify">
+							<use href="./img/svg-sprite.svg#svg-notify"></use>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--=========== основной контент  ====================-->
+		<div class="cabinet-body pt-40">
+			<div class="container container-slim">
+				<div class="patient-profile">
+					<div class="patient-profile-title mb-32"><a class="icon-btn arrow-left pos-abs" href="patient-main.html"></a>
+						<div class="text-20">Избранное</div>
+					</div>
+					<div class="patient-favorite">
+						<!--============ контент, если есть избранные врачи ===================-->
+						<!--====single favor card ====-->
+						<div class="cabinet-card flex-box gap-16">
+							<div class="cabinet-card__img"><img src="./img/doctor.png" width="100" height="100" alt="doc"></div>
+							<div class="cabinet-card__text">
+								<div class="title-20">Лордкипиани М.Г.</div>
+								<div class="text-16">Стоматолог</div>
+								<div class="text-16 mt-8">Клиника "Орто-Дент"</div>
+							</div>
+							<!--======icon=====-->
+							<label class="check-label flex-center flex-box">
+								<input type="checkbox" checked>
+								<svg class="svg-heart" width="16" height="16">
+									<use href="./img/svg-sprite.svg#svg-heart"></use>
+								</svg>
+							</label>
+						</div>
+						<!--====single favor card ====-->
+						<div class="cabinet-card flex-box gap-16">
+							<div class="cabinet-card__img"><img src="./img/doctor2.png" width="100" height="100" alt="doc"></div>
+							<div class="cabinet-card__text">
+								<div class="title-20">Голетиани М.И.</div>
+								<div class="text-16">Стоматолог</div>
+								<div class="text-16 mt-8">Клиника "Ваш Доктор"</div>
+							</div>
+							<!--======icon=====-->
+							<label class="check-label flex-center flex-box">
+								<input type="checkbox" checked>
+								<svg class="svg-heart" width="16" height="16">
+									<use href="./img/svg-sprite.svg#svg-heart"></use>
+								</svg>
+							</label>
+						</div>
+						<!--====single favor card ====-->
+						<div class="cabinet-card flex-box gap-16">
+							<div class="cabinet-card__img"><img src="./img/doctor.png" width="100" height="100" alt="doc"></div>
+							<div class="cabinet-card__text">
+								<div class="title-20">Мамишвилли Е.К.</div>
+								<div class="text-16">Стоматолог</div>
+								<div class="text-16 mt-8">"NewOrto"</div>
+							</div>
+							<!--======icon=====-->
+							<label class="check-label flex-center flex-box">
+								<input type="checkbox" checked>
+								<svg class="svg-heart" width="16" height="16">
+									<use href="./img/svg-sprite.svg#svg-heart"></use>
+								</svg>
+							</label>
+						</div>
+						<!--====single favor card ====-->
+						<div class="cabinet-card flex-box gap-16">
+							<div class="cabinet-card__img"><img src="./img/doctor.png" width="100" height="100" alt="doc"></div>
+							<div class="cabinet-card__text">
+								<div class="title-20">Антадзе Т.К.</div>
+								<div class="text-16">Стоматолог</div>
+								<div class="text-16 mt-8">"NewOrto"</div>
+							</div>
+							<!--======icon=====-->
+							<label class="check-label flex-center flex-box">
+								<input type="checkbox" checked>
+								<svg class="svg-heart" width="16" height="16">
+									<use href="./img/svg-sprite.svg#svg-heart"></use>
+								</svg>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--================== cabinet-sidebar ==============-->
+		<div class="modal-frame-wrapper modal-frame-left" frame-modal="cabinet-sidebar">
+			<div class="modal-frame flex-column">
+				<div class="sidebar-panel">
+					<nav><a href="#!" frame-btn="select-city"><span>
+								<svg class="svg-map">
+									<use href="./img/svg-sprite.svg#svg-map"></use>
+								</svg></span><span>Батуми</span></a><a href="patient-edit.html"><span>
+								<svg class="svg-pacient">
+									<use href="./img/svg-sprite.svg#svg-pacient"></use>
+								</svg></span><span>Профиль</span></a><a href="patient-main.html"><span>
+								<svg class="svg-home">
+									<use href="./img/svg-sprite.svg#svg-home"></use>
+								</svg></span><span>Главная кабинета</span></a><a href="patient-history.html"><span>
+								<svg class="svg-calendar">
+									<use href="./img/svg-sprite.svg#svg-calendar"></use>
+								</svg></span><span>Записи на прием</span></a><a href="patient-reviews.html"><span>
+								<svg class="svg-star">
+									<use href="./img/svg-sprite.svg#svg-star"></use>
+								</svg></span><span>Отзывы</span></a><a class="active" href="patient-favorite.html"><span>
+								<svg class="svg-favorite">
+									<use href="./img/svg-sprite.svg#svg-heart"></use>
+								</svg></span><span>Избранное</span></a></nav>
+				</div>
+			</div>
+		</div>
+		<!--============== модальное окно ПОИСК ГОРОДА =============-->
+		<div class="modal-frame-wrapper modal-frame-right" frame-modal="select-city">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head flex-box flex-y-center flex-between">
+					<div class="text-24">Город</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<!--============== строка поиска =============-->
+					<div class="search-block-wrapper flex-box">
+						<div class="form-box form-box--icon-left">
+							<div class="form-box-input">
+								<div class="form-box__icon">
+									<svg class="svg-search">
+										<use href="./img/svg-sprite.svg#svg-search"></use>
+									</svg>
+								</div>
+								<input class="form-input form-input--64" type="text" placeholder="Название города">
+							</div>
+						</div>
+						<!--======== кнопка Найти ====-->
+						<div class="btn btn--gradient btn-64">Найти</div>
+					</div>
+					<div class="search-block-results pt-40 pl-24">
+						<p>Батуми</p>
+						<p>Поти</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--=============== jquery ===================-->
+		<script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+		<!--=============== swiper ===================-->
+		<script src="./libs/swiper/swiper.js"></script>
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+		<!--=============== мои скрипты ===================-->
+		<script src="./js/quiz.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
 </html>

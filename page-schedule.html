@@ -1,1166 +1,1092 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--======= swipe =============-->
-  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
-  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
-  <meta name="format-detection" content="telephone=no">
-  <!--===================favicon ==================================-->
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="./img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!--===================opengraf=======================================-->
-  <link rel="stylesheet" href="./fonts/fonts.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <title>Кабинет клиента</title>
-</head>
-
-<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
-  <div id="overlay"></div>
-  <header class="cabinet-header">
-    <div class="container-large">
-      <div class="cabinet-header__content flex-vertical-center">
-        <div class="cabinet-header__logo">
-          <a class="custom-logo" href="index.html">
-            <img src="./img/logo2.png" width="106" alt="logo" />
-          </a>
-        </div>
-        <div class="cabinet-header__menu">
-          <div class="myTabs-buttons">
-            <a class="btn-bt myTabs-btn active" href="page-schedule.html">Расписание</a>
-            <a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a>
-            <a class="btn-bt myTabs-btn" href="visitor-page.html">Пациенты</a>
-            <a class="btn-bt myTabs-btn" href="employees-page.html">Сотрудники</a>
-          </div>
-        </div>
-        <div class="cabinet-header__profile flex-vertical-center gap-32">
-          <div class="select-work-place">
-            <div class="mySelect mySelect--absolute">
-              <div class="mySelect-input form-box-input">
-                <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
-              </div>
-            </div>
-          </div>
-          <div class="help-info">?</div>
-          <div class="customDrop customDrop--right drop-click-close">
-            <div class="customDrop__btn round-icon">
-              <div class="icon-notify"></div>
-            </div>
-            <div class="customDrop__list">
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Включить звук</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 15 минут</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 30 минут</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 1 час</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 8 часов</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="cabinet-header__avatar">ГМ</div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!--====== ячейки, для которых нет записи имеют дополнительный класс - "forbid-appoint", который делает их серого цвета.  Ячейки, в которых уже есть запись дополнительные классы в зависимости от состояния записи 'state-confirm',  'state-done', 'state-notconfirm'  Модальное окно при кике по ячейке открывается за счет атрибута frame-btn Значние атрибуда открывает модальное окно, у которого такое же значение атрибута  frame-modal.  frame-btn="appointment-modal" откроет модальное окно frame-modal="appointment-modal" ===============================================-->
-  <div class="cabinet-body">
-    <div class="container-large">
-      <div class="schedule-page cabinet-page-grid">
-        <div class="cabinet-page-sidebar">
-          <!--========== календарь ==============-->
-          <div class="sidebar-calendar">
-            <div class="datepicker mydatepicker">
-              <input type="hidden" id="datepicker_value" value="01.02.2022">
-            </div>
-            <button class="btn-32 btn--primary w-100 mt-16"> Сегодня</button>
-          </div>
-          <!--========== выпадашки ==============-->
-          <div class="sidebar-filters">
-            <div class="mySelect mySelect--absolute">
-              <div class="mySelect-input form-box-input">
-                <input class="selectValue form-input" type="text" readonly="readonly" value="Специальность" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
-              </div>
-            </div>
-            <!--======выпадающий селект с чекбоксами ==============-->
-            <div class="mySelect mySelect--absolute">
-              <div class="mySelect-input form-box-input">
-                <input class="selectValue form-input" type="text" readonly="readonly" value="Сотрудник" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <label class="checkbox-label flex-box flex-y-center">
-                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
-                  <span class="custom-checkbox"> </span>
-                  <span class="custom-checkbox__text">Кикабидзе В.</span>
-                </label>
-                <label class="checkbox-label flex-box flex-y-center">
-                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
-                  <span class="custom-checkbox"> </span>
-                  <span class="custom-checkbox__text">Кипиани А.</span>
-                </label>
-                <label class="checkbox-label flex-box flex-y-center">
-                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
-                  <span class="custom-checkbox"> </span>
-                  <span class="custom-checkbox__text">Брегвадзе Н.</span>
-                </label>
-                <label class="checkbox-label flex-box flex-y-center">
-                  <input class="real-checkbox" type="checkbox" name="form-checkbox" />
-                  <span class="custom-checkbox"> </span>
-                  <span class="custom-checkbox__text">Чиаурели С.</span>
-                </label>
-              </div>
-            </div>
-            <!--==== сбросить фильтры =====-->
-            <button class="btn-32 btn--orange w-100 mt-16"> Сбросить фильтры</button>
-          </div>
-          <!--========== цветные маркеры ==============-->
-          <div class="sidebar-markers">
-            <div class="marker-color" title="Не подтвержден">1</div>
-            <div class="marker-color marker-color--blue" title="Подтвержден">0</div>
-            <div class="marker-color marker-color--green" title="Начат визит">0</div>
-            <div class="marker-color marker-color--gray" title="Выполнен">0</div>
-          </div>
-        </div>
-        <div class="schedule-page__table minified">
-          <div class="schedule__table-header flex-vertical-center flex-between">
-            <div class="icon-btn arrow-left"></div>
-            <div class="schedule__table-header-center"> 23 декабря</div>
-            <div class="icon-btn arrow-right"></div>
-          </div>
-          <div class="table-wrapper">
-            <div class="schedule-table-time-column pb-24">
-              <div class="time-column-header">
-                <span>Шаг</span>
-              </div>
-              <div class="time-column-scroll">
-                <div class="time-column-cell">8:00</div>
-                <div class="time-column-cell">8:30</div>
-                <div class="time-column-cell">9:00</div>
-                <div class="time-column-cell">9:30</div>
-                <div class="time-column-cell">10:00</div>
-                <div class="time-column-cell">10:30</div>
-                <div class="time-column-cell">11:00</div>
-                <div class="time-column-cell">11:30</div>
-                <div class="time-column-cell">12:00</div>
-                <div class="time-column-cell">12:30</div>
-                <div class="time-column-cell">13:00</div>
-                <div class="time-column-cell">13:30</div>
-                <div class="time-column-cell">14:00</div>
-                <div class="time-column-cell">14:30</div>
-                <div class="time-column-cell">15:00</div>
-                <div class="time-column-cell">15:30</div>
-                <div class="time-column-cell">16:00</div>
-                <div class="time-column-cell">16:30</div>
-                <div class="time-column-cell">17:00</div>
-                <div class="time-column-cell">17:30</div>
-                <div class="time-column-cell">18:00</div>
-                <div class="time-column-cell">18:30</div>
-                <div class="time-column-cell">19:00</div>
-                <div class="time-column-cell">19:30</div>
-                <div class="time-column-cell">20:00</div>
-                <div class="time-column-cell">20:30</div>
-                <div class="time-column-cell">21:00</div>
-                <div class="time-column-cell">21:30</div>
-                <div class="time-column-cell">22:00</div>
-                <div class="time-column-cell">22:30</div>
-                <div class="time-column-cell">23:00</div>
-                <div class="time-column-cell">23:30</div>
-                <div class="time-column-cell">00:00</div>
-              </div>
-            </div>
-            <div class="cabinet-table-block">
-              <div class="cabinet-table-header pr-24">
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-                <div class="cell">
-                  <a href="empl-schedule.html">Фамилия</a>
-                  <div class="pause-icon__wrapper" frame-btn="pause-info">
-                    <div class="pause-icon" title="добавить перерыв"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="schedule-scrollbar-block">
-                <table>
-                  <tbody>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell state-started" rowspan="2" frame-btn="visit-info">
-                        <p>Беридзе Н. </p>
-                        <span>9:00-10:00</span>
-                      </td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell state-confirm" frame-btn="visit-info">
-                        <p>Беридзе Н. </p>
-                        <span>8:00-9:30</span>
-                      </td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell state-done" frame-btn="visit-info">
-                        <p>Беридзе Н. </p>
-                        <span>13:00-13:30</span>
-                      </td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell forbid-appoint"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell state-notconfirm" frame-btn="visit-info">
-                        <p>Беридзе Н. </p>
-                        <span>15:30-16:00</span>
-                      </td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                    <tr class="table-row">
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                      <td class="schedule-table-cell" frame-btn="appointment-modal"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--================== добавить паузу для страницы  Расписание ==============-->
-  <div class="modal-frame-wrapper modal-frame-right column-modal" frame-modal="pause-info">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="text-24">Добавление перерыва</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <form class="pause-form flex-column gap-32">
-          <div class="pause-form__head">
-            <div class="text-24">Голетиани Мариам</div>
-            <div class="text-16 mt-8">Стоматолог, Ортодонт</div>
-          </div>
-          <div class="pause-form__title text-bold mb-16">Время перерыва</div>
-          <div class="pause-form__fields flex-vertical-center gap-32">
-            <div class="form-item">
-              <input class="form-input" type="text" placeholder="Начало">
-            </div>
-            <div class="form-item">
-              <input class="form-input" type="text" placeholder="Окончание">
-            </div>
-            <div class="pause-form__switch">
-              <label class="switch-toggle flex-box flex-y-center">
-                <input class="toggle-switch" type="checkbox">
-                <span class="real-switch"></span>
-                <span class="custom-switch__text">Весь день</span>
-              </label>
-            </div>
-          </div>
-          <div class="form-textarea">
-            <textarea placeholder="Комментарий"></textarea>
-          </div>
-          <div class="form-btns flex-vertical-center gap-20 mt-auto">
-            <button class="btn btn--primary" type="submit">Добавить</button>
-            <button class="btn btn--orange" frame-close>Отменить</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--================== Информация о приеме мод окно ==============-->
-  <div class="modal-frame-wrapper modal-frame-right" frame-modal="visit-info">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head border-none flex-box flex-y-center flex-between">
-        <div class="text-24">Информация о приеме</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <div class="modal-table">
-          <table>
-            <tbody>
-              <tr>
-                <td>Дата</td>
-                <td class="edit-visit-date">
-                  <div class="mydatepicker">
-                    <input class="form-input datepicker" type="text" value="20.04.2023">
-                  </div>
-                </td>
-              </tr>
-              <tr class="edit-visit-time">
-                <td>Время</td>
-                <td class="flex-vertical-center gap-16">
-                  <!--== окошко  tooltip-error-text отображается при наличии класса visible. Оно содержит информацию, что время не может быть выбрано. Сейчас по дефолту у него есть класс visible, что оно отображалось. Рендерить его надо внутри дива с классом pos-rel после инпутов-->
-                  <!--=== Инпуту красную рамку задает класс input-notvalid== -->
-                  <span>c</span>
-                  <div class="flex-vertical-center gap-4 pos-rel">
-                    <input class="form-input input-notvalid" type="number" name="" value="09">
-                    <span>:</span>
-                    <input class="form-input input-notvalid" type="number" name="" value="30">
-                    <div class="tooltip-error-text tooltip-modal tooltip-modal--mini text-12 visible">
-                      <p>Время недоступно, </p>
-                      <p>выберите другое</p>
-                      <div class="tooltip-close icon-close"></div>
-                    </div>
-                  </div>
-                  <span>до</span>
-                  <!--==== класс .input-notvalid задает красную рамку для инпут. Класс visible делает видимым  тултип-->
-                  <div class="flex-vertical-center gap-4 pos-rel">
-                    <input class="form-input" type="number" name="" value="10">
-                    <span>:</span>
-                    <input class="form-input" type="number" name="" value="30">
-                  </div>
-                </td>
-              </tr>
-              <tr class="doctor-info">
-                <td>Врач</td>
-                <td>
-                  <span>Лордкипанидзе Мария</span>
-                  <span>Невролог</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Цель визита</td>
-                <td>ПРИЕМ НЕВРОЛОГА</td>
-              </tr>
-              <tr>
-                <td>Канал привлечения</td>
-                <td>ВКонтакте</td>
-              </tr>
-              <tr class="visiter-info">
-                <td>Пациент</td>
-                <td>
-                  <a href="visitor-edit-page.html">
-                    <p>
-                      <span>Миронов Роман</span>
-                      <span class="edit-item" title="редактировать"></span>
-                    </p>
-                    <span>8(792)196-48-84
-                      <div class="copy-icon" title="копировать"></div>
-                    </span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>Возраст</td>
-                <td>03.06.1989 (33 года)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="modal-frame__footer mt-auto flex-box">
-        <div class="state-select state-select--opentop">
-          <div class="state-select-current" data-state="state-started">Начат прием</div>
-          <div class="state-select-drop">
-            <div class="state-select-drop__item" data-state="state-started">Начат прием</div>
-            <div class="state-select-drop__item" data-state="state-confirm">Подтвержден</div>
-            <div class="state-select-drop__item" data-state="state-notconfirm">Не подтвержден</div>
-            <div class="state-select-drop__item" data-state="state-done">Выполнен</div>
-            <div class="state-select-drop__item" data-state="state-cancel"> Отменен</div>
-          </div>
-        </div>
-        <div class="ml-auto">
-          <button class="btn btn-44">Сохранить</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--================== Запись на прием через кабинет  ==============-->
-  <div class="modal-frame-wrapper modal-frame-right modal-scroll" frame-modal="appointment-modal">
-    <form class="appointment-form modal-frame flex-column">
-      <div class="modal-frame__head flex-box flex-y-center flex-between">
-        <div class="text-24">Запись на прием</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body scroll-vertical">
-        <div class="appointment-form-header modal-scroll-header">
-          <div class="flex-box btn-toggle-block">
-            <label class="btn--toggle">
-              <input class="filter-radiobtn" type="radio" name="visitor-type" checked>
-              <div class="btn">
-                <span>Взрослый</span>
-              </div>
-            </label>
-            <label class="btn--toggle">
-              <input class="filter-radiobtn" type="radio" name="visitor-type">
-              <div class="btn">
-                <span>Ребенок</span>
-              </div>
-            </label>
-            <label class="btn--toggle">
-              <input class="filter-radiobtn" type="radio" name="visitor-type">
-              <div class="btn">
-                <span>Недееспособный гражданин</span>
-              </div>
-            </label>
-          </div>
-        </div>
-        <div class="cabinet-form-body">
-          <div class="fieldset-group mb-24">
-            <div class="title-18 mb-24">Данные пациента</div>
-            <div class="cabinet-form__name mb-24">
-              <div class="form-box pos-rel">
-                <label class="text-16">Фамилия</label>
-                <input class="form-input" type="text">
-                <!--====== .autocomplit-list -заготовка под блок с фамилиями для автоподстановки. Скрыта через класс d-none. -->
-                <div class="autocomplete-list scroll-vertical d-none">
-                  <ul>
-                    <li>Иванидзе</li>
-                    <li>Иванидзе</li>
-                    <li>Иванидзе</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="form-box">
-                <label class="text-16">Имя</label>
-                <input class="form-input" type="text">
-              </div>
-              <div class="form-box">
-                <label class="text-16">Отчество</label>
-                <input class="form-input" type="text">
-              </div>
-            </div>
-            <div class="cabinet-form__gender gap-32 mb-24 grid-355">
-              <div class="form-box">
-                <label class="text-16">Пол</label>
-                <div class="flex-vertical-center gap-32">
-                  <label class="radiobutton-label flex-box">
-                    <input class="real-radio" type="radio" value="men" name="gender-radio" checked>
-                    <span class="custom-radio"></span>
-                    <span class="custom-radio__text">Мужской</span>
-                  </label>
-                  <label class="radiobutton-label flex-box">
-                    <input class="real-radio" type="radio" value="woomen" name="gender-radio">
-                    <span class="custom-radio"></span>
-                    <span class="custom-radio__text">Женский</span>
-                  </label>
-                </div>
-              </div>
-              <div class="form-box">
-                <label class="text-16">Дата рождения</label>
-                <div class="mydatepicker">
-                  <input class="form-input datepicker" type="text">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cabinet-form__contacts mb-24 flex-vertical-center gap-32 flex-grow">
-            <div class="form-box pos-rel">
-              <label class="text-16">Телефон</label>
-              <input class="form-input" type="text">
-              <!--====== .autocomplit-list -заготовка под блок с фамилиями для автоподстановки. Скрыта через класс d-none -->
-              <div class="autocomplete-list scroll-vertical">
-                <ul>
-                  <li>+9995888777</li>
-                  <li>+9995888777</li>
-                  <li>+9995888777</li>
-                </ul>
-              </div>
-            </div>
-            <div class="form-box">
-              <label class="text-16">Дополнительный телефон</label>
-              <input class="form-input" type="text">
-            </div>
-          </div>
-          <div class="fieldset-group fieldset-group-time mb-24">
-            <div class="title-18 mb-24">Дата и время приема</div>
-            <div class="flex-vertical-center gap-32">
-              <div class="form-box">
-                <label class="text-16">Дата приема</label>
-                <div class="mydatepicker">
-                  <input class="form-input datepicker" type="text">
-                </div>
-              </div>
-              <div class="form-box">
-                <div class="mySelect mySelect--absolute">
-                  <label class="text-16">Начало приема
-                  </label>
-                  <div class="mySelect-input form-box-input">
-                    <input class="selectValue form-input" type="text" readonly="readonly" value="" />
-                  </div>
-                  <div class="mySelect-drop scroll-vertical">
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                  </div>
-                </div>
-              </div>
-              <div class="form-box">
-                <div class="mySelect mySelect--absolute">
-                  <label class="text-16">Окончание приема
-                  </label>
-                  <div class="mySelect-input form-box-input">
-                    <input class="selectValue form-input" type="text" readonly="readonly" value="" />
-                  </div>
-                  <div class="mySelect-drop scroll-vertical">
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="8:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="9:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:00" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="10:30" />
-                    <input class="mySelect-options" type="text" readonly="readonly" value="11:00" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="fieldset-group fieldset-group-doctor mb-24">
-            <div class="title-18 mb-24">Данные о враче</div>
-            <div class="flex-vertical-center gap-32 flex-grow mb-24">
-              <div class="mySelect mySelect--absolute">
-                <div class="mySelect-input form-box-input">
-                  <input class="selectValue form-input" type="text" readonly="readonly" value="Фамилия И.О." />
-                </div>
-                <div class="mySelect-drop scroll-vertical">
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Беридзе Н." />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Чикрадзе Э. С.С." />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Золотов Е. П." />
-                </div>
-              </div>
-              <div class="mySelect mySelect--absolute">
-                <div class="mySelect-input form-box-input">
-                  <input class="selectValue form-input" type="text" readonly="readonly" value="Специалист" />
-                </div>
-                <div class="mySelect-drop scroll-vertical">
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт" />
-                </div>
-              </div>
-            </div>
-            <div class="mb-24">
-              <div class="mySelect mySelect--absolute">
-                <div class="mySelect-input form-box-input">
-                  <input class="selectValue form-input" type="text" readonly="readonly" value="Рекомендовавший врач" />
-                </div>
-                <div class="mySelect-drop scroll-vertical">
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Беридзе Н." />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Чикрадзе Э. С.С." />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Золотов Е. П." />
-                </div>
-              </div>
-            </div>
-            <div class="mb-24">
-              <div class="mySelect mySelect--absolute">
-                <div class="mySelect-input form-box-input">
-                  <input class="selectValue form-input" type="text" readonly="readonly" value="Канал привлечения" />
-                </div>
-                <div class="mySelect-drop scroll-vertical">
-                  <input class="mySelect-options" type="text" readonly="readonly" value="undefined" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Telegram" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Google" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Facebook" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Сервис iweek" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="fieldset-group fieldset-group-doctor mb-24">
-            <div class="title-18 mb-24">Добавить услугу</div>
-            <div class="mySelect mySelect--38  ">
-              <div class="mySelect-input">
-                <input class="selectValue form-input" type="text" readonly="" value="Услуга" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <input class="mySelect-options" type="text" readonly="" value="Санация полости рта" />
-                <input class="mySelect-options" type="text" readonly="" value="Лечение кариеса зубов" />
-                <input class="mySelect-options" type="text" readonly="" value="Лечение пульпита" />
-                <input class="mySelect-options" type="text" readonly="" value="Пломбирование каналов зубов" />
-                <input class="mySelect-options" type="text" readonly="" value="Удаление нерва зуба" />
-                <input class="mySelect-options" type="text" readonly="" value="Кариес между зубами" />
-              </div>
-            </div>
-          </div>
-          <div class="fieldset-group mb-24">
-            <div class="form-textarea">
-              <textarea placeholder="Цель визита"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-scroll-footer">
-        <div class="form-btns flex-vertical-center gap-32 flex-between">
-          <!--=====выпадашка ======-->
-          <div class="state-select state-select--opentop">
-            <div class="state-select-current" data-state="state-started">Начат прием</div>
-            <div class="state-select-drop">
-              <div class="state-select-drop__item" data-state="state-started">Начат прием</div>
-              <div class="state-select-drop__item" data-state="state-confirm">Подтвержден</div>
-              <div class="state-select-drop__item" data-state="state-notconfirm">Не подтвержден</div>
-              <div class="state-select-drop__item" data-state="state-done">Выполнен</div>
-              <div class="state-select-drop__item" data-state="state-cancel"> Отменен</div>
-            </div>
-          </div>
-          <!--====== кнопка ========-->
-          <button class="btn btn--primary" type="submit">Записать на прием</button>
-        </div>
-      </div>
-    </form>
-  </div>
-  <!--=============== jquery ===================-->
-  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
-  <!--=============== swiper ===================-->
-  <script src="./libs/swiper/swiper.js"></script>
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
-  <!--=============== мои скрипты ===================-->
-  <script src="./js/quiz.js"></script>
-  <script src="./js/main.js"></script>
-</body>
-
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!--======= swipe =============-->
+		<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+		<!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+		<meta name="format-detection" content="telephone=no">
+		<!--===================favicon ==================================-->
+		<link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+		<link rel="manifest" href="./img/favicon/site.webmanifest">
+		<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./img/favicon/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+		<!--===================opengraf=======================================-->
+		<link rel="stylesheet" href="./fonts/fonts.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<title>Кабинет клиента</title>
+	</head>
+	<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
+		<div id="overlay"></div>
+		<header class="cabinet-header">
+			<div class="container-large">
+				<div class="cabinet-header__content flex-vertical-center">
+					<div class="cabinet-header__logo"><a class="custom-logo" href="index.html"><img src="./img/logo2.png" width="106" alt="logo"/></a></div>
+					<div class="cabinet-header__menu">
+						<div class="myTabs-buttons"><a class="btn-bt myTabs-btn active" href="page-schedule.html">Расписание</a><a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a><a class="btn-bt myTabs-btn" href="visitor-page.html">Пациенты</a><a class="btn-bt myTabs-btn" href="employees-page.html">Сотрудники</a>
+						</div>
+					</div>
+					<div class="cabinet-header__profile flex-vertical-center gap-32">
+						<div class="select-work-place">
+							<div class="mySelect mySelect--absolute">
+								<div class="mySelect-input form-box-input">
+									<input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор"/>
+								</div>
+							</div>
+						</div>
+						<div class="help-info">?</div>
+						<div class="customDrop customDrop--right drop-click-close">
+							<div class="customDrop__btn round-icon">
+								<div class="icon-notify"></div>
+							</div>
+							<div class="customDrop__list">
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Включить звук</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 15 минут</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 30 минут</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 1 час</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 8 часов</span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="cabinet-header__avatar">ГМ</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--====== ячейки, для которых нет записи имеют дополнительный класс - "forbid-appoint", который делает их серого цвета.  Ячейки, в которых уже есть запись дополнительные классы в зависимости от состояния записи 'state-confirm',  'state-done', 'state-notconfirm'  Модальное окно при кике по ячейке открывается за счет атрибута frame-btn Значние атрибуда открывает модальное окно, у которого такое же значение атрибута  frame-modal.  frame-btn="appointment-modal" откроет модальное окно frame-modal="appointment-modal" ===============================================-->
+		<div class="cabinet-body">
+			<div class="container-large">
+				<div class="schedule-page cabinet-page-grid">
+					<div class="cabinet-page-sidebar">
+						<!--========== календарь ==============-->
+						<div class="sidebar-calendar">
+							<div class="datepicker mydatepicker">
+								<input type="hidden" id="datepicker_value" value="01.02.2022">
+							</div>
+							<button class="btn-32 btn--primary w-100 mt-16"> Сегодня</button>
+						</div>
+						<!--========== выпадашки ==============-->
+						<div class="sidebar-filters">
+							<div class="mySelect mySelect--absolute">
+								<div class="mySelect-input form-box-input">
+									<input class="selectValue form-input" type="text" readonly="readonly" value="Специальность"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт"/>
+								</div>
+							</div>
+							<!--======выпадающий селект с чекбоксами ==============-->
+							<div class="mySelect mySelect--absolute">
+								<div class="mySelect-input form-box-input">
+									<input class="selectValue form-input" type="text" readonly="readonly" value="Сотрудник"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<label class="checkbox-label flex-box flex-y-center">
+										<input class="real-checkbox" type="checkbox" name="form-checkbox"/><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Кикабидзе В.</span>
+									</label>
+									<label class="checkbox-label flex-box flex-y-center">
+										<input class="real-checkbox" type="checkbox" name="form-checkbox"/><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Кипиани А.</span>
+									</label>
+									<label class="checkbox-label flex-box flex-y-center">
+										<input class="real-checkbox" type="checkbox" name="form-checkbox"/><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Брегвадзе Н.</span>
+									</label>
+									<label class="checkbox-label flex-box flex-y-center">
+										<input class="real-checkbox" type="checkbox" name="form-checkbox"/><span class="custom-checkbox"> </span><span class="custom-checkbox__text">Чиаурели С.</span>
+									</label>
+								</div>
+							</div>
+							<!--==== сбросить фильтры =====-->
+							<button class="btn-32 btn--orange w-100 mt-16"> Сбросить фильтры</button>
+						</div>
+						<!--========== цветные маркеры ==============-->
+						<div class="sidebar-markers">
+							<div class="marker-color" title="Не подтвержден">1</div>
+							<div class="marker-color marker-color--blue" title="Подтвержден">0</div>
+							<div class="marker-color marker-color--green" title="Начат визит">0</div>
+							<div class="marker-color marker-color--gray" title="Выполнен">0</div>
+						</div>
+					</div>
+					<div class="schedule-page__table minified">
+						<div class="schedule__table-header flex-vertical-center flex-between">
+							<div class="icon-btn arrow-left"></div>
+							<div class="schedule__table-header-center"> 23 декабря</div>
+							<div class="icon-btn arrow-right"></div>
+						</div>
+						<div class="table-wrapper">
+							<div class="schedule-table-time-column pb-24">
+								<div class="time-column-header"><span>Шаг</span></div>
+								<div class="time-column-scroll">
+									<div class="time-column-cell">8:00</div>
+									<div class="time-column-cell">8:30</div>
+									<div class="time-column-cell">9:00</div>
+									<div class="time-column-cell">9:30</div>
+									<div class="time-column-cell">10:00</div>
+									<div class="time-column-cell">10:30</div>
+									<div class="time-column-cell">11:00</div>
+									<div class="time-column-cell">11:30</div>
+									<div class="time-column-cell">12:00</div>
+									<div class="time-column-cell">12:30</div>
+									<div class="time-column-cell">13:00</div>
+									<div class="time-column-cell">13:30</div>
+									<div class="time-column-cell">14:00</div>
+									<div class="time-column-cell">14:30</div>
+									<div class="time-column-cell">15:00</div>
+									<div class="time-column-cell">15:30</div>
+									<div class="time-column-cell">16:00</div>
+									<div class="time-column-cell">16:30</div>
+									<div class="time-column-cell">17:00</div>
+									<div class="time-column-cell">17:30</div>
+									<div class="time-column-cell">18:00</div>
+									<div class="time-column-cell">18:30</div>
+									<div class="time-column-cell">19:00</div>
+									<div class="time-column-cell">19:30</div>
+									<div class="time-column-cell">20:00</div>
+									<div class="time-column-cell">20:30</div>
+									<div class="time-column-cell">21:00</div>
+									<div class="time-column-cell">21:30</div>
+									<div class="time-column-cell">22:00</div>
+									<div class="time-column-cell">22:30</div>
+									<div class="time-column-cell">23:00</div>
+									<div class="time-column-cell">23:30</div>
+									<div class="time-column-cell">00:00</div>
+								</div>
+							</div>
+							<div class="cabinet-table-block">
+								<div class="cabinet-table-header pr-24">
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+									<div class="cell"><a href="empl-schedule.html">Фамилия</a>
+										<div class="pause-icon__wrapper" frame-btn="pause-info">
+											<div class="pause-icon" title="добавить перерыв"></div>
+										</div>
+									</div>
+								</div>
+								<div class="schedule-scrollbar-block">
+									<table>
+										<tbody>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell state-started" rowspan="2" frame-btn="visit-info">
+													<p>Беридзе Н. </p><span>9:00-10:00</span>
+												</td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell state-confirm" frame-btn="visit-info">
+													<p>Беридзе Н. </p><span>8:00-9:30</span>
+												</td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell state-done" frame-btn="visit-info">
+													<p>Беридзе Н. </p><span>13:00-13:30</span>
+												</td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell forbid-appoint"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell state-notconfirm" frame-btn="visit-info">
+													<p>Беридзе Н. </p><span>15:30-16:00</span>
+												</td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+											<tr class="table-row">
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+												<td class="schedule-table-cell" frame-btn="appointment-modal"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--================== добавить паузу для страницы  Расписание ==============-->
+		<div class="modal-frame-wrapper modal-frame-right column-modal" frame-modal="pause-info">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head flex-box flex-y-center flex-between">
+					<div class="text-24">Добавление перерыва</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<form class="pause-form flex-column gap-32">
+						<div class="pause-form__head">
+							<div class="text-24">Голетиани Мариам</div>
+							<div class="text-16 mt-8">Стоматолог, Ортодонт</div>
+						</div>
+						<div class="pause-form__title text-bold mb-16">Время перерыва</div>
+						<div class="pause-form__fields flex-vertical-center gap-32">
+							<div class="form-item">
+								<input class="form-input" type="text" placeholder="Начало">
+							</div>
+							<div class="form-item">
+								<input class="form-input" type="text" placeholder="Окончание">
+							</div>
+							<div class="pause-form__switch">
+								<label class="switch-toggle flex-box flex-y-center">
+									<input class="toggle-switch" type="checkbox"><span class="real-switch"></span><span class="custom-switch__text">Весь день</span>
+								</label>
+							</div>
+						</div>
+						<div class="form-textarea">
+							<textarea placeholder="Комментарий"></textarea>
+						</div>
+						<div class="form-btns flex-vertical-center gap-20 mt-auto">
+							<button class="btn btn--primary" type="submit">Добавить</button>
+							<button class="btn btn--orange" frame-close>Отменить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--================== Информация о приеме мод окно ==============-->
+		<div class="modal-frame-wrapper modal-frame-right" frame-modal="visit-info">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head border-none flex-box flex-y-center flex-between">
+					<div class="text-24">Информация о приеме</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<div class="modal-table">
+						<table>
+							<tbody>
+								<tr>
+									<td>Дата</td>
+									<td class="edit-visit-date">
+										<div class="mydatepicker">
+											<input class="form-input datepicker" type="text" value="20.04.2023">
+										</div>
+									</td>
+								</tr>
+								<tr class="edit-visit-time">
+									<td>Время</td>
+									<td class="flex-vertical-center gap-16">
+										<!--== окошко  tooltip-error-text отображается при наличии класса visible. Оно содержит информацию, что время не может быть выбрано. Сейчас по дефолту у него есть класс visible, что оно отображалось. Рендерить его надо внутри дива с классом pos-rel после инпутов-->
+										<!--=== Инпуту красную рамку задает класс input-notvalid== --><span>c</span>
+										<div class="flex-vertical-center gap-4 pos-rel">
+											<input class="form-input input-notvalid" type="number" name="" value="09"><span>:</span>
+											<input class="form-input input-notvalid" type="number" name="" value="30">
+											<div class="tooltip-error-text tooltip-modal tooltip-modal--mini text-12 visible">
+												<p>Время недоступно, </p>
+												<p>выберите другое</p>
+												<div class="tooltip-close icon-close"></div>
+											</div>
+										</div><span>до</span>
+										<!--==== класс .input-notvalid задает красную рамку для инпут. Класс visible делает видимым  тултип-->
+										<div class="flex-vertical-center gap-4 pos-rel">
+											<input class="form-input" type="number" name="" value="10"><span>:</span>
+											<input class="form-input" type="number" name="" value="30">
+										</div>
+									</td>
+								</tr>
+								<tr class="doctor-info">
+									<td>Врач</td>
+									<td><span>Лордкипанидзе Мария</span><span>Невролог</span></td>
+								</tr>
+								<tr>
+									<td>Цель визита</td>
+									<td>ПРИЕМ НЕВРОЛОГА</td>
+								</tr>
+								<tr>
+									<td>Канал привлечения</td>
+									<td>ВКонтакте</td>
+								</tr>
+								<tr class="visiter-info">
+									<td>Пациент</td>
+									<td><a href="visitor-edit-page.html">
+											<p><span>Миронов Роман</span><span class="edit-item" title="редактировать"></span></p><span>8(792)196-48-84
+												<div class="copy-icon" title="копировать"></div></span></a></td>
+								</tr>
+								<tr>
+									<td>Возраст</td>
+									<td>03.06.1989 (33 года)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="modal-frame__footer mt-auto flex-box">
+					<div class="state-select state-select--opentop">
+						<div class="state-select-current" data-state="state-started">Начат прием</div>
+						<div class="state-select-drop">
+							<div class="state-select-drop__item" data-state="state-started">Начат прием</div>
+							<div class="state-select-drop__item" data-state="state-confirm">Подтвержден</div>
+							<div class="state-select-drop__item" data-state="state-notconfirm">Не подтвержден</div>
+							<div class="state-select-drop__item" data-state="state-done">Выполнен</div>
+							<div class="state-select-drop__item" data-state="state-cancel"> Отменен</div>
+						</div>
+					</div>
+					<div class="ml-auto">
+						<button class="btn btn-44">Сохранить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--================== Запись на прием через кабинет  ==============-->
+		<div class="modal-frame-wrapper modal-frame-right modal-scroll" frame-modal="appointment-modal">
+			<form class="appointment-form modal-frame flex-column">
+				<div class="modal-frame__head flex-box flex-y-center flex-between">
+					<div class="text-24">Запись на прием</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body scroll-vertical">
+					<div class="appointment-form-header modal-scroll-header">
+						<div class="flex-box btn-toggle-block">
+							<label class="btn--toggle">
+								<input class="filter-radiobtn" type="radio" name="visitor-type" checked>
+								<div class="btn"><span>Взрослый</span></div>
+							</label>
+							<label class="btn--toggle">
+								<input class="filter-radiobtn" type="radio" name="visitor-type">
+								<div class="btn"><span>Ребенок</span></div>
+							</label>
+							<label class="btn--toggle">
+								<input class="filter-radiobtn" type="radio" name="visitor-type">
+								<div class="btn"><span>Недееспособный гражданин</span></div>
+							</label>
+						</div>
+					</div>
+					<div class="cabinet-form-body">
+						<div class="fieldset-group mb-24">
+							<div class="title-18 mb-24">Данные пациента</div>
+							<div class="cabinet-form__name mb-24">
+								<div class="form-box pos-rel">
+									<label class="text-16">Фамилия</label>
+									<input class="form-input" type="text">
+									<!--====== .autocomplit-list -заготовка под блок с фамилиями для автоподстановки. Скрыта через класс d-none. -->
+									<div class="autocomplete-list scroll-vertical d-none">
+										<ul>
+											<li>Иванидзе</li>
+											<li>Иванидзе</li>
+											<li>Иванидзе</li>
+										</ul>
+									</div>
+								</div>
+								<div class="form-box">
+									<label class="text-16">Имя</label>
+									<input class="form-input" type="text">
+								</div>
+								<div class="form-box">
+									<label class="text-16">Отчество</label>
+									<input class="form-input" type="text">
+								</div>
+							</div>
+							<div class="cabinet-form__gender gap-32 mb-24 grid-355">
+								<div class="form-box">
+									<label class="text-16">Пол</label>
+									<div class="flex-vertical-center gap-32">
+										<label class="radiobutton-label flex-box">
+											<input class="real-radio" type="radio" value="men" name="gender-radio" checked><span class="custom-radio"></span><span class="custom-radio__text">Мужской</span>
+										</label>
+										<label class="radiobutton-label flex-box">
+											<input class="real-radio" type="radio" value="woomen" name="gender-radio"><span class="custom-radio"></span><span class="custom-radio__text">Женский</span>
+										</label>
+									</div>
+								</div>
+								<div class="form-box">
+									<label class="text-16">Дата рождения</label>
+									<div class="mydatepicker">
+										<input class="form-input datepicker" type="text">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cabinet-form__contacts mb-24 flex-vertical-center gap-32 flex-grow">
+							<div class="form-box pos-rel">
+								<label class="text-16">Телефон</label>
+								<input class="form-input" type="text">
+								<!--====== .autocomplit-list -заготовка под блок с фамилиями для автоподстановки. Скрыта через класс d-none -->
+								<div class="autocomplete-list scroll-vertical">
+									<ul>
+										<li>+9995888777</li>
+										<li>+9995888777</li>
+										<li>+9995888777</li>
+									</ul>
+								</div>
+							</div>
+							<div class="form-box">
+								<label class="text-16">Дополнительный телефон</label>
+								<input class="form-input" type="text">
+							</div>
+						</div>
+						<div class="fieldset-group fieldset-group-time mb-24">
+							<div class="title-18 mb-24">Дата и время приема</div>
+							<div class="flex-vertical-center gap-32">
+								<div class="form-box">
+									<label class="text-16">Дата приема</label>
+									<div class="mydatepicker">
+										<input class="form-input datepicker" type="text">
+									</div>
+								</div>
+								<div class="form-box">
+									<div class="mySelect mySelect--absolute">
+										<label class="text-16">Начало приема
+										</label>
+										<div class="mySelect-input form-box-input">
+											<input class="selectValue form-input" type="text" readonly="readonly" value=""/>
+										</div>
+										<div class="mySelect-drop scroll-vertical">
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:00"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-box">
+									<div class="mySelect mySelect--absolute">
+										<label class="text-16">Окончание приема
+										</label>
+										<div class="mySelect-input form-box-input">
+											<input class="selectValue form-input" type="text" readonly="readonly" value=""/>
+										</div>
+										<div class="mySelect-drop scroll-vertical">
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="8:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="9:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:00"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="10:30"/>
+											<input class="mySelect-options" type="text" readonly="readonly" value="11:00"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="fieldset-group fieldset-group-doctor mb-24">
+							<div class="title-18 mb-24">Данные о враче</div>
+							<div class="flex-vertical-center gap-32 flex-grow mb-24">
+								<div class="mySelect mySelect--absolute">
+									<div class="mySelect-input form-box-input">
+										<input class="selectValue form-input" type="text" readonly="readonly" value="Фамилия И.О."/>
+									</div>
+									<div class="mySelect-drop scroll-vertical">
+										<input class="mySelect-options" type="text" readonly="readonly" value="Беридзе Н."/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Чикрадзе Э. С.С."/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Золотов Е. П."/>
+									</div>
+								</div>
+								<div class="mySelect mySelect--absolute">
+									<div class="mySelect-input form-box-input">
+										<input class="selectValue form-input" type="text" readonly="readonly" value="Специалист"/>
+									</div>
+									<div class="mySelect-drop scroll-vertical">
+										<input class="mySelect-options" type="text" readonly="readonly" value="Стоматолог"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Ортодонт"/>
+									</div>
+								</div>
+							</div>
+							<div class="mb-24">
+								<div class="mySelect mySelect--absolute">
+									<div class="mySelect-input form-box-input">
+										<input class="selectValue form-input" type="text" readonly="readonly" value="Рекомендовавший врач"/>
+									</div>
+									<div class="mySelect-drop scroll-vertical">
+										<input class="mySelect-options" type="text" readonly="readonly" value="Беридзе Н."/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Чикрадзе Э. С.С."/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Золотов Е. П."/>
+									</div>
+								</div>
+							</div>
+							<div class="mb-24">
+								<div class="mySelect mySelect--absolute">
+									<div class="mySelect-input form-box-input">
+										<input class="selectValue form-input" type="text" readonly="readonly" value="Канал привлечения"/>
+									</div>
+									<div class="mySelect-drop scroll-vertical">
+										<input class="mySelect-options" type="text" readonly="readonly" value="undefined"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Telegram"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Google"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Facebook"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Сервис iweek"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="fieldset-group fieldset-group-doctor mb-24">
+							<div class="title-18 mb-24">Добавить услугу</div>
+							<div class="mySelect mySelect--38  ">
+								<div class="mySelect-input">
+									<input class="selectValue form-input" type="text" readonly="" value="Услуга"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<input class="mySelect-options" type="text" readonly="" value="Санация полости рта"/>
+									<input class="mySelect-options" type="text" readonly="" value="Лечение кариеса зубов"/>
+									<input class="mySelect-options" type="text" readonly="" value="Лечение пульпита"/>
+									<input class="mySelect-options" type="text" readonly="" value="Пломбирование каналов зубов"/>
+									<input class="mySelect-options" type="text" readonly="" value="Удаление нерва зуба"/>
+									<input class="mySelect-options" type="text" readonly="" value="Кариес между зубами"/>
+								</div>
+							</div>
+						</div>
+						<div class="fieldset-group mb-24">
+							<div class="form-textarea">
+								<textarea placeholder="Цель визита"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-scroll-footer">
+					<div class="form-btns flex-vertical-center gap-32 flex-between">
+						<!--=====выпадашка ======-->
+						<div class="state-select state-select--opentop">
+							<div class="state-select-current" data-state="state-started">Начат прием</div>
+							<div class="state-select-drop">
+								<div class="state-select-drop__item" data-state="state-started">Начат прием</div>
+								<div class="state-select-drop__item" data-state="state-confirm">Подтвержден</div>
+								<div class="state-select-drop__item" data-state="state-notconfirm">Не подтвержден</div>
+								<div class="state-select-drop__item" data-state="state-done">Выполнен</div>
+								<div class="state-select-drop__item" data-state="state-cancel"> Отменен</div>
+							</div>
+						</div>
+						<!--====== кнопка ========-->
+						<button class="btn btn--primary" type="submit">Записать на прием</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--=============== jquery ===================-->
+		<script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+		<!--=============== swiper ===================-->
+		<script src="./libs/swiper/swiper.js"></script>
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+		<!--=============== мои скрипты ===================-->
+		<script src="./js/quiz.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
 </html>

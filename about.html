@@ -1,1175 +1,824 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--======= swipe =============-->
-  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
-  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
-  <meta name="format-detection" content="telephone=no">
-  <!--===================favicon ==================================-->
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="./img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!--===================opengraf=======================================-->
-  <link rel="stylesheet" href="./fonts/fonts.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <title>О нас</title>
-</head>
-
-<body class="about-page" style="opacity:0;transition:opacity .7s;">
-  <div id="overlay"></div>
-  <button class="btn btn--orange floating-btn btn--shadow">Записаться на прием</button>
-  <header class="header flex-box">
-    <div class="header-content">
-      <div class="container">
-        <!--========= header top ==========-->
-        <div class="header-top flex-box flex-between">
-          <div class="header-top__left flex-vertical-center">
-            <a class="custom-logo" href="index.html">
-              <img src="./img/logo.png" width="136" alt="logo" />
-            </a>
-            <div class="select-city-block">
-              <div class="mySelect mySelect--absolute mySelect-input--icon mySelect--dark mySelect--38">
-                <div class="mySelect-input form-box-input">
-                  <div class="form-box__icon">
-                    <svg class=" svg-map">
-                      <use href="./img/svg-sprite.svg#svg-map"></use>
-                    </svg>
-                  </div>
-                  <input class="selectValue form-input" type="text" readonly="readonly" value="Батуми" />
-                </div>
-                <div class="mySelect-drop scroll-vertical">
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Тбилиси" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Кутаиси" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Зугдиди" />
-                  <input class="mySelect-options" type="text" readonly="readonly" value="Поти" />
-                </div>
-              </div>
-            </div>
-            <div class="toggle-menu" id="toggle-menu"></div>
-          </div>
-          <!--========= header top  right ==========-->
-          <div class="header-top__right" id="header-mobile-menu">
-            <div class="header-wrapper flex-box flex-y-center">
-              <div class="header-contacts flex-box flex-y-center">
-                <div class="soc-block flex-box flex-y-center">
-                  <a href="#!">
-                    <svg class="svg-tg" width="24" height="24">
-                      <use href="./img/svg-sprite.svg#svg-tg"></use>
-                    </svg>
-                  </a>
-                  <a href="#!">
-                    <svg class="svg-wa" width="24" height="24">
-                      <use href="./img/svg-sprite.svg#svg-wa"></use>
-                    </svg>
-                  </a>
-                </div>
-                <div class="phone-block">
-                  <a class="text-icon text-phone text-white" href="#!">+995 551 405 123</a>
-                </div>
-              </div>
-              <button class="btn btn-mini dark-btn" frame-btn="login-modal">
-                <svg class="svg-person" width="16" height="16">
-                  <use href="./img/svg-sprite.svg#svg-person"></use>
-                </svg>
-                <div class="text-white">Войти</div>
-              </button>
-              <!--=============Выбор страны и валюты на экранах от 992 пикс ================-->
-              <div class="mySelect mySelect--absolute mySelect--dark mySelect--radio mySelect--currency">
-                <div class="mySelect-input">
-                  <input class="selectValue input-slim" type="text" readonly="" value="RU • RUB" />
-                </div>
-                <div class="mySelect-drop scroll-vertical">
-                  <div class="mySelect-drop__row">
-                    <label class="radiobutton-label flex-box role-country">
-                      <input class="real-radio" type="radio" name="country" value="EN" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">English</span>
-                    </label>
-                    <label class="radiobutton-label flex-box role-currency">
-                      <input class="real-radio" type="radio" name="currency" value="USD" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">USD</span>
-                    </label>
-                  </div>
-                  <div class="mySelect-drop__row">
-                    <label class="radiobutton-label flex-box role-country">
-                      <input class="real-radio" type="radio" name="country" value="RU" checked="checked" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">Русский</span>
-                    </label>
-                    <label class="radiobutton-label flex-box role-currency">
-                      <input class="real-radio" type="radio" name="currency" value="RUB" checked="checked" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">RUB</span>
-                    </label>
-                  </div>
-                  <div class="mySelect-drop__row">
-                    <label class="radiobutton-label flex-box role-country">
-                      <input class="real-radio" type="radio" name="country" value="GE" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">Georgian</span>
-                    </label>
-                    <label class="radiobutton-label flex-box role-currency">
-                      <input class="real-radio" type="radio" name="currency" value="GEL" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">GEL</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--========== mobile-visible block ==========-->
-            <div class="mobile-menu-block">
-              <!--========== mobile-menu ==========-->
-              <div class="page-nav-mobile">
-                <ul>
-                  <li>
-                    <a href="#">Клиники</a>
-                  </li>
-                  <li class="active">
-                    <a href="prices.html">Цены</a>
-                  </li>
-                  <li>
-                    <a href="#">Детская стоматология</a>
-                  </li>
-                  <li>
-                    <a href="about.html">О нас</a>
-                  </li>
-                </ul>
-              </div>
-              <!--========== btn-coopyright ==========-->
-              <div class="customDrop--dark customDrop--relative">
-                <div class="customDrop">
-                  <div class="btn-coopyright flex-between" type="button">
-                    <span class="text-18 text-white">Сотрудничать с нами</span>
-                  </div>
-                  <div class="customDrop__list">
-                    <div class="customDrop__list-item">
-                      <a class="flex-vertical-center" href="#!">
-                        <svg class="svg-whatsapp" width="20" height="20">
-                          <use href="./img/svg-sprite.svg#svg-whatsapp"></use>
-                        </svg>
-                        <div class="text-14">Whats App</div>
-                      </a>
-                    </div>
-                    <div class="customDrop__list-item">
-                      <a class="flex-vertical-center" href="#!">
-                        <svg class="svg-telegram" width="20" height="20">
-                          <use href="./img/svg-sprite.svg#svg-telegram"></use>
-                        </svg>
-                        <div class="text-14">Telegram</div>
-                      </a>
-                    </div>
-                    <div class="customDrop__list-item">
-                      <a class="flex-vertical-center" href="#!">
-                        <svg class="svg-facebook" width="20" height="20">
-                          <use href="./img/svg-sprite.svg#svg-facebook"></use>
-                        </svg>
-                        <div class="text-14">Facebook Messenger</div>
-                      </a>
-                    </div>
-                    <div class="customDrop__list-item">
-                      <a class="flex-vertical-center" href="#!">
-                        <svg class="svg-viber" width="20" height="20">
-                          <use href="./img/svg-sprite.svg#svg-viber"></use>
-                        </svg>
-                        <div class="text-14">Viber</div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--=============Выбор страны и валюты на экранах от 375 до 991 пикс ================	-->
-              <div class="mobile-menu-currency">
-                <ul>
-                  <li>
-                    <label class="radiobutton-label flex-box role-country">
-                      <input class="real-radio" type="radio" name="country-mob" value="EN" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">English</span>
-                    </label>
-                    <label class="radiobutton-label flex-box role-currency">
-                      <input class="real-radio" type="radio" name="currency-mob" value="USD" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">USD</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="radiobutton-label flex-box role-country">
-                      <input class="real-radio" type="radio" name="country-mob" value="RU" checked="checked" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">Русский</span>
-                    </label>
-                    <label class="radiobutton-label flex-box role-currency">
-                      <input class="real-radio" type="radio" name="currency-mob" value="RUB" checked="checked" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">RUB</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="radiobutton-label flex-box role-country">
-                      <input class="real-radio" type="radio" name="country-mob" value="GE" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">Georgian</span>
-                    </label>
-                    <label class="radiobutton-label flex-box role-currency">
-                      <input class="real-radio" type="radio" name="currency-mob" value="GEL;" />
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">GEL;</span>
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--========= header center ==========-->
-        <div class="header-center">
-          <div class="header-title">
-            <h1 class="text-44 text-white">Лучшие специалисты в сфере стоматологии</h1>
-            <div class="text-24">Оказываем экстренную помощь</div>
-          </div>
-          <div class="header-categories flex-box">
-            <a class="category-label" href="#!">
-              <object type="image/svg+xml" data="./img/diagnost.svg"></object>
-              <span class="text-medium">Диагностика</span>
-            </a>
-            <a class="category-label" href="#!">
-              <object type="image/svg+xml" data="./img/terap.svg"></object>
-              <span class="text-medium">Терапия</span>
-            </a>
-            <a class="category-label" href="#!">
-              <object type="image/svg+xml" data="./img/hirurg.svg"></object>
-              <span class="text-medium">Хирургия</span>
-            </a>
-            <a class="category-label" href="#!">
-              <object type="image/svg+xml" data="./img/implant.svg"></object>
-              <span class="text-medium">Имплантация</span>
-            </a>
-            <a class="category-label" href="#!">
-              <object type="image/svg+xml" data="./img/apple.svg"></object>
-              <span class="text-medium">Детская стоматология</span>
-            </a>
-            <a class="category-label" href="#!">
-              <object type="image/svg+xml" data="./img/paradent.svg"></object>
-              <span class="text-medium">Пародонтология</span>
-            </a>
-          </div>
-          <div class="header-button">
-            <div class="btn-64 btn--accent">
-              <object type="image/svg+xml" data="./img/extra-white.svg" width="24"></object>
-              <span>У меня экстренная ситуация</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--========= header-menu for desktop==========-->
-    <div class="header-menu flex-box flex-between">
-      <div class="container">
-        <div class="header-menu-content flex-box flex-between flex-y-center">
-          <div class="page-nav">
-            <ul>
-              <li>
-                <a href=" #">Клиники</a>
-              </li>
-              <li>
-                <a href=" prices.html">Цены</a>
-              </li>
-              <li>
-                <a href=" #">Детская стоматология</a>
-              </li>
-              <li class="active">
-                <a href=" about.html">О нас</a>
-              </li>
-            </ul>
-          </div>
-          <div class="header-menu-coopyright">
-            <div class="customDrop">
-              <div class="customDrop__btn tooltip-block">
-                <!--======tooltip=======-->
-                <div class="tooltip-body">
-                  <p>Вы можете принять участие в опросе по улучшению сервиса (стать респондентом) или стать агентом и начать зарабатывать</p>
-                </div>
-                <!--====== end tooltip=======-->
-                <div class="btn-coopyright flex-between" type="button">
-                  <div class="icon-plus"></div>
-                  <div class="icon-minus"></div>
-                  <span class="text-18 text-white">Сотрудничать с нами</span>
-                </div>
-              </div>
-              <div class="customDrop__list">
-                <div class="customDrop__list-item">
-                  <a class="flex-vertical-center" href="#!">
-                    <svg class="svg-whatsapp" width="20" height="20">
-                      <use href="./img/svg-sprite.svg#svg-whatsapp"></use>
-                    </svg>
-                    <div class="text-14">Whats App</div>
-                  </a>
-                </div>
-                <div class="customDrop__list-item">
-                  <a class="flex-vertical-center" href="#!">
-                    <svg class="svg-telegram" width="20" height="20">
-                      <use href="./img/svg-sprite.svg#svg-telegram"></use>
-                    </svg>
-                    <div class="text-14">Telegram</div>
-                  </a>
-                </div>
-                <div class="customDrop__list-item">
-                  <a class="flex-vertical-center" href="#!">
-                    <svg class="svg-facebook" width="20" height="20">
-                      <use href="./img/svg-sprite.svg#svg-facebook"></use>
-                    </svg>
-                    <div class="text-14">Facebook Messenger</div>
-                  </a>
-                </div>
-                <div class="customDrop__list-item">
-                  <a class="flex-vertical-center" href="#!">
-                    <svg class="svg-viber" width="20" height="20">
-                      <use href="./img/svg-sprite.svg#svg-viber"></use>
-                    </svg>
-                    <div class="text-14">Viber</div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!--======== основной контент страницы О нас =========-->
-  <main class="about-page-content">
-    <section class="about-description">
-      <div class="container">
-        <div class="about-description__title">
-          <div class="text-44">О нас</div>
-        </div>
-        <div class="about-description__wrapper">
-          <div class="about-description__left">
-            <p class="text-24 text-primary">Проекция угловых скоростей связывает ньютонометр. Проекция абсолютной угловой скорости на оси системы координат xyz, как следует из системы уравнений, трудна в описании. Период, согласно уравнениям Лагранжа, стабилизирует твердый момент сил. </p>
-          </div>
-          <div class="about-description__right text-18">
-            <p>Маховик, как можно показать с помощью не совсем тривиальных вычислений, устойчив. Устойчивость по Ляпунову заставляет иначе взглянуть на то, что такое ускоряющийся ротор. Кинетический момент влияет на составляющие гироскопического момента больше, чем апериодический центр подвеса. Точность крена вертикально не входит своими составляющими, что очевидно, в силы нормальных реакций связей, так же как и прецессионный подшипник подвижного объекта.</p>
-            <p>Управление полётом самолёта стабилизирует прецизионный момент сил, что видно из уравнения кинетической энергии ротора. Абсолютно твёрдое тело даёт большую проекцию на оси, чем лазерный стабилизатор. Угловая скорость опасна. Прямолинейное равноускоренное движение основания, согласно третьему закону Ньютона, поступательно переворачивает уход гироскопа. Ось ротора принципиально не входит своими составляющими, что очевидно, в силы нормальных реакций связей, так же как и ньютонометр. Ось собственного вращения последовательно связывает угол крена.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--================= Экстренная ситуация =================-->
-    <section class="emergency">
-      <div class="container">
-        <div class="emergency-content">
-          <div class="section-title text-center text-white">
-            <h2 class="text-44">Экстренная ситуация</h2>
-            <div class="text-24">Срочная помощь 24/7</div>
-          </div>
-          <div class="emergency-slider-wrapper">
-            <div class="emergency-slider swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <!--===============одна карточка врача =========================-->
-                  <div class="doc-card flex-box">
-                    <!--====== card img =======-->
-                    <div class="doc-card__left doc-card__left flex-column flex-between">
-                      <div class="doc-card__foto-block">
-                        <div class="doc-card__foto">
-                          <label class="check-label flex-center flex-box">
-                            <input type="checkbox" />
-                            <svg class="svg-heart" width="16" height="16">
-                              <use href="./img/svg-sprite.svg#svg-heart"></use>
-                            </svg>
-                          </label>
-                          <img src="./img/doctor.png" width="140" height="140" alt="alt" />
-                        </div>
-                        <!--==== заголовок карточки  на моб версии ======-->
-                        <div class="doc-card__title-mobile hidden-fl-992">
-                          <div class="card-header">
-                            <div class="flex-vertical-center gap-16">
-                              <div class="text-14 text-gray">Мушкудиани Т.</div>
-                              <div class="text-14 text-gray3">Работаем со страховкой</div>
-                            </div>
-                            <div class="text-24 mb-8">Антадзе Тамар</div>
-                            <div class="card-header__list">
-                              <div class="text-14 text-gray3">Офтальмолог</div>
-                              <div class="text-14 text-gray3">Дерматовенеролог </div>
-                              <div class="text-14 text-gray3">Мануальный терапевт</div>
-                              <div class="text-14 text-gray3">Стаж 17 лет</div>
-                              <div class="text-14 text-gray3">Высшая категория</div>
-                            </div>
-                          </div>
-                          <div class="rating-group hidden-992 flex-vertical-center">
-                            <p class="rating-block" data-rating="data-rating">
-                              <span class="rating-block-passive">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                              </span>
-                              <span class="rating-block-active" data-count="4.4">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                              </span>
-                            </p>
-                            <object>
-                              <a class="text-14 text-indigo" href="#!">9 отзывов</a>
-                            </object>
-                          </div>
-                        </div>
-                        <!--====== рейтинг для декстоп версии (скрыт на моб версии)======-->
-                        <div class="rating-group block-992">
-                          <p class="rating-block" data-rating="data-rating">
-                            <span class="rating-block-passive">
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                            </span>
-                            <span class="rating-block-active" data-count="4.4">
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                            </span>
-                          </p>
-                          <object>
-                            <a class="text-14 text-indigo" href="#!">9 отзывов</a>
-                          </object>
-                        </div>
-                      </div>
-                      <div class="card-flag">
-                        <div class="card-flag__item">
-                          <img src="./img/flag/en-32.png" width="24" alt="icon" />
-                        </div>
-                        <div class="card-flag__item">
-                          <img src="./img/flag/rus-32.png" width="24" alt="icon" />
-                        </div>
-                        <div class="card-flag__item">
-                          <img src="./img/flag/tur-32.png" width="24" alt="icon" />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="doc-card__body">
-                      <div class="doc-card__info">
-                        <!--====== card doc info =======-->
-                        <div class="doc-card__center">
-                          <div class="card-header block-992">
-                            <div class="flex-vertical-center gap-16">
-                              <div class="text-14 text-gray">Мушкудиани Т.</div>
-                              <div class="text-14 text-gray3">Работаем со страховкой</div>
-                            </div>
-                            <div class="text-24 mb-8">Антадзе Тамар</div>
-                            <div class="card-header__list">
-                              <div class="text-14 text-gray3">Офтальмолог</div>
-                              <div class="text-14 text-gray3">Дерматовенеролог </div>
-                              <div class="text-14 text-gray3">Мануальный терапевт</div>
-                              <div class="text-14 text-gray3">Стаж 17 лет</div>
-                              <div class="text-14 text-gray3">Высшая категория</div>
-                            </div>
-                          </div>
-                          <div class="doc-card-cat">
-                            <div class="label-light-wrapper gap-8 flex-wrapper">
-                              <div class="label-light">
-                                <span class="text-medium">Диагностика</span>
-                              </div>
-                              <div class="label-light">
-                                <span class="text-medium">Хирургия</span>
-                              </div>
-                              <div class="label-light">
-                                <span class="text-medium">Пародонтология</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="card-serv-wrapper flex-box">
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Консультация</div>
-                              <div class="text-18">Бесплатно</div>
-                            </div>
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Диагностика</div>
-                              <div class="text-18">100 &#8382;</div>
-                            </div>
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Хирургия</div>
-                              <div class="text-18">от 300 &#8382;</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="doc-card__footer">
-                        <div class="doc-card__contacts flex-vertical-center">
-                          <object>
-                            <div class="doc-card__contacts-item flex-vertical-center">
-                              <a class="text-icon text-phone" href="tel:+995551900117">+995 551 90 01 17</a>
-                              <a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span>
-                              </a>
-                            </div>
-                          </object>
-                          <object>
-                            <div class="doc-card__contacts-item flex-vertical-center flex-between">
-                              <a class="text-icon flex-box flex-y-center ml-auto" href="https://yandex.ru/maps/?um=constructor%3A720db28745f688e1d9fb39958cfb6c4f99ba09c04d008593d925824a763138b4&amp;source=constructorLink" target="_blank">
-                                <div class="text-icon__img">
-                                  <object type="image/svg+xml" data="./img/maximize.svg"></object>
-                                </div>
-                                <div class="text-14">Открыть на карте</div>
-                              </a>
-                            </div>
-                          </object>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <!--===============одна карточка врача =========================-->
-                  <div class="doc-card flex-box">
-                    <!--====== card img =======-->
-                    <div class="doc-card__left doc-card__left flex-column flex-between">
-                      <div class="doc-card__foto-block">
-                        <div class="doc-card__foto">
-                          <label class="check-label flex-center flex-box">
-                            <input type="checkbox" />
-                            <svg class="svg-heart" width="16" height="16">
-                              <use href="./img/svg-sprite.svg#svg-heart"></use>
-                            </svg>
-                          </label>
-                          <img src="./img/doctor2.png" width="140" height="140" alt="alt" />
-                        </div>
-                        <!--==== заголовок карточки  на моб версии ======-->
-                        <div class="doc-card__title-mobile hidden-fl-992">
-                          <div class="card-header">
-                            <div class="flex-vertical-center gap-16">
-                              <div class="text-14 text-gray">Мушкудиани Т.</div>
-                              <div class="text-14 text-gray3">Работаем со страховкой</div>
-                            </div>
-                            <div class="text-24 mb-8">Лордкипанидзе Мария</div>
-                            <div class="card-header__list">
-                              <div class="text-14 text-gray3">Офтальмолог</div>
-                              <div class="text-14 text-gray3">Дерматовенеролог </div>
-                              <div class="text-14 text-gray3">Мануальный терапевт</div>
-                              <div class="text-14 text-gray3">Стаж 17 лет</div>
-                              <div class="text-14 text-gray3">Высшая категория</div>
-                            </div>
-                          </div>
-                          <div class="rating-group hidden-992 flex-vertical-center">
-                            <p class="rating-block" data-rating="data-rating">
-                              <span class="rating-block-passive">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                              </span>
-                              <span class="rating-block-active" data-count="4.4">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                              </span>
-                            </p>
-                            <object>
-                              <a class="text-14 text-indigo" href="#!">9 отзывов</a>
-                            </object>
-                          </div>
-                        </div>
-                        <!--====== рейтинг для декстоп версии (скрыт на моб версии)======-->
-                        <div class="rating-group block-992">
-                          <p class="rating-block" data-rating="data-rating">
-                            <span class="rating-block-passive">
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                            </span>
-                            <span class="rating-block-active" data-count="4.4">
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                            </span>
-                          </p>
-                          <object>
-                            <a class="text-14 text-indigo" href="#!">9 отзывов</a>
-                          </object>
-                        </div>
-                      </div>
-                      <div class="card-flag">
-                        <div class="card-flag__item">
-                          <img src="./img/flag/en-32.png" width="24" alt="icon" />
-                        </div>
-                        <div class="card-flag__item">
-                          <img src="./img/flag/rus-32.png" width="24" alt="icon" />
-                        </div>
-                        <div class="card-flag__item">
-                          <img src="./img/flag/tur-32.png" width="24" alt="icon" />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="doc-card__body">
-                      <div class="doc-card__info">
-                        <!--====== card doc info =======-->
-                        <div class="doc-card__center">
-                          <div class="card-header block-992">
-                            <div class="flex-vertical-center gap-16">
-                              <div class="text-14 text-gray">Мушкудиани Т.</div>
-                              <div class="text-14 text-gray3">Работаем со страховкой</div>
-                            </div>
-                            <div class="text-24 mb-8">Лордкипанидзе Мария</div>
-                            <div class="card-header__list">
-                              <div class="text-14 text-gray3">Офтальмолог</div>
-                              <div class="text-14 text-gray3">Дерматовенеролог </div>
-                              <div class="text-14 text-gray3">Мануальный терапевт</div>
-                              <div class="text-14 text-gray3">Стаж 17 лет</div>
-                              <div class="text-14 text-gray3">Высшая категория</div>
-                            </div>
-                          </div>
-                          <div class="doc-card-cat">
-                            <div class="label-light-wrapper gap-8 flex-wrapper">
-                              <div class="label-light">
-                                <span class="text-medium">Диагностика</span>
-                              </div>
-                              <div class="label-light">
-                                <span class="text-medium">Хирургия</span>
-                              </div>
-                              <div class="label-light">
-                                <span class="text-medium">Пародонтология</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="card-serv-wrapper flex-box">
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Консультация</div>
-                              <div class="text-18">Бесплатно</div>
-                            </div>
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Диагностика</div>
-                              <div class="text-18">100 &#8382;</div>
-                            </div>
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Хирургия</div>
-                              <div class="text-18">от 300 &#8382;</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="doc-card__footer">
-                        <div class="doc-card__contacts flex-vertical-center">
-                          <object>
-                            <div class="doc-card__contacts-item flex-vertical-center">
-                              <a class="text-icon text-phone" href="tel:+995551900117">+995 551 90 01 17</a>
-                              <a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span>
-                              </a>
-                            </div>
-                          </object>
-                          <object>
-                            <div class="doc-card__contacts-item flex-vertical-center flex-between">
-                              <a class="text-icon flex-box flex-y-center ml-auto" href="https://yandex.ru/maps/?um=constructor%3A720db28745f688e1d9fb39958cfb6c4f99ba09c04d008593d925824a763138b4&amp;source=constructorLink" target="_blank">
-                                <div class="text-icon__img">
-                                  <object type="image/svg+xml" data="./img/maximize.svg"></object>
-                                </div>
-                                <div class="text-14">Открыть на карте</div>
-                              </a>
-                            </div>
-                          </object>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <!--===============одна карточка врача =========================-->
-                  <div class="doc-card flex-box">
-                    <!--====== card img =======-->
-                    <div class="doc-card__left doc-card__left flex-column flex-between">
-                      <div class="doc-card__foto-block">
-                        <div class="doc-card__foto">
-                          <label class="check-label flex-center flex-box">
-                            <input type="checkbox" />
-                            <svg class="svg-heart" width="16" height="16">
-                              <use href="./img/svg-sprite.svg#svg-heart"></use>
-                            </svg>
-                          </label>
-                          <img src="./img/doctor.png" width="140" height="140" alt="alt" />
-                        </div>
-                        <!--==== заголовок карточки  на моб версии ======-->
-                        <div class="doc-card__title-mobile hidden-fl-992">
-                          <div class="card-header">
-                            <div class="flex-vertical-center gap-16">
-                              <div class="text-14 text-gray">Мушкудиани Т.</div>
-                              <div class="text-14 text-gray3">Работаем со страховкой</div>
-                            </div>
-                            <div class="text-24 mb-8">Антадзе Тамар</div>
-                            <div class="card-header__list">
-                              <div class="text-14 text-gray3">Офтальмолог</div>
-                              <div class="text-14 text-gray3">Дерматовенеролог </div>
-                              <div class="text-14 text-gray3">Мануальный терапевт</div>
-                              <div class="text-14 text-gray3">Стаж 17 лет</div>
-                              <div class="text-14 text-gray3">Высшая категория</div>
-                            </div>
-                          </div>
-                          <div class="rating-group hidden-992 flex-vertical-center">
-                            <p class="rating-block" data-rating="data-rating">
-                              <span class="rating-block-passive">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                              </span>
-                              <span class="rating-block-active" data-count="4.4">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                              </span>
-                            </p>
-                            <object>
-                              <a class="text-14 text-indigo" href="#!">9 отзывов</a>
-                            </object>
-                          </div>
-                        </div>
-                        <!--====== рейтинг для декстоп версии (скрыт на моб версии)======-->
-                        <div class="rating-group block-992">
-                          <p class="rating-block" data-rating="data-rating">
-                            <span class="rating-block-passive">
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                            </span>
-                            <span class="rating-block-active" data-count="4.4">
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                            </span>
-                          </p>
-                          <object>
-                            <a class="text-14 text-indigo" href="#!">9 отзывов</a>
-                          </object>
-                        </div>
-                      </div>
-                      <div class="card-flag">
-                        <div class="card-flag__item">
-                          <img src="./img/flag/en-32.png" width="24" alt="icon" />
-                        </div>
-                        <div class="card-flag__item">
-                          <img src="./img/flag/rus-32.png" width="24" alt="icon" />
-                        </div>
-                        <div class="card-flag__item">
-                          <img src="./img/flag/tur-32.png" width="24" alt="icon" />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="doc-card__body">
-                      <div class="doc-card__info">
-                        <!--====== card doc info =======-->
-                        <div class="doc-card__center">
-                          <div class="card-header block-992">
-                            <div class="flex-vertical-center gap-16">
-                              <div class="text-14 text-gray">Мушкудиани Т.</div>
-                              <div class="text-14 text-gray3">Работаем со страховкой</div>
-                            </div>
-                            <div class="text-24 mb-8">Антадзе Тамар</div>
-                            <div class="card-header__list">
-                              <div class="text-14 text-gray3">Офтальмолог</div>
-                              <div class="text-14 text-gray3">Дерматовенеролог </div>
-                              <div class="text-14 text-gray3">Мануальный терапевт</div>
-                              <div class="text-14 text-gray3">Стаж 17 лет</div>
-                              <div class="text-14 text-gray3">Высшая категория</div>
-                            </div>
-                          </div>
-                          <div class="doc-card-cat">
-                            <div class="label-light-wrapper gap-8 flex-wrapper">
-                              <div class="label-light">
-                                <span class="text-medium">Диагностика</span>
-                              </div>
-                              <div class="label-light">
-                                <span class="text-medium">Хирургия</span>
-                              </div>
-                              <div class="label-light">
-                                <span class="text-medium">Пародонтология</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="card-serv-wrapper flex-box">
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Консультация</div>
-                              <div class="text-18">Бесплатно</div>
-                            </div>
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Диагностика</div>
-                              <div class="text-18">100 &#8382;</div>
-                            </div>
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Хирургия</div>
-                              <div class="text-18">от 300 &#8382;</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="doc-card__footer">
-                        <div class="doc-card__contacts flex-vertical-center">
-                          <object>
-                            <div class="doc-card__contacts-item flex-vertical-center">
-                              <a class="text-icon text-phone" href="tel:+995551900117">+995 551 90 01 17</a>
-                              <a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span>
-                              </a>
-                            </div>
-                          </object>
-                          <object>
-                            <div class="doc-card__contacts-item flex-vertical-center flex-between">
-                              <a class="text-icon flex-box flex-y-center ml-auto" href="https://yandex.ru/maps/?um=constructor%3A720db28745f688e1d9fb39958cfb6c4f99ba09c04d008593d925824a763138b4&amp;source=constructorLink" target="_blank">
-                                <div class="text-icon__img">
-                                  <object type="image/svg+xml" data="./img/maximize.svg"></object>
-                                </div>
-                                <div class="text-14">Открыть на карте</div>
-                              </a>
-                            </div>
-                          </object>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <!--===============одна карточка врача =========================-->
-                  <div class="doc-card flex-box">
-                    <!--====== card img =======-->
-                    <div class="doc-card__left doc-card__left flex-column flex-between">
-                      <div class="doc-card__foto-block">
-                        <div class="doc-card__foto">
-                          <label class="check-label flex-center flex-box">
-                            <input type="checkbox" />
-                            <svg class="svg-heart" width="16" height="16">
-                              <use href="./img/svg-sprite.svg#svg-heart"></use>
-                            </svg>
-                          </label>
-                          <img src="./img/doctor2.png" width="140" height="140" alt="alt" />
-                        </div>
-                        <!--==== заголовок карточки  на моб версии ======-->
-                        <div class="doc-card__title-mobile hidden-fl-992">
-                          <div class="card-header">
-                            <div class="flex-vertical-center gap-16">
-                              <div class="text-14 text-gray">Мушкудиани Т.</div>
-                              <div class="text-14 text-gray3">Работаем со страховкой</div>
-                            </div>
-                            <div class="text-24 mb-8">Лордкипанидзе Мария</div>
-                            <div class="card-header__list">
-                              <div class="text-14 text-gray3">Офтальмолог</div>
-                              <div class="text-14 text-gray3">Дерматовенеролог </div>
-                              <div class="text-14 text-gray3">Мануальный терапевт</div>
-                              <div class="text-14 text-gray3">Стаж 17 лет</div>
-                              <div class="text-14 text-gray3">Высшая категория</div>
-                            </div>
-                          </div>
-                          <div class="rating-group hidden-992 flex-vertical-center">
-                            <p class="rating-block" data-rating="data-rating">
-                              <span class="rating-block-passive">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                              </span>
-                              <span class="rating-block-active" data-count="4.4">
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                                <i></i>
-                              </span>
-                            </p>
-                            <object>
-                              <a class="text-14 text-indigo" href="#!">9 отзывов</a>
-                            </object>
-                          </div>
-                        </div>
-                        <!--====== рейтинг для декстоп версии (скрыт на моб версии)======-->
-                        <div class="rating-group block-992">
-                          <p class="rating-block" data-rating="data-rating">
-                            <span class="rating-block-passive">
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                            </span>
-                            <span class="rating-block-active" data-count="4.4">
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                              <i></i>
-                            </span>
-                          </p>
-                          <object>
-                            <a class="text-14 text-indigo" href="#!">9 отзывов</a>
-                          </object>
-                        </div>
-                      </div>
-                      <div class="card-flag">
-                        <div class="card-flag__item">
-                          <img src="./img/flag/en-32.png" width="24" alt="icon" />
-                        </div>
-                        <div class="card-flag__item">
-                          <img src="./img/flag/rus-32.png" width="24" alt="icon" />
-                        </div>
-                        <div class="card-flag__item">
-                          <img src="./img/flag/tur-32.png" width="24" alt="icon" />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="doc-card__body">
-                      <div class="doc-card__info">
-                        <!--====== card doc info =======-->
-                        <div class="doc-card__center">
-                          <div class="card-header block-992">
-                            <div class="flex-vertical-center gap-16">
-                              <div class="text-14 text-gray">Мушкудиани Т.</div>
-                              <div class="text-14 text-gray3">Работаем со страховкой</div>
-                            </div>
-                            <div class="text-24 mb-8">Лордкипанидзе Мария</div>
-                            <div class="card-header__list">
-                              <div class="text-14 text-gray3">Офтальмолог</div>
-                              <div class="text-14 text-gray3">Дерматовенеролог </div>
-                              <div class="text-14 text-gray3">Мануальный терапевт</div>
-                              <div class="text-14 text-gray3">Стаж 17 лет</div>
-                              <div class="text-14 text-gray3">Высшая категория</div>
-                            </div>
-                          </div>
-                          <div class="doc-card-cat">
-                            <div class="label-light-wrapper gap-8 flex-wrapper">
-                              <div class="label-light">
-                                <span class="text-medium">Диагностика</span>
-                              </div>
-                              <div class="label-light">
-                                <span class="text-medium">Хирургия</span>
-                              </div>
-                              <div class="label-light">
-                                <span class="text-medium">Пародонтология</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="card-serv-wrapper flex-box">
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Консультация</div>
-                              <div class="text-18">Бесплатно</div>
-                            </div>
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Диагностика</div>
-                              <div class="text-18">100 &#8382;</div>
-                            </div>
-                            <div class="card-serv-item">
-                              <div class="text-14 text-gray3">Хирургия</div>
-                              <div class="text-18">от 300 &#8382;</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="doc-card__footer">
-                        <div class="doc-card__contacts flex-vertical-center">
-                          <object>
-                            <div class="doc-card__contacts-item flex-vertical-center">
-                              <a class="text-icon text-phone" href="tel:+995551900117">+995 551 90 01 17</a>
-                              <a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span>
-                              </a>
-                            </div>
-                          </object>
-                          <object>
-                            <div class="doc-card__contacts-item flex-vertical-center flex-between">
-                              <a class="text-icon flex-box flex-y-center ml-auto" href="https://yandex.ru/maps/?um=constructor%3A720db28745f688e1d9fb39958cfb6c4f99ba09c04d008593d925824a763138b4&amp;source=constructorLink" target="_blank">
-                                <div class="text-icon__img">
-                                  <object type="image/svg+xml" data="./img/maximize.svg"></object>
-                                </div>
-                                <div class="text-14">Открыть на карте</div>
-                              </a>
-                            </div>
-                          </object>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-pagination extrim-cards-pagination"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--=============== Статистик =============================-->
-    <section class="statistic">
-      <div class="container">
-        <div class="statistic-content blueBg-section">
-          <div class="statistic-item text-white">
-            <div class="text-44">327</div>
-            <div class="text-16"> Специлистов</div>
-          </div>
-          <div class="statistic-item text-white">
-            <div class="text-44">2 986</div>
-            <div class="text-16"> Спасенных зубов</div>
-          </div>
-          <div class="statistic-item text-white">
-            <div class="text-44">19</div>
-            <div class="text-16"> Подключенных клиник</div>
-          </div>
-          <div class="statistic-item text-white">
-            <div class="text-44">977</div>
-            <div class="text-16"> Полезная цифра</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--=============== Вопросы / ответы ======================-->
-    <section class="faq">
-      <div class="container">
-        <div class="section-title">
-          <h2 class="text-44">Ответы на частые вопросы</h2>
-        </div>
-        <div class="faq-content">
-          <div class="acor-container">
-            <!--=========== single block =============-->
-            <div class="acor-item">
-              <input id="acor1" type="checkbox" name="acor">
-              <label class="text-24" for="acor1">Как записаться на приём?</label>
-              <div class="acor-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
-            </div>
-            <!--=========== single block =============-->
-            <div class="acor-item">
-              <input id="acor2" type="checkbox" name="acor">
-              <label class="text-24" for="acor2">Как оплачивается приём врача?</label>
-              <div class="acor-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
-            </div>
-            <!--=========== single block =============-->
-            <div class="acor-item">
-              <input id="acor3" type="checkbox" name="acor">
-              <label class="text-24" for="acor3">Как записаться на приём?</label>
-              <div class="acor-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
-            </div>
-            <!--=========== single block =============-->
-            <div class="acor-item">
-              <input id="acor4" type="checkbox" name="acor">
-              <label class="text-24" for="acor4">Как оплачивается приём врача?</label>
-              <div class="acor-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--================== Обратная связь =====================-->
-    <section class="feedback">
-      <div class="container">
-        <div class="feedback-content blueBg-section">
-          <div class="feedback-content__col">
-            <div class="title-group mb-32">
-              <div class="text-32 text-white">Поможем найти врача</div>
-              <div class="text-white text-16 text-medium">Спланируем ваш визит и быстро решим ваш вопрос</div>
-            </div>
-            <div class="appointment-group flex-vertical-center">
-              <div class="appointment-group__item">
-                <button class="label-light label-light--48 label-light--large" type="button">Записаться на прием</button>
-              </div>
-              <div class="appointment-group__item">
-                <button class="soc-icon-48">
-                  <img src="./img/tg-color.png" width="48" height="48" alt="icon">
-                </button>
-              </div>
-              <div class="appointment-group__item">
-                <button class="soc-icon-48">
-                  <img src="./img/wa-color.png" width="48" height="48" alt="icon">
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="feedback-content__col">
-            <div class="title-group mb-32">
-              <div class="text-32 text-white">Поделиться с друзьями</div>
-              <div class="text-white text-16 text-medium">Расскажите о нас в соцсетях</div>
-            </div>
-            <div class="share-group flex-vertical-center">
-              <div class="share-group__item">
-                <button class="label-light label-light--48 label-light--mini" type="button">
-                  <img src="./img/fb.png" width="24" height="24" alt="icon">
-                  <span>Facebook</span>
-                </button>
-              </div>
-              <div class="share-group__item">
-                <button class="label-light label-light--48 label-light--mini" type="button">
-                  <img src="./img/tg.png" width="24" height="24" alt="icon">
-                  <span>Telegram</span>
-                </button>
-              </div>
-              <div class="share-group__item">
-                <button class="label-light label-light--48 label-light--mini" type="button">
-                  <img src="./img/vk.png" width="24" height="24" alt="icon">
-                  <span class="block-992">ВКонтакте</span>
-                  <span class="hidden-992">ВК</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <!--================== footer =====================-->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-copyright flex-box">
-        <p class="text-14 text-upper">&copy; 2022 "iWEEK"</p>
-        <div class="footer-links">
-          <a class="text-link" href="#!">Политика конфиденциальности</a>
-          <a class="text-link" href="#!">Пользовательское соглашение</a>
-          <a class="text-link" href="#!">Условия предоставления информации</a>
-        </div>
-      </div>
-      <div class="footer-info">
-        <p class="text-12">Сайт для посетителей старше 18 лет (18+). Информация, представленная на сайте в виде цен, акций и спец предложений НЕ ЯВЛЯЕТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ, так как объем лечение каждого пациента зависит от индивидуальной ситуации и состояния здоровья пациента - информация носит ознакомительный характер и ориентирует о стандартном варианте лечения, не является инструкцией или рекомендацией к действию. Прежде чем использовать представленную на сайте информацию - требуется очная консультация с лечащим врачом, во многих случаях имеются противопоказания. Использование нашего сайта означает, что вы согласны с условиями его использования</p>
-      </div>
-    </div>
-  </footer>
-  <!--=============== jquery ===================-->
-  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
-  <!--=============== swiper ===================-->
-  <script src="./libs/swiper/swiper.js"></script>
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
-  <!--=============== мои скрипты ===================-->
-  <script src="./js/quiz.js"></script>
-  <script src="./js/main.js"></script>
-</body>
-
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!--======= swipe =============-->
+		<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+		<!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+		<meta name="format-detection" content="telephone=no">
+		<!--===================favicon ==================================-->
+		<link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+		<link rel="manifest" href="./img/favicon/site.webmanifest">
+		<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./img/favicon/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+		<!--===================opengraf=======================================-->
+		<link rel="stylesheet" href="./fonts/fonts.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<title>О нас</title>
+	</head>
+	<body class="about-page" style="opacity:0;transition:opacity .7s;">
+		<div id="overlay"></div>
+		<button class="btn btn--orange floating-btn btn--shadow">Записаться на прием</button>
+		<header class="header flex-box">
+			<div class="header-content">
+				<div class="container">
+					<!--========= header top ==========-->
+					<div class="header-top flex-box flex-between">
+						<div class="header-top__left flex-vertical-center"><a class="custom-logo" href="index.html"><img src="./img/logo.png" width="136" alt="logo"/></a>
+							<div class="select-city-block">
+								<div class="mySelect mySelect--absolute mySelect-input--icon mySelect--dark mySelect--38">
+									<div class="mySelect-input form-box-input">
+										<div class="form-box__icon">
+											<svg class=" svg-map">
+												<use href="./img/svg-sprite.svg#svg-map"></use>
+											</svg>
+										</div>
+										<input class="selectValue form-input" type="text" readonly="readonly" value="Батуми"/>
+									</div>
+									<div class="mySelect-drop scroll-vertical">
+										<input class="mySelect-options" type="text" readonly="readonly" value="Тбилиси"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Кутаиси"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Зугдиди"/>
+										<input class="mySelect-options" type="text" readonly="readonly" value="Поти"/>
+									</div>
+								</div>
+							</div>
+							<div class="toggle-menu" id="toggle-menu"></div>
+						</div>
+						<!--========= header top  right ==========-->
+						<div class="header-top__right" id="header-mobile-menu">
+							<div class="header-wrapper flex-box flex-y-center">
+								<div class="header-contacts flex-box flex-y-center">
+									<div class="soc-block flex-box flex-y-center"><a href="#!">
+											<svg class="svg-tg" width="24" height="24">
+												<use href="./img/svg-sprite.svg#svg-tg"></use>
+											</svg></a><a href="#!">
+											<svg class="svg-wa" width="24" height="24">
+												<use href="./img/svg-sprite.svg#svg-wa"></use>
+											</svg></a></div>
+									<div class="phone-block"><a class="text-icon text-phone text-white" href="#!">+995 551 405 123</a></div>
+								</div>
+								<button class="btn btn-mini dark-btn" frame-btn="login-modal">
+									<svg class="svg-person" width="16" height="16">
+										<use href="./img/svg-sprite.svg#svg-person"></use>
+									</svg>
+									<div class="text-white">Войти</div>
+								</button>
+								<!--=============Выбор страны и валюты на экранах от 992 пикс ================-->
+								<div class="mySelect mySelect--absolute mySelect--dark mySelect--radio mySelect--currency">
+									<div class="mySelect-input">
+										<input class="selectValue input-slim" type="text" readonly="" value="RU • RUB"/>
+									</div>
+									<div class="mySelect-drop scroll-vertical">
+										<div class="mySelect-drop__row">
+											<label class="radiobutton-label flex-box role-country">
+												<input class="real-radio" type="radio" name="country" value="EN"/><span class="custom-radio"></span><span class="custom-radio__text">English</span>
+											</label>
+											<label class="radiobutton-label flex-box role-currency">
+												<input class="real-radio" type="radio" name="currency" value="USD"/><span class="custom-radio"></span><span class="custom-radio__text">USD</span>
+											</label>
+										</div>
+										<div class="mySelect-drop__row">
+											<label class="radiobutton-label flex-box role-country">
+												<input class="real-radio" type="radio" name="country" value="RU" checked="checked"/><span class="custom-radio"></span><span class="custom-radio__text">Русский</span>
+											</label>
+											<label class="radiobutton-label flex-box role-currency">
+												<input class="real-radio" type="radio" name="currency" value="RUB" checked="checked"/><span class="custom-radio"></span><span class="custom-radio__text">RUB</span>
+											</label>
+										</div>
+										<div class="mySelect-drop__row">
+											<label class="radiobutton-label flex-box role-country">
+												<input class="real-radio" type="radio" name="country" value="GE"/><span class="custom-radio"></span><span class="custom-radio__text">Georgian</span>
+											</label>
+											<label class="radiobutton-label flex-box role-currency">
+												<input class="real-radio" type="radio" name="currency" value="GEL"/><span class="custom-radio"></span><span class="custom-radio__text">GEL</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--========== mobile-visible block ==========-->
+							<div class="mobile-menu-block">
+								<!--========== mobile-menu ==========-->
+								<div class="page-nav-mobile">
+									<ul>
+										<li><a href="#">Клиники</a></li>
+										<li class="active"><a href="prices.html">Цены</a></li>
+										<li><a href="#">Детская стоматология</a></li>
+										<li><a href="about.html">О нас</a></li>
+									</ul>
+								</div>
+								<!--========== btn-coopyright ==========-->
+								<div class="customDrop--dark customDrop--relative">
+									<div class="customDrop">
+										<div class="btn-coopyright flex-between" type="button"><span class="text-18 text-white">Сотрудничать с нами</span></div>
+										<div class="customDrop__list">
+											<div class="customDrop__list-item"><a class="flex-vertical-center" href="#!">
+													<svg class="svg-whatsapp" width="20" height="20">
+														<use href="./img/svg-sprite.svg#svg-whatsapp"></use>
+													</svg>
+													<div class="text-14">Whats App</div></a></div>
+											<div class="customDrop__list-item"><a class="flex-vertical-center" href="#!">
+													<svg class="svg-telegram" width="20" height="20">
+														<use href="./img/svg-sprite.svg#svg-telegram"></use>
+													</svg>
+													<div class="text-14">Telegram</div></a></div>
+											<div class="customDrop__list-item"><a class="flex-vertical-center" href="#!">
+													<svg class="svg-facebook" width="20" height="20">
+														<use href="./img/svg-sprite.svg#svg-facebook"></use>
+													</svg>
+													<div class="text-14">Facebook Messenger</div></a></div>
+											<div class="customDrop__list-item"><a class="flex-vertical-center" href="#!">
+													<svg class="svg-viber" width="20" height="20">
+														<use href="./img/svg-sprite.svg#svg-viber"></use>
+													</svg>
+													<div class="text-14">Viber</div></a></div>
+										</div>
+									</div>
+								</div>
+								<!--=============Выбор страны и валюты на экранах от 375 до 991 пикс ================	-->
+								<div class="mobile-menu-currency">
+									<ul>
+										<li>
+											<label class="radiobutton-label flex-box role-country">
+												<input class="real-radio" type="radio" name="country-mob" value="EN"/><span class="custom-radio"></span><span class="custom-radio__text">English</span>
+											</label>
+											<label class="radiobutton-label flex-box role-currency">
+												<input class="real-radio" type="radio" name="currency-mob" value="USD"/><span class="custom-radio"></span><span class="custom-radio__text">USD</span>
+											</label>
+										</li>
+										<li>
+											<label class="radiobutton-label flex-box role-country">
+												<input class="real-radio" type="radio" name="country-mob" value="RU" checked="checked"/><span class="custom-radio"></span><span class="custom-radio__text">Русский</span>
+											</label>
+											<label class="radiobutton-label flex-box role-currency">
+												<input class="real-radio" type="radio" name="currency-mob" value="RUB" checked="checked"/><span class="custom-radio"></span><span class="custom-radio__text">RUB</span>
+											</label>
+										</li>
+										<li>
+											<label class="radiobutton-label flex-box role-country">
+												<input class="real-radio" type="radio" name="country-mob" value="GE"/><span class="custom-radio"></span><span class="custom-radio__text">Georgian</span>
+											</label>
+											<label class="radiobutton-label flex-box role-currency">
+												<input class="real-radio" type="radio" name="currency-mob" value="GEL;"/><span class="custom-radio"></span><span class="custom-radio__text">GEL;</span>
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--========= header center ==========-->
+					<div class="header-center">
+						<div class="header-title">
+							<h1 class="text-44 text-white">Лучшие специалисты в сфере <span class="text-gradient" id="change-text" data-categories="туристических услуг,медицины,красоты и здоровья, услуг для детей, образования">туристических услуг<span class="line-gradient" data-categories="туристических услуг,медицины,красоты и здоровья, услуг для детей, образования">туристических услуг</span></span></h1>
+						</div>
+						<div class="header-categories flex-box"><a class="category-label" href="#main-content">
+								<object type="image/svg+xml" data="./img/pin-map.svg"></object><span class="text-medium">Туристические услуги</span></a><a class="category-label" href="#main-content">
+								<object type="image/svg+xml" data="./img/heart.svg"></object><span class="text-medium">Медицина</span></a><a class="category-label" href="#main-content">
+								<object type="image/svg+xml" data="./img/flower.svg"></object><span class="text-medium">Красота и здоровье</span></a><a class="category-label" href="#main-content">
+								<object type="image/svg+xml" data="./img/balloon.svg"></object><span class="text-medium">Услуги для детей</span></a><a class="category-label" href="#main-content">
+								<object type="image/svg+xml" data="./img/mortarboard.svg"></object><span class="text-medium">Образование</span></a><a class="category-label" href="#main-content">
+								<object type="image/svg+xml" data="./img/auther.svg"></object><span class="text-medium">Другие услуги</span></a>
+						</div>
+						<div class="header-button">
+							<div class="btn-64 btn--accent">
+								<object type="image/svg+xml" data="./img/extra-white.svg" width="24"></object><span>У меня экстренная ситуация</span>
+							</div>
+						</div>
+					</div>
+					<!--========= header-search-block==========-->
+					<div class="header-search-block flex-box">
+						<form class="header-search-form" action="" method="method">
+							<div class="inputs-group">
+								<div class="form-box form-box--icon-left">
+									<div class="form-box-input">
+										<div class="form-box__icon">
+											<svg class="svg-search">
+												<use href="./img/svg-sprite.svg#svg-search"></use>
+											</svg>
+										</div>
+										<input class="form-input form-input--64" type="text" placeholder="Специалист, услуга"/>
+									</div>
+								</div>
+							</div>
+							<button class="btn-64 btn btn--gradient" type="submit">Найти</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--======== основной контент страницы О нас =========-->
+		<main class="about-page-content">
+			<section class="about-description">
+				<div class="container">
+					<div class="about-description__title">
+						<div class="text-44">О нас</div>
+					</div>
+					<div class="about-description__wrapper">
+						<div class="about-description__left">
+							<p class="text-24 text-primary">Проекция угловых скоростей связывает ньютонометр. Проекция абсолютной угловой скорости на оси системы координат xyz, как следует из системы уравнений, трудна в описании. Период, согласно уравнениям Лагранжа, стабилизирует твердый момент сил. </p>
+						</div>
+						<div class="about-description__right text-18">
+							<p>Маховик, как можно показать с помощью не совсем тривиальных вычислений, устойчив. Устойчивость по Ляпунову заставляет иначе взглянуть на то, что такое ускоряющийся ротор. Кинетический момент влияет на составляющие гироскопического момента больше, чем апериодический центр подвеса. Точность крена вертикально не входит своими составляющими, что очевидно, в силы нормальных реакций связей, так же как и прецессионный подшипник подвижного объекта.</p>
+							<p>Управление полётом самолёта стабилизирует прецизионный момент сил, что видно из уравнения кинетической энергии ротора. Абсолютно твёрдое тело даёт большую проекцию на оси, чем лазерный стабилизатор. Угловая скорость опасна. Прямолинейное равноускоренное движение основания, согласно третьему закону Ньютона, поступательно переворачивает уход гироскопа. Ось ротора принципиально не входит своими составляющими, что очевидно, в силы нормальных реакций связей, так же как и ньютонометр. Ось собственного вращения последовательно связывает угол крена.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--================= Экстренная ситуация =================-->
+			<section class="emergency">
+				<div class="container">
+					<div class="emergency-content">
+						<div class="section-title text-center text-white">
+							<h2 class="text-44">Экстренная ситуация</h2>
+							<div class="text-24">Срочная помощь 24/7</div>
+						</div>
+						<div class="emergency-slider-wrapper">
+							<div class="emergency-slider swiper">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<!--===============одна карточка врача =========================-->
+										<div class="doc-card flex-box">
+											<!--====== card img =======-->
+											<div class="doc-card__left doc-card__left flex-column flex-between">
+												<div class="doc-card__foto-block">
+													<div class="doc-card__foto">
+														<label class="check-label flex-center flex-box">
+															<input type="checkbox"/>
+															<svg class="svg-heart" width="16" height="16">
+																<use href="./img/svg-sprite.svg#svg-heart"></use>
+															</svg>
+														</label><img src="./img/doctor.png" width="140" height="140" alt="alt"/>
+													</div>
+													<!--==== заголовок карточки  на моб версии ======-->
+													<div class="doc-card__title-mobile hidden-fl-992">
+														<div class="card-header">
+															<div class="flex-vertical-center gap-16">
+																<div class="text-14 text-gray">Мушкудиани Т.</div>
+																<div class="text-14 text-gray3">Работаем со страховкой</div>
+															</div>
+															<div class="text-24 mb-8">Антадзе Тамар</div>
+															<div class="card-header__list">
+																<div class="text-14 text-gray3">Офтальмолог</div>
+																<div class="text-14 text-gray3">Дерматовенеролог </div>
+																<div class="text-14 text-gray3">Мануальный терапевт</div>
+																<div class="text-14 text-gray3">Стаж 17 лет</div>
+																<div class="text-14 text-gray3">Высшая категория</div>
+															</div>
+														</div>
+														<div class="rating-group hidden-992 flex-vertical-center">
+															<p class="rating-block" data-rating="data-rating"><span class="rating-block-passive"><i></i><i></i><i></i><i></i><i></i></span><span class="rating-block-active" data-count="4.4"><i></i><i></i><i></i><i></i><i></i></span></p>
+															<object><a class="text-14 text-indigo" href="#!">9 отзывов</a></object>
+														</div>
+													</div>
+													<!--====== рейтинг для декстоп версии (скрыт на моб версии)======-->
+													<div class="rating-group block-992">
+														<p class="rating-block" data-rating="data-rating"><span class="rating-block-passive"><i></i><i></i><i></i><i></i><i></i></span><span class="rating-block-active" data-count="4.4"><i></i><i></i><i></i><i></i><i></i></span></p>
+														<object><a class="text-14 text-indigo" href="#!">9 отзывов</a></object>
+													</div>
+												</div>
+												<div class="card-flag">
+													<div class="card-flag__item"><img src="./img/flag/en-32.png" width="24" alt="icon"/></div>
+													<div class="card-flag__item"><img src="./img/flag/rus-32.png" width="24" alt="icon"/></div>
+													<div class="card-flag__item"><img src="./img/flag/tur-32.png" width="24" alt="icon"/></div>
+												</div>
+											</div>
+											<div class="doc-card__body">
+												<div class="doc-card__info">
+													<!--====== card doc info =======-->
+													<div class="doc-card__center">
+														<div class="card-header block-992">
+															<div class="flex-vertical-center gap-16">
+																<div class="text-14 text-gray">Мушкудиани Т.</div>
+																<div class="text-14 text-gray3">Работаем со страховкой</div>
+															</div>
+															<div class="text-24 mb-8">Антадзе Тамар</div>
+															<div class="card-header__list">
+																<div class="text-14 text-gray3">Офтальмолог</div>
+																<div class="text-14 text-gray3">Дерматовенеролог </div>
+																<div class="text-14 text-gray3">Мануальный терапевт</div>
+																<div class="text-14 text-gray3">Стаж 17 лет</div>
+																<div class="text-14 text-gray3">Высшая категория</div>
+															</div>
+														</div>
+														<div class="doc-card-cat">
+															<div class="label-light-wrapper gap-8 flex-wrapper">
+																<div class="label-light"><span class="text-medium">Диагностика</span></div>
+																<div class="label-light"><span class="text-medium">Хирургия</span></div>
+																<div class="label-light"><span class="text-medium">Пародонтология</span></div>
+															</div>
+														</div>
+														<div class="card-serv-wrapper flex-box">
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Консультация</div>
+																<div class="text-18">Бесплатно</div>
+															</div>
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Диагностика</div>
+																<div class="text-18">100 &#8382;</div>
+															</div>
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Хирургия</div>
+																<div class="text-18">от 300 &#8382;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="doc-card__footer">
+													<div class="doc-card__contacts flex-vertical-center">
+														<object>
+															<div class="doc-card__contacts-item flex-vertical-center"><a class="text-icon text-phone" href="tel:+995551900117">+995 551 90 01 17</a><a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span></a></div>
+														</object>
+														<object>
+															<div class="doc-card__contacts-item flex-vertical-center flex-between"><a class="text-icon flex-box flex-y-center ml-auto" href="https://yandex.ru/maps/?um=constructor%3A720db28745f688e1d9fb39958cfb6c4f99ba09c04d008593d925824a763138b4&amp;source=constructorLink" target="_blank">
+																	<div class="text-icon__img">
+																		<object type="image/svg+xml" data="./img/maximize.svg"></object>
+																	</div>
+																	<div class="text-14">Открыть на карте</div></a></div>
+														</object>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<!--===============одна карточка врача =========================-->
+										<div class="doc-card flex-box">
+											<!--====== card img =======-->
+											<div class="doc-card__left doc-card__left flex-column flex-between">
+												<div class="doc-card__foto-block">
+													<div class="doc-card__foto">
+														<label class="check-label flex-center flex-box">
+															<input type="checkbox"/>
+															<svg class="svg-heart" width="16" height="16">
+																<use href="./img/svg-sprite.svg#svg-heart"></use>
+															</svg>
+														</label><img src="./img/doctor2.png" width="140" height="140" alt="alt"/>
+													</div>
+													<!--==== заголовок карточки  на моб версии ======-->
+													<div class="doc-card__title-mobile hidden-fl-992">
+														<div class="card-header">
+															<div class="flex-vertical-center gap-16">
+																<div class="text-14 text-gray">Мушкудиани Т.</div>
+																<div class="text-14 text-gray3">Работаем со страховкой</div>
+															</div>
+															<div class="text-24 mb-8">Лордкипанидзе Мария</div>
+															<div class="card-header__list">
+																<div class="text-14 text-gray3">Офтальмолог</div>
+																<div class="text-14 text-gray3">Дерматовенеролог </div>
+																<div class="text-14 text-gray3">Мануальный терапевт</div>
+																<div class="text-14 text-gray3">Стаж 17 лет</div>
+																<div class="text-14 text-gray3">Высшая категория</div>
+															</div>
+														</div>
+														<div class="rating-group hidden-992 flex-vertical-center">
+															<p class="rating-block" data-rating="data-rating"><span class="rating-block-passive"><i></i><i></i><i></i><i></i><i></i></span><span class="rating-block-active" data-count="4.4"><i></i><i></i><i></i><i></i><i></i></span></p>
+															<object><a class="text-14 text-indigo" href="#!">9 отзывов</a></object>
+														</div>
+													</div>
+													<!--====== рейтинг для декстоп версии (скрыт на моб версии)======-->
+													<div class="rating-group block-992">
+														<p class="rating-block" data-rating="data-rating"><span class="rating-block-passive"><i></i><i></i><i></i><i></i><i></i></span><span class="rating-block-active" data-count="4.4"><i></i><i></i><i></i><i></i><i></i></span></p>
+														<object><a class="text-14 text-indigo" href="#!">9 отзывов</a></object>
+													</div>
+												</div>
+												<div class="card-flag">
+													<div class="card-flag__item"><img src="./img/flag/en-32.png" width="24" alt="icon"/></div>
+													<div class="card-flag__item"><img src="./img/flag/rus-32.png" width="24" alt="icon"/></div>
+													<div class="card-flag__item"><img src="./img/flag/tur-32.png" width="24" alt="icon"/></div>
+												</div>
+											</div>
+											<div class="doc-card__body">
+												<div class="doc-card__info">
+													<!--====== card doc info =======-->
+													<div class="doc-card__center">
+														<div class="card-header block-992">
+															<div class="flex-vertical-center gap-16">
+																<div class="text-14 text-gray">Мушкудиани Т.</div>
+																<div class="text-14 text-gray3">Работаем со страховкой</div>
+															</div>
+															<div class="text-24 mb-8">Лордкипанидзе Мария</div>
+															<div class="card-header__list">
+																<div class="text-14 text-gray3">Офтальмолог</div>
+																<div class="text-14 text-gray3">Дерматовенеролог </div>
+																<div class="text-14 text-gray3">Мануальный терапевт</div>
+																<div class="text-14 text-gray3">Стаж 17 лет</div>
+																<div class="text-14 text-gray3">Высшая категория</div>
+															</div>
+														</div>
+														<div class="doc-card-cat">
+															<div class="label-light-wrapper gap-8 flex-wrapper">
+																<div class="label-light"><span class="text-medium">Диагностика</span></div>
+																<div class="label-light"><span class="text-medium">Хирургия</span></div>
+																<div class="label-light"><span class="text-medium">Пародонтология</span></div>
+															</div>
+														</div>
+														<div class="card-serv-wrapper flex-box">
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Консультация</div>
+																<div class="text-18">Бесплатно</div>
+															</div>
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Диагностика</div>
+																<div class="text-18">100 &#8382;</div>
+															</div>
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Хирургия</div>
+																<div class="text-18">от 300 &#8382;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="doc-card__footer">
+													<div class="doc-card__contacts flex-vertical-center">
+														<object>
+															<div class="doc-card__contacts-item flex-vertical-center"><a class="text-icon text-phone" href="tel:+995551900117">+995 551 90 01 17</a><a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span></a></div>
+														</object>
+														<object>
+															<div class="doc-card__contacts-item flex-vertical-center flex-between"><a class="text-icon flex-box flex-y-center ml-auto" href="https://yandex.ru/maps/?um=constructor%3A720db28745f688e1d9fb39958cfb6c4f99ba09c04d008593d925824a763138b4&amp;source=constructorLink" target="_blank">
+																	<div class="text-icon__img">
+																		<object type="image/svg+xml" data="./img/maximize.svg"></object>
+																	</div>
+																	<div class="text-14">Открыть на карте</div></a></div>
+														</object>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<!--===============одна карточка врача =========================-->
+										<div class="doc-card flex-box">
+											<!--====== card img =======-->
+											<div class="doc-card__left doc-card__left flex-column flex-between">
+												<div class="doc-card__foto-block">
+													<div class="doc-card__foto">
+														<label class="check-label flex-center flex-box">
+															<input type="checkbox"/>
+															<svg class="svg-heart" width="16" height="16">
+																<use href="./img/svg-sprite.svg#svg-heart"></use>
+															</svg>
+														</label><img src="./img/doctor.png" width="140" height="140" alt="alt"/>
+													</div>
+													<!--==== заголовок карточки  на моб версии ======-->
+													<div class="doc-card__title-mobile hidden-fl-992">
+														<div class="card-header">
+															<div class="flex-vertical-center gap-16">
+																<div class="text-14 text-gray">Мушкудиани Т.</div>
+																<div class="text-14 text-gray3">Работаем со страховкой</div>
+															</div>
+															<div class="text-24 mb-8">Антадзе Тамар</div>
+															<div class="card-header__list">
+																<div class="text-14 text-gray3">Офтальмолог</div>
+																<div class="text-14 text-gray3">Дерматовенеролог </div>
+																<div class="text-14 text-gray3">Мануальный терапевт</div>
+																<div class="text-14 text-gray3">Стаж 17 лет</div>
+																<div class="text-14 text-gray3">Высшая категория</div>
+															</div>
+														</div>
+														<div class="rating-group hidden-992 flex-vertical-center">
+															<p class="rating-block" data-rating="data-rating"><span class="rating-block-passive"><i></i><i></i><i></i><i></i><i></i></span><span class="rating-block-active" data-count="4.4"><i></i><i></i><i></i><i></i><i></i></span></p>
+															<object><a class="text-14 text-indigo" href="#!">9 отзывов</a></object>
+														</div>
+													</div>
+													<!--====== рейтинг для декстоп версии (скрыт на моб версии)======-->
+													<div class="rating-group block-992">
+														<p class="rating-block" data-rating="data-rating"><span class="rating-block-passive"><i></i><i></i><i></i><i></i><i></i></span><span class="rating-block-active" data-count="4.4"><i></i><i></i><i></i><i></i><i></i></span></p>
+														<object><a class="text-14 text-indigo" href="#!">9 отзывов</a></object>
+													</div>
+												</div>
+												<div class="card-flag">
+													<div class="card-flag__item"><img src="./img/flag/en-32.png" width="24" alt="icon"/></div>
+													<div class="card-flag__item"><img src="./img/flag/rus-32.png" width="24" alt="icon"/></div>
+													<div class="card-flag__item"><img src="./img/flag/tur-32.png" width="24" alt="icon"/></div>
+												</div>
+											</div>
+											<div class="doc-card__body">
+												<div class="doc-card__info">
+													<!--====== card doc info =======-->
+													<div class="doc-card__center">
+														<div class="card-header block-992">
+															<div class="flex-vertical-center gap-16">
+																<div class="text-14 text-gray">Мушкудиани Т.</div>
+																<div class="text-14 text-gray3">Работаем со страховкой</div>
+															</div>
+															<div class="text-24 mb-8">Антадзе Тамар</div>
+															<div class="card-header__list">
+																<div class="text-14 text-gray3">Офтальмолог</div>
+																<div class="text-14 text-gray3">Дерматовенеролог </div>
+																<div class="text-14 text-gray3">Мануальный терапевт</div>
+																<div class="text-14 text-gray3">Стаж 17 лет</div>
+																<div class="text-14 text-gray3">Высшая категория</div>
+															</div>
+														</div>
+														<div class="doc-card-cat">
+															<div class="label-light-wrapper gap-8 flex-wrapper">
+																<div class="label-light"><span class="text-medium">Диагностика</span></div>
+																<div class="label-light"><span class="text-medium">Хирургия</span></div>
+																<div class="label-light"><span class="text-medium">Пародонтология</span></div>
+															</div>
+														</div>
+														<div class="card-serv-wrapper flex-box">
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Консультация</div>
+																<div class="text-18">Бесплатно</div>
+															</div>
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Диагностика</div>
+																<div class="text-18">100 &#8382;</div>
+															</div>
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Хирургия</div>
+																<div class="text-18">от 300 &#8382;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="doc-card__footer">
+													<div class="doc-card__contacts flex-vertical-center">
+														<object>
+															<div class="doc-card__contacts-item flex-vertical-center"><a class="text-icon text-phone" href="tel:+995551900117">+995 551 90 01 17</a><a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span></a></div>
+														</object>
+														<object>
+															<div class="doc-card__contacts-item flex-vertical-center flex-between"><a class="text-icon flex-box flex-y-center ml-auto" href="https://yandex.ru/maps/?um=constructor%3A720db28745f688e1d9fb39958cfb6c4f99ba09c04d008593d925824a763138b4&amp;source=constructorLink" target="_blank">
+																	<div class="text-icon__img">
+																		<object type="image/svg+xml" data="./img/maximize.svg"></object>
+																	</div>
+																	<div class="text-14">Открыть на карте</div></a></div>
+														</object>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<!--===============одна карточка врача =========================-->
+										<div class="doc-card flex-box">
+											<!--====== card img =======-->
+											<div class="doc-card__left doc-card__left flex-column flex-between">
+												<div class="doc-card__foto-block">
+													<div class="doc-card__foto">
+														<label class="check-label flex-center flex-box">
+															<input type="checkbox"/>
+															<svg class="svg-heart" width="16" height="16">
+																<use href="./img/svg-sprite.svg#svg-heart"></use>
+															</svg>
+														</label><img src="./img/doctor2.png" width="140" height="140" alt="alt"/>
+													</div>
+													<!--==== заголовок карточки  на моб версии ======-->
+													<div class="doc-card__title-mobile hidden-fl-992">
+														<div class="card-header">
+															<div class="flex-vertical-center gap-16">
+																<div class="text-14 text-gray">Мушкудиани Т.</div>
+																<div class="text-14 text-gray3">Работаем со страховкой</div>
+															</div>
+															<div class="text-24 mb-8">Лордкипанидзе Мария</div>
+															<div class="card-header__list">
+																<div class="text-14 text-gray3">Офтальмолог</div>
+																<div class="text-14 text-gray3">Дерматовенеролог </div>
+																<div class="text-14 text-gray3">Мануальный терапевт</div>
+																<div class="text-14 text-gray3">Стаж 17 лет</div>
+																<div class="text-14 text-gray3">Высшая категория</div>
+															</div>
+														</div>
+														<div class="rating-group hidden-992 flex-vertical-center">
+															<p class="rating-block" data-rating="data-rating"><span class="rating-block-passive"><i></i><i></i><i></i><i></i><i></i></span><span class="rating-block-active" data-count="4.4"><i></i><i></i><i></i><i></i><i></i></span></p>
+															<object><a class="text-14 text-indigo" href="#!">9 отзывов</a></object>
+														</div>
+													</div>
+													<!--====== рейтинг для декстоп версии (скрыт на моб версии)======-->
+													<div class="rating-group block-992">
+														<p class="rating-block" data-rating="data-rating"><span class="rating-block-passive"><i></i><i></i><i></i><i></i><i></i></span><span class="rating-block-active" data-count="4.4"><i></i><i></i><i></i><i></i><i></i></span></p>
+														<object><a class="text-14 text-indigo" href="#!">9 отзывов</a></object>
+													</div>
+												</div>
+												<div class="card-flag">
+													<div class="card-flag__item"><img src="./img/flag/en-32.png" width="24" alt="icon"/></div>
+													<div class="card-flag__item"><img src="./img/flag/rus-32.png" width="24" alt="icon"/></div>
+													<div class="card-flag__item"><img src="./img/flag/tur-32.png" width="24" alt="icon"/></div>
+												</div>
+											</div>
+											<div class="doc-card__body">
+												<div class="doc-card__info">
+													<!--====== card doc info =======-->
+													<div class="doc-card__center">
+														<div class="card-header block-992">
+															<div class="flex-vertical-center gap-16">
+																<div class="text-14 text-gray">Мушкудиани Т.</div>
+																<div class="text-14 text-gray3">Работаем со страховкой</div>
+															</div>
+															<div class="text-24 mb-8">Лордкипанидзе Мария</div>
+															<div class="card-header__list">
+																<div class="text-14 text-gray3">Офтальмолог</div>
+																<div class="text-14 text-gray3">Дерматовенеролог </div>
+																<div class="text-14 text-gray3">Мануальный терапевт</div>
+																<div class="text-14 text-gray3">Стаж 17 лет</div>
+																<div class="text-14 text-gray3">Высшая категория</div>
+															</div>
+														</div>
+														<div class="doc-card-cat">
+															<div class="label-light-wrapper gap-8 flex-wrapper">
+																<div class="label-light"><span class="text-medium">Диагностика</span></div>
+																<div class="label-light"><span class="text-medium">Хирургия</span></div>
+																<div class="label-light"><span class="text-medium">Пародонтология</span></div>
+															</div>
+														</div>
+														<div class="card-serv-wrapper flex-box">
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Консультация</div>
+																<div class="text-18">Бесплатно</div>
+															</div>
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Диагностика</div>
+																<div class="text-18">100 &#8382;</div>
+															</div>
+															<div class="card-serv-item">
+																<div class="text-14 text-gray3">Хирургия</div>
+																<div class="text-18">от 300 &#8382;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="doc-card__footer">
+													<div class="doc-card__contacts flex-vertical-center">
+														<object>
+															<div class="doc-card__contacts-item flex-vertical-center"><a class="text-icon text-phone" href="tel:+995551900117">+995 551 90 01 17</a><a class="text-icon text-address" href="#!">ул. Мелашвили 4<span class="text-gray3">(3,5 км от вас)</span></a></div>
+														</object>
+														<object>
+															<div class="doc-card__contacts-item flex-vertical-center flex-between"><a class="text-icon flex-box flex-y-center ml-auto" href="https://yandex.ru/maps/?um=constructor%3A720db28745f688e1d9fb39958cfb6c4f99ba09c04d008593d925824a763138b4&amp;source=constructorLink" target="_blank">
+																	<div class="text-icon__img">
+																		<object type="image/svg+xml" data="./img/maximize.svg"></object>
+																	</div>
+																	<div class="text-14">Открыть на карте</div></a></div>
+														</object>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="swiper-pagination extrim-cards-pagination"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--=============== Статистик =============================-->
+			<section class="statistic">
+				<div class="container">
+					<div class="statistic-content blueBg-section">
+						<div class="statistic-item text-white">
+							<div class="text-44">327</div>
+							<div class="text-16"> Специлистов</div>
+						</div>
+						<div class="statistic-item text-white">
+							<div class="text-44">2 986</div>
+							<div class="text-16"> Спасенных зубов</div>
+						</div>
+						<div class="statistic-item text-white">
+							<div class="text-44">19</div>
+							<div class="text-16"> Подключенных клиник</div>
+						</div>
+						<div class="statistic-item text-white">
+							<div class="text-44">977</div>
+							<div class="text-16"> Полезная цифра</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--=============== Вопросы / ответы ======================-->
+			<section class="faq">
+				<div class="container">
+					<div class="section-title">
+						<h2 class="text-44">Ответы на частые вопросы</h2>
+					</div>
+					<div class="faq-content">
+						<div class="acor-container">
+							<!--=========== single block =============-->
+							<div class="acor-item">
+								<input id="acor1" type="checkbox" name="acor">
+								<label class="text-24" for="acor1">Как записаться на приём?</label>
+								<div class="acor-body">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<!--=========== single block =============-->
+							<div class="acor-item">
+								<input id="acor2" type="checkbox" name="acor">
+								<label class="text-24" for="acor2">Как оплачивается приём врача?</label>
+								<div class="acor-body">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<!--=========== single block =============-->
+							<div class="acor-item">
+								<input id="acor3" type="checkbox" name="acor">
+								<label class="text-24" for="acor3">Как записаться на приём?</label>
+								<div class="acor-body">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+							<!--=========== single block =============-->
+							<div class="acor-item">
+								<input id="acor4" type="checkbox" name="acor">
+								<label class="text-24" for="acor4">Как оплачивается приём врача?</label>
+								<div class="acor-body">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--================== Обратная связь =====================-->
+			<section class="feedback">
+				<div class="container">
+					<div class="feedback-content blueBg-section">
+						<div class="feedback-content__col">
+							<div class="title-group mb-32">
+								<div class="text-32 text-white">Поможем найти врача</div>
+								<div class="text-white text-16 text-medium">Спланируем ваш визит и быстро решим ваш вопрос</div>
+							</div>
+							<div class="appointment-group flex-vertical-center">
+								<div class="appointment-group__item">
+									<button class="label-light label-light--48 label-light--large" type="button">Записаться на прием</button>
+								</div>
+								<div class="appointment-group__item">
+									<button class="soc-icon-48"><img src="./img/tg-color.png" width="48" height="48" alt="icon"></button>
+								</div>
+								<div class="appointment-group__item">
+									<button class="soc-icon-48"><img src="./img/wa-color.png" width="48" height="48" alt="icon"></button>
+								</div>
+							</div>
+						</div>
+						<div class="feedback-content__col">
+							<div class="title-group mb-32">
+								<div class="text-32 text-white">Поделиться с друзьями</div>
+								<div class="text-white text-16 text-medium">Расскажите о нас в соцсетях</div>
+							</div>
+							<div class="share-group flex-vertical-center">
+								<div class="share-group__item">
+									<button class="label-light label-light--48 label-light--mini" type="button"><img src="./img/fb.png" width="24" height="24" alt="icon"><span>Facebook</span></button>
+								</div>
+								<div class="share-group__item">
+									<button class="label-light label-light--48 label-light--mini" type="button"><img src="./img/tg.png" width="24" height="24" alt="icon"><span>Telegram</span></button>
+								</div>
+								<div class="share-group__item">
+									<button class="label-light label-light--48 label-light--mini" type="button"><img src="./img/vk.png" width="24" height="24" alt="icon"><span class="block-992">ВКонтакте</span><span class="hidden-992">ВК</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!--================== footer =====================-->
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-copyright flex-box">
+					<p class="text-14 text-upper">&copy; 2022 "iWEEK"</p>
+					<div class="footer-links"><a class="text-link" href="#!">Политика конфиденциальности</a><a class="text-link" href="#!">Пользовательское соглашение</a><a class="text-link" href="#!">Условия предоставления информации</a></div>
+					<div class="footer-contacts"><a class="text-link" href="about.html">О нас</a>
+						<div class="text-link drop-link">Связаться с нами
+							<div class="social-block"><a class="flex-vertical-center" href="#!">
+									<svg class="svg-whatsapp" width="20" height="20">
+										<use href="./img/svg-sprite.svg#svg-whatsapp"></use>
+									</svg></a><a class="flex-vertical-center" href="#!">
+									<svg class="svg-telegram" width="20" height="20">
+										<use href="./img/svg-sprite.svg#svg-telegram"></use>
+									</svg></a><a class="flex-vertical-center" href="#!">
+									<svg class="svg-facebook" width="20" height="20">
+										<use href="./img/svg-sprite.svg#svg-facebook"></use>
+									</svg></a><a class="flex-vertical-center" href="#!">
+									<svg class="svg-viber" width="20" height="20">
+										<use href="./img/svg-sprite.svg#svg-viber"></use>
+									</svg></a></div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-info">
+					<p class="text-12">Сайт для посетителей старше 18 лет (18+). Информация, представленная на сайте в виде цен, акций и спец предложений НЕ ЯВЛЯЕТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ, так как объем лечение каждого пациента зависит от индивидуальной ситуации и состояния здоровья пациента - информация носит ознакомительный характер и ориентирует о стандартном варианте лечения, не является инструкцией или рекомендацией к действию. Прежде чем использовать представленную на сайте информацию - требуется очная консультация с лечащим врачом, во многих случаях имеются противопоказания. Использование нашего сайта означает, что вы согласны с условиями его использования</p>
+				</div>
+			</div>
+		</footer>
+		<!--=============== jquery ===================-->
+		<script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+		<!--=============== swiper ===================-->
+		<script src="./libs/swiper/swiper.js"></script>
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+		<!--=============== мои скрипты ===================-->
+		<script src="./js/quiz.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
 </html>

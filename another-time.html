@@ -1,378 +1,343 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--======= swipe =============-->
-  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
-  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
-  <meta name="format-detection" content="telephone=no">
-  <!--===================favicon ==================================-->
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="./img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!--===================opengraf=======================================-->
-  <link rel="stylesheet" href="./fonts/fonts.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <title>Пациенты | Добавить профиль </title>
-</head>
-
-<body class="visitor-form-page" style="opacity:0;transition:opacity .7s;">
-  <div id="overlay"></div>
-  <header class="cabinet-header">
-    <div class="container-large">
-      <div class="cabinet-header__content flex-vertical-center">
-        <div class="cabinet-header__logo">
-          <a class="custom-logo" href="index.html">
-            <img src="./img/logo2.png" width="106" alt="logo" />
-          </a>
-        </div>
-        <div class="cabinet-header__menu">
-          <div class="myTabs-buttons">
-            <a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a>
-            <a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a>
-            <a class="btn-bt myTabs-btn active" href="visitor-page.html">Пациенты</a>
-            <a class="btn-bt myTabs-btn" href="employees-page.html">Сотрудники</a>
-          </div>
-        </div>
-        <div class="cabinet-header__profile flex-vertical-center gap-32">
-          <div class="select-work-place">
-            <div class="mySelect mySelect--absolute">
-              <div class="mySelect-input form-box-input">
-                <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
-              </div>
-            </div>
-          </div>
-          <div class="help-info">?</div>
-          <div class="customDrop customDrop--right drop-click-close">
-            <div class="customDrop__btn round-icon">
-              <div class="icon-notify"></div>
-            </div>
-            <div class="customDrop__list">
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Включить звук</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 15 минут</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 30 минут</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 1 час</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 8 часов</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="cabinet-header__avatar">ГМ</div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!--=========== основной контент вкладка Задачи ====================-->
-  <div class="cabinet-body">
-    <div class="container-large">
-      <div class="edit-profile-content">
-        <div class="edit-profile-content__head flex-vertical-center">
-          <div class="edit-profile__title text-column">
-            <div class="text-14 text-gray3">Пациенты</div>
-            <div class="title-18">Добавить профиль</div>
-          </div>
-        </div>
-        <form class="edit-profile-content__form">
-          <div class="profile-form-body scroll-vertical">
-            <div class="form-fieldset">
-              <div class="grid-form-fields gap-32 align-end">
-                <div class="form-box">
-                  <div class="mySelect mySelect--absolute">
-                    <label class="text-16">Категория пациента<sup class="text-red"> *</sup>
-                    </label>
-                    <div class="mySelect-input form-box-input">
-                      <input class="selectValue form-input" type="text" readonly="readonly" value="Взрослый" />
-                    </div>
-                    <div class="mySelect-drop scroll-vertical">
-                      <input class="mySelect-options" type="text" readonly="readonly" value="Недееспособный гражданин" />
-                      <input class="mySelect-options" type="text" readonly="readonly" value="Ребенок" />
-                    </div>
-                  </div>
-                </div>
-                <button class="label-light label-light--44 label-light--large" frame-btn="exlude-modal">Аллергия</button>
-                <button class="label-light label-light--44 label-light--large" frame-btn="exlude-modal-2">Непереносимость</button>
-                <div class="d-none flex-vertical-center gap-32">
-                  <div class="form-box">
-                    <label class="text-16">Карта 025/У</label>
-                    <input class="form-input" type="text">
-                  </div>
-                  <div class="form-box">
-                    <label class="text-16"> Карта 043/У</label>
-                    <input class="form-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-fieldset">
-              <div class="grid-form-fields gap-32">
-                <div class="form-box">
-                  <label class="text-16">Фамилия<sup class="text-red">*</sup>
-                  </label>
-                  <input class="form-input" type="text" placeholder="Фамилия">
-                </div>
-                <div class="form-box">
-                  <label class="text-16">Имя<sup class="text-red">*</sup>
-                  </label>
-                  <input class="form-input" type="text" placeholder="Имя">
-                </div>
-                <div class="form-box">
-                  <label class="text-16">Отчество</label>
-                  <input class="form-input" type="text" placeholder="Отчество">
-                </div>
-              </div>
-              <div class="grid-form-fields gap-32">
-                <div class="form-box">
-                  <label class="text-16">Пол</label>
-                  <div class="flex-vertical-center gap-32">
-                    <label class="radiobutton-label flex-box">
-                      <input class="real-radio" type="radio" value="men" name="gender-radio" checked>
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">Мужской</span>
-                    </label>
-                    <label class="radiobutton-label flex-box">
-                      <input class="real-radio" type="radio" value="woomen" name="gender-radio">
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">Женский</span>
-                    </label>
-                  </div>
-                </div>
-                <div class="form-box flex-vertical-center gap-32">
-                  <div class="mySelect mySelect--absolute">
-                    <label class="text-16">Группа крови
-                    </label>
-                    <div class="mySelect-input form-box-input">
-                      <input class="selectValue form-input" type="text" readonly="readonly" value="Выбрать" />
-                    </div>
-                    <div class="mySelect-drop scroll-vertical">
-                      <input class="mySelect-options" type="text" readonly="readonly" value="О(I)" />
-                      <input class="mySelect-options" type="text" readonly="readonly" value="A(II)" />
-                      <input class="mySelect-options" type="text" readonly="readonly" value="B(III)" />
-                      <input class="mySelect-options" type="text" readonly="readonly" value="(AB(IV))" />
-                    </div>
-                  </div>
-                  <div class="mySelect mySelect--absolute">
-                    <label class="text-16">Резус-фактор
-                    </label>
-                    <div class="mySelect-input form-box-input">
-                      <input class="selectValue form-input" type="text" readonly="readonly" value="Выбрать" />
-                    </div>
-                    <div class="mySelect-drop scroll-vertical">
-                      <input class="mySelect-options" type="text" readonly="readonly" value="Rh(+)" />
-                      <input class="mySelect-options" type="text" readonly="readonly" value="Rh(-)" />
-                    </div>
-                  </div>
-                </div>
-                <div class="form-box">
-                  <label class="text-16">Дата рождения<sup class="text-red"> *</sup>
-                  </label>
-                  <div class="mydatepicker">
-                    <input class="form-input datepicker" type="text" value="01.01.2022">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-fieldset">
-              <div class="grid-form-fields gap-32">
-                <div class="form-box">
-                  <label class="text-16">Номер документа</label>
-                  <input class="form-input" type="text" placeholder="Номер документа">
-                </div>
-                <div class="form-box">
-                  <label class="text-16">Статус</label>
-                  <div class="flex-vertical-center gap-32 block-h-44">
-                    <label class="radiobutton-label flex-box">
-                      <input class="real-radio" type="radio" value="rezident" name="status-radio" checked>
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">Резидент</span>
-                    </label>
-                    <label class="radiobutton-label flex-box">
-                      <input class="real-radio" type="radio" value="norezident" name="status-radio">
-                      <span class="custom-radio"></span>
-                      <span class="custom-radio__text">Нерезидент</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-fieldset">
-              <div class="title-18">Контакты</div>
-              <div class="grid-form-fields gap-32">
-                <div class="form-box">
-                  <label class="text-16">Телефон</label>
-                  <input class="form-input" type="text" placeholder="Телефон">
-                </div>
-                <div class="form-box">
-                  <label class="text-16">Дополнительный номер</label>
-                  <input class="form-input" type="text">
-                </div>
-              </div>
-            </div>
-            <div class="form-fieldset">
-              <div class="title-18">Адрес</div>
-              <div class="grid-form-fields gap-32">
-                <div class="form-box">
-                  <label class="text-16">Город</label>
-                  <input class="form-input" type="text" placeholder="Батуми">
-                </div>
-                <div class="form-box">
-                  <label class="text-16">Улица</label>
-                  <input class="form-input" type="text" placeholder="Улица">
-                </div>
-                <div class="flex-vertical-center gap-32">
-                  <div class="form-box">
-                    <label class="text-16">Дом</label>
-                    <input class="form-input" type="text" placeholder="Дом">
-                  </div>
-                  <div class="form-box">
-                    <label class="text-16">Квартира</label>
-                    <input class="form-input" type="text" placeholder="Квартира">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-fieldset">
-              <div class="grid-form-fields gap-32">
-                <div class="form-textarea">
-                  <textarea type="text" placeholder="Диагноз"></textarea>
-                </div>
-                <div class="form-textarea">
-                  <textarea type="text" placeholder="Комментарий о пациенте"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="edit-profile-footer flex-vertical-center">
-            <a class="btn btn-44 btn--orange" href="visitor-edit-page.html">Назад</a>
-            <button class="btn btn-44">Сохранить</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--==================добавить аллергию и непереносимость ==============-->
-  <div class="modal-frame-wrapper modal-frame-center w-700" frame-modal="exlude-modal">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head flex-box flex-y-center flex-between mb-32">
-        <div class="text-24">Аллергия</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <form class="exlude-form">
-          <div class="exlude-form-input">
-            <input class="form-input" type="text">
-            <div class="icon-delete"></div>
-          </div>
-          <button class="text-icon flex-box flex-y-center">
-            <div class="symbol-plus">&#10010;</div>
-            <span class="text-18">Добавить aллергию</span>
-          </button>
-          <!--===== Список добавляемых пунктов. Пока он пустой я его закомментировала. С введенными значениями его можно увидеть в форме РЕДАКТИРОВАНИЕ ПАЦИЕНТА ======-->
-          <!--.content-list
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!--======= swipe =============-->
+		<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+		<!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+		<meta name="format-detection" content="telephone=no">
+		<!--===================favicon ==================================-->
+		<link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+		<link rel="manifest" href="./img/favicon/site.webmanifest">
+		<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./img/favicon/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+		<!--===================opengraf=======================================-->
+		<link rel="stylesheet" href="./fonts/fonts.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<title>Пациенты | Добавить профиль </title>
+	</head>
+	<body class="visitor-form-page" style="opacity:0;transition:opacity .7s;">
+		<div id="overlay"></div>
+		<header class="cabinet-header">
+			<div class="container-large">
+				<div class="cabinet-header__content flex-vertical-center">
+					<div class="cabinet-header__logo"><a class="custom-logo" href="index.html"><img src="./img/logo2.png" width="106" alt="logo"/></a></div>
+					<div class="cabinet-header__menu">
+						<div class="myTabs-buttons"><a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a><a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a><a class="btn-bt myTabs-btn active" href="visitor-page.html">Пациенты</a><a class="btn-bt myTabs-btn" href="employees-page.html">Сотрудники</a>
+						</div>
+					</div>
+					<div class="cabinet-header__profile flex-vertical-center gap-32">
+						<div class="select-work-place">
+							<div class="mySelect mySelect--absolute">
+								<div class="mySelect-input form-box-input">
+									<input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор"/>
+								</div>
+							</div>
+						</div>
+						<div class="help-info">?</div>
+						<div class="customDrop customDrop--right drop-click-close">
+							<div class="customDrop__btn round-icon">
+								<div class="icon-notify"></div>
+							</div>
+							<div class="customDrop__list">
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Включить звук</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 15 минут</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 30 минут</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 1 час</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 8 часов</span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="cabinet-header__avatar">ГМ</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--=========== основной контент вкладка Задачи ====================-->
+		<div class="cabinet-body">
+			<div class="container-large">
+				<div class="edit-profile-content">
+					<div class="edit-profile-content__head flex-vertical-center">
+						<div class="edit-profile__title text-column">
+							<div class="text-14 text-gray3">Пациенты</div>
+							<div class="title-18">Добавить профиль</div>
+						</div>
+					</div>
+					<form class="edit-profile-content__form">
+						<div class="profile-form-body scroll-vertical">
+							<div class="form-fieldset">
+								<div class="grid-form-fields gap-32 align-end">
+									<div class="form-box">
+										<div class="mySelect mySelect--absolute">
+											<label class="text-16">Категория пациента<sup class="text-red"> *</sup>
+											</label>
+											<div class="mySelect-input form-box-input">
+												<input class="selectValue form-input" type="text" readonly="readonly" value="Взрослый"/>
+											</div>
+											<div class="mySelect-drop scroll-vertical">
+												<input class="mySelect-options" type="text" readonly="readonly" value="Недееспособный гражданин"/>
+												<input class="mySelect-options" type="text" readonly="readonly" value="Ребенок"/>
+											</div>
+										</div>
+									</div>
+									<button class="label-light label-light--44 label-light--large" frame-btn="exlude-modal">Аллергия</button>
+									<button class="label-light label-light--44 label-light--large" frame-btn="exlude-modal-2">Непереносимость</button>
+									<div class="d-none flex-vertical-center gap-32">
+										<div class="form-box">
+											<label class="text-16">Карта 025/У</label>
+											<input class="form-input" type="text">
+										</div>
+										<div class="form-box">
+											<label class="text-16"> Карта 043/У</label>
+											<input class="form-input" type="text">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-fieldset">
+								<div class="grid-form-fields gap-32">
+									<div class="form-box">
+										<label class="text-16">Фамилия<sup class="text-red">*</sup></label>
+										<input class="form-input" type="text" placeholder="Фамилия">
+									</div>
+									<div class="form-box">
+										<label class="text-16">Имя<sup class="text-red">*</sup></label>
+										<input class="form-input" type="text" placeholder="Имя">
+									</div>
+									<div class="form-box">
+										<label class="text-16">Отчество</label>
+										<input class="form-input" type="text" placeholder="Отчество">
+									</div>
+								</div>
+								<div class="grid-form-fields gap-32">
+									<div class="form-box">
+										<label class="text-16">Пол</label>
+										<div class="flex-vertical-center gap-32">
+											<label class="radiobutton-label flex-box">
+												<input class="real-radio" type="radio" value="men" name="gender-radio" checked><span class="custom-radio"></span><span class="custom-radio__text">Мужской</span>
+											</label>
+											<label class="radiobutton-label flex-box">
+												<input class="real-radio" type="radio" value="woomen" name="gender-radio"><span class="custom-radio"></span><span class="custom-radio__text">Женский</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-box flex-vertical-center gap-32">
+										<div class="mySelect mySelect--absolute">
+											<label class="text-16">Группа крови
+											</label>
+											<div class="mySelect-input form-box-input">
+												<input class="selectValue form-input" type="text" readonly="readonly" value="Выбрать"/>
+											</div>
+											<div class="mySelect-drop scroll-vertical">
+												<input class="mySelect-options" type="text" readonly="readonly" value="О(I)"/>
+												<input class="mySelect-options" type="text" readonly="readonly" value="A(II)"/>
+												<input class="mySelect-options" type="text" readonly="readonly" value="B(III)"/>
+												<input class="mySelect-options" type="text" readonly="readonly" value="(AB(IV))"/>
+											</div>
+										</div>
+										<div class="mySelect mySelect--absolute">
+											<label class="text-16">Резус-фактор
+											</label>
+											<div class="mySelect-input form-box-input">
+												<input class="selectValue form-input" type="text" readonly="readonly" value="Выбрать"/>
+											</div>
+											<div class="mySelect-drop scroll-vertical">
+												<input class="mySelect-options" type="text" readonly="readonly" value="Rh(+)"/>
+												<input class="mySelect-options" type="text" readonly="readonly" value="Rh(-)"/>
+											</div>
+										</div>
+									</div>
+									<div class="form-box">
+										<label class="text-16">Дата рождения<sup class="text-red"> *</sup></label>
+										<div class="mydatepicker">
+											<input class="form-input datepicker" type="text" value="01.01.2022">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-fieldset">
+								<div class="grid-form-fields gap-32">
+									<div class="form-box">
+										<label class="text-16">Номер документа</label>
+										<input class="form-input" type="text" placeholder="Номер документа">
+									</div>
+									<div class="form-box">
+										<label class="text-16">Статус</label>
+										<div class="flex-vertical-center gap-32 block-h-44">
+											<label class="radiobutton-label flex-box">
+												<input class="real-radio" type="radio" value="rezident" name="status-radio" checked><span class="custom-radio"></span><span class="custom-radio__text">Резидент</span>
+											</label>
+											<label class="radiobutton-label flex-box">
+												<input class="real-radio" type="radio" value="norezident" name="status-radio"><span class="custom-radio"></span><span class="custom-radio__text">Нерезидент</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-fieldset">
+								<div class="title-18">Контакты</div>
+								<div class="grid-form-fields gap-32">
+									<div class="form-box">
+										<label class="text-16">Телефон</label>
+										<input class="form-input" type="text" placeholder="Телефон">
+									</div>
+									<div class="form-box">
+										<label class="text-16">Дополнительный номер</label>
+										<input class="form-input" type="text">
+									</div>
+								</div>
+							</div>
+							<div class="form-fieldset">
+								<div class="title-18">Адрес</div>
+								<div class="grid-form-fields gap-32">
+									<div class="form-box">
+										<label class="text-16">Город</label>
+										<input class="form-input" type="text" placeholder="Батуми">
+									</div>
+									<div class="form-box">
+										<label class="text-16">Улица</label>
+										<input class="form-input" type="text" placeholder="Улица">
+									</div>
+									<div class="flex-vertical-center gap-32">
+										<div class="form-box">
+											<label class="text-16">Дом</label>
+											<input class="form-input" type="text" placeholder="Дом">
+										</div>
+										<div class="form-box">
+											<label class="text-16">Квартира</label>
+											<input class="form-input" type="text" placeholder="Квартира">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-fieldset">
+								<div class="grid-form-fields gap-32">
+									<div class="form-textarea">
+										<textarea type="text" placeholder="Диагноз"></textarea>
+									</div>
+									<div class="form-textarea">
+										<textarea type="text" placeholder="Комментарий о пациенте"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="edit-profile-footer flex-vertical-center"><a class="btn btn-44 btn--orange" href="visitor-edit-page.html">Назад</a>
+							<button class="btn btn-44">Сохранить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--==================добавить аллергию и непереносимость ==============-->
+		<div class="modal-frame-wrapper modal-frame-center w-700" frame-modal="exlude-modal">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head flex-box flex-y-center flex-between mb-32">
+					<div class="text-24">Аллергия</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<form class="exlude-form">
+						<div class="exlude-form-input">
+							<input class="form-input" type="text">
+							<div class="icon-delete"></div>
+						</div>
+						<button class="text-icon flex-box flex-y-center">
+							<div class="symbol-plus">&#10010;</div><span class="text-18">Добавить aллергию</span>
+						</button>
+						<!--===== Список добавляемых пунктов. Пока он пустой я его закомментировала. С введенными значениями его можно увидеть в форме РЕДАКТИРОВАНИЕ ПАЦИЕНТА ======-->
+						<!--.content-list
 						ul
 							li
 						-->
-          <div class="flex-vertical-center gap-20 mt-40">
-            <button class="btn btn-44" frame-close>Сохранить</button>
-            <button class="btn btn-44 btn--orange" frame-close>Отменить</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--==================добавить аллергию и непереносимость ==============-->
-  <div class="modal-frame-wrapper modal-frame-center w-700" frame-modal="exlude-modal-2">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head flex-box flex-y-center flex-between mb-32">
-        <div class="text-24">Непереносимость</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <form class="exlude-form">
-          <div class="exlude-form-input">
-            <input class="form-input" type="text">
-            <div class="icon-delete"></div>
-          </div>
-          <button class="text-icon flex-box flex-y-center">
-            <div class="symbol-plus">&#10010;</div>
-            <span class="text-18">Добавить непереносимость</span>
-          </button>
-          <!--===== Список добавляемых пунктов. Пока он пустой я его закомментировала. С введенными значениями его можно увидеть в форме РЕДАКТИРОВАНИЕ ПАЦИЕНТА ======-->
-          <!--==== .content-list-->
-          <!--==== 		ul-->
-          <!--====			li-->
-          <div class="flex-vertical-center gap-20 mt-40">
-            <button class="btn btn-44" frame-close>Сохранить</button>
-            <button class="btn btn-44 btn--orange" frame-close>Отменить</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--=================	Модальное окно Время занято, выберите другое! 	Если для его отображения не требуется клик по кнопке с атрибутом frame-btn="another-time" , то атрибут frame-modal="another-time"  можно удалить. ==========-->
-  <div class="modal-frame-wrapper modal-frame-center visible" frame-modal="another-time">
-    <div class="modal-frame flex-column p-32 pos-rel">
-      <div class="icon-close pos-abs" frame-close></div>
-      <div class="modal-frame__body text-center">
-        <p class="text-16 mb-32">Время бронирования занято, выберите другое время для записи.</p>
-      </div>
-    </div>
-  </div>
-  <!--=============== jquery ===================-->
-  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
-  <!--=============== swiper ===================-->
-  <script src="./libs/swiper/swiper.js"></script>
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
-  <!--=============== мои скрипты ===================-->
-  <script src="./js/quiz.js"></script>
-  <script src="./js/main.js"></script>
-</body>
-
+						<div class="flex-vertical-center gap-20 mt-40">
+							<button class="btn btn-44" frame-close>Сохранить</button>
+							<button class="btn btn-44 btn--orange" frame-close>Отменить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--==================добавить аллергию и непереносимость ==============-->
+		<div class="modal-frame-wrapper modal-frame-center w-700" frame-modal="exlude-modal-2">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head flex-box flex-y-center flex-between mb-32">
+					<div class="text-24">Непереносимость</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<form class="exlude-form">
+						<div class="exlude-form-input">
+							<input class="form-input" type="text">
+							<div class="icon-delete"></div>
+						</div>
+						<button class="text-icon flex-box flex-y-center">
+							<div class="symbol-plus">&#10010;</div><span class="text-18">Добавить непереносимость</span>
+						</button>
+						<!--===== Список добавляемых пунктов. Пока он пустой я его закомментировала. С введенными значениями его можно увидеть в форме РЕДАКТИРОВАНИЕ ПАЦИЕНТА ======-->
+						<!--==== .content-list-->
+						<!--==== 		ul-->
+						<!--====			li-->
+						<div class="flex-vertical-center gap-20 mt-40">
+							<button class="btn btn-44" frame-close>Сохранить</button>
+							<button class="btn btn-44 btn--orange" frame-close>Отменить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--=================	Модальное окно Время занято, выберите другое! 	Если для его отображения не требуется клик по кнопке с атрибутом frame-btn="another-time" , то атрибут frame-modal="another-time"  можно удалить. ==========-->
+		<div class="modal-frame-wrapper modal-frame-center visible" frame-modal="another-time">
+			<div class="modal-frame flex-column p-32 pos-rel">
+				<div class="icon-close pos-abs" frame-close></div>
+				<div class="modal-frame__body text-center">
+					<p class="text-16 mb-32">Время бронирования занято, выберите другое время для записи.</p>
+				</div>
+			</div>
+		</div>
+		<!--=============== jquery ===================-->
+		<script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+		<!--=============== swiper ===================-->
+		<script src="./libs/swiper/swiper.js"></script>
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+		<!--=============== мои скрипты ===================-->
+		<script src="./js/quiz.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
 </html>

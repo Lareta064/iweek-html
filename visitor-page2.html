@@ -1,411 +1,337 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--======= swipe =============-->
-  <link rel="stylesheet" href="./libs/swiper/swiper.min.css">
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
-  <!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
-  <meta name="format-detection" content="telephone=no">
-  <!--===================favicon ==================================-->
-  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="./img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!--===================opengraf=======================================-->
-  <link rel="stylesheet" href="./fonts/fonts.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <title>Кабинет клиента | Пациенты</title>
-</head>
-
-<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
-  <div id="overlay"></div>
-  <header class="cabinet-header">
-    <div class="container-large">
-      <div class="cabinet-header__content flex-vertical-center">
-        <div class="cabinet-header__logo">
-          <a class="custom-logo" href="index.html">
-            <img src="./img/logo2.png" width="106" alt="logo" />
-          </a>
-        </div>
-        <div class="cabinet-header__menu">
-          <div class="myTabs-buttons">
-            <a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a>
-            <a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a>
-            <a class="btn-bt myTabs-btn active" href="#!">Пациенты</a>
-            <a class="btn-bt myTabs-btn" href="employees-page.html">Сотрудники</a>
-          </div>
-        </div>
-        <div class="cabinet-header__profile flex-vertical-center gap-32">
-          <div class="select-work-place">
-            <div class="mySelect mySelect--absolute">
-              <div class="mySelect-input form-box-input">
-                <input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56" />
-              </div>
-              <div class="mySelect-drop scroll-vertical">
-                <input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко" />
-                <input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор" />
-              </div>
-            </div>
-          </div>
-          <div class="help-info">?</div>
-          <div class="customDrop customDrop--right drop-click-close">
-            <div class="customDrop__btn round-icon">
-              <div class="icon-notify"></div>
-            </div>
-            <div class="customDrop__list">
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Включить звук</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 15 минут</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 30 минут</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 1 час</span>
-                </label>
-              </div>
-              <div class="customDrop__list-item">
-                <label class="radiobutton-label flex-box">
-                  <input class="real-radio" type="radio" name="currency" value="" />
-                  <span class="custom-radio"></span>
-                  <span class="custom-radio__text">Выключить на 8 часов</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="cabinet-header__avatar">ГМ</div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!--=========== основной контент вкладка Задачи ====================-->
-  <div class="cabinet-body">
-    <div class="visitor-page-body">
-      <div class="visitor-page-sidebar">
-        <div class="visitor-page-sidebar-menu cab-menu">
-          <a href="visitor-page.html">Профиль</a>
-          <!--===button Посещения-->
-          <a class="active" href="visitor-page2.html">Посещения</a>
-        </div>
-      </div>
-      <div class="visitor-page-content">
-        <div class="visitor-page-content__head">
-          <a class="text-icon flex-box flex-y-center" href="visitor-page.html">
-            <div class="icon-btn arrow-left"></div>
-            <div class="text-16">К списку пациентов</div>
-          </a>
-        </div>
-        <div class="visitor-page-content__main">
-          <div class="visitor-page-body">
-            <div class="container-large">
-              <div class="visitor-page-table">
-                <div class="visitor-page-table-row visitor-page-table-head">
-                  <div class="table-filter-flex customDrop">
-                    <p>Дата и время</p>
-                    <div class="customDrop__btn">
-                      <div class="icon-filter"></div>
-                    </div>
-                    <div class="customDrop__list">
-                      <div class="datepicker mydatepicker">
-                        <input class="form-input datepicker" type="hidden" value="01.02.2023">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="table-filter-flex customDrop customDrop--slim">
-                    <p>Врач</p>
-                    <div class="customDrop__btn">
-                      <div class="icon-filter"></div>
-                    </div>
-                    <div class="customDrop__list scroll-vertical">
-                      <div class="customDrop__list-item">
-                        <p>Беридзе Н.а Алла Беридзе Н.на</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p>Зинченко А.И.</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p>Симонов Александр Юрьевич</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p>Голетиани Мариам</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p>Иволгина Алла Чикрадзе Э.на</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="table-filter-flex customDrop customDrop--slim">
-                    <p>Специальность</p>
-                    <div class="customDrop__btn">
-                      <div class="icon-filter"></div>
-                    </div>
-                    <div class="customDrop__list scroll-vertical">
-                      <div class="customDrop__list-item">
-                        <p>Стоматолог</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p>Хирург</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p>Дерматолог</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p>Терапевт</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p>Травматолог</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="table-filter-flex">
-                    <p>Стоимость</p>
-                  </div>
-                  <div class="table-filter-flex customDrop customDrop--slim">
-                    <p>Статус</p>
-                    <div class="customDrop__btn">
-                      <div class="icon-filter"></div>
-                    </div>
-                    <div class="customDrop__list scroll-vertical">
-                      <div class="customDrop__list-item">
-                        <p class="text-orange">Не подтвежден</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p class="text-primary">Подтвержден</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p class="text-green">Начат визит </p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p class="text-gray">Выполнен</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p class="text-red">Неявка</p>
-                      </div>
-                      <div class="customDrop__list-item">
-                        <p class="text-red">Отмена</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="visitor-page-table-body">
-                  <a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
-                    <p>10.01.2021</p>
-                    <p>Лордкипанидзе Мария</p>
-                    <p>ортодонт</p>
-                    <p>0 &#8382;</p>
-                    <p>
-                      <span class="label-light label--gray">Неявка</span>
-                    </p>
-                  </a>
-                  <a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
-                    <p>15.03.2021</p>
-                    <p>Лордкипанидзе Мария</p>
-                    <p>стоматолог</p>
-                    <p>300 &#8382; </p>
-                    <p>
-                      <span class="label-light label--gray">Выполнен</span>
-                    </p>
-                  </a>
-                  <a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
-                    <p>17.06.2022</p>
-                    <p>Лордкипанидзе Мария</p>
-                    <p>стоматолог</p>
-                    <p>0 &#8382;</p>
-                    <p>
-                      <span class="label-light label--accent">Неявка</span>
-                    </p>
-                  </a>
-                  <a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
-                    <p>08.08.2022</p>
-                    <p>Лордкипанидзе Мария</p>
-                    <p>стоматолог</p>
-                    <p>80 &#8382;</p>
-                    <p>
-                      <span class="label-light label--gray">Выполнен</span>
-                    </p>
-                  </a>
-                  <a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
-                    <p>23.09.2022</p>
-                    <p>Чиковани Давид</p>
-                    <p>ортодонт</p>
-                    <p>100 &#8382;</p>
-                    <p>
-                      <span class="label-light label--gray">Выполнен</span>
-                    </p>
-                  </a>
-                  <a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
-                    <p>01.10.2022</p>
-                    <p>Чиковани Давид</p>
-                    <p>ортодонт</p>
-                    <p>110 &#8382;</p>
-                    <p>
-                      <span class="label-light label--gray">Выполнен</span>
-                    </p>
-                  </a>
-                  <a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
-                    <p>18.11.2022</p>
-                    <p>Геловани Зураб</p>
-                    <p>ортодонт</p>
-                    <p>0 &#8382;</p>
-                    <p>
-                      <span class="label-light label--accent">Неявка</span>
-                    </p>
-                  </a>
-                  <a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
-                    <p>26..11.2022</p>
-                    <p>Чиковани Давид</p>
-                    <p>ортодонт</p>
-                    <p>0 &#8382;</p>
-                    <p>
-                      <span class="label-light label--accent">Неявка</span>
-                    </p>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--================== Информация о приеме мод окно ==============-->
-  <div class="modal-frame-wrapper modal-frame-right" frame-modal="visit-info">
-    <div class="modal-frame flex-column">
-      <div class="modal-frame__head border-none flex-box flex-y-center flex-between">
-        <div class="text-24">Информация о приеме</div>
-        <div class="icon-close" frame-close></div>
-      </div>
-      <div class="modal-frame__body">
-        <div class="modal-table">
-          <table>
-            <tbody>
-              <tr>
-                <td>Дата</td>
-                <td class="edit-visit-date">
-                  <div class="mydatepicker">
-                    <input class="form-input datepicker" type="text" value="20.04.2023">
-                  </div>
-                </td>
-              </tr>
-              <tr class="edit-visit-time">
-                <td>Время</td>
-                <td class="flex-vertical-center gap-16">
-                  <!--== окошко  tooltip-error-text отображается при наличии класса visible. Оно содержит информацию, что время не может быть выбрано. Сейчас по дефолту у него есть класс visible, что оно отображалось. Рендерить его надо внутри дива с классом pos-rel после инпутов-->
-                  <!--=== Инпуту красную рамку задает класс input-notvalid== -->
-                  <span>c</span>
-                  <div class="flex-vertical-center gap-4 pos-rel">
-                    <input class="form-input input-notvalid" type="number" name="" value="09">
-                    <span>:</span>
-                    <input class="form-input input-notvalid" type="number" name="" value="30">
-                    <div class="tooltip-error-text tooltip-modal tooltip-modal--mini text-12 visible">
-                      <p>Время недоступно, </p>
-                      <p>выберите другое</p>
-                      <div class="tooltip-close icon-close"></div>
-                    </div>
-                  </div>
-                  <span>до</span>
-                  <!--==== класс .input-notvalid задает красную рамку для инпут. Класс visible делает видимым  тултип-->
-                  <div class="flex-vertical-center gap-4 pos-rel">
-                    <input class="form-input" type="number" name="" value="10">
-                    <span>:</span>
-                    <input class="form-input" type="number" name="" value="30">
-                  </div>
-                </td>
-              </tr>
-              <tr class="doctor-info">
-                <td>Врач</td>
-                <td>
-                  <span>Лордкипанидзе Мария</span>
-                  <span>Невролог</span>
-                </td>
-              </tr>
-              <tr>
-                <td>Цель визита</td>
-                <td>ПРИЕМ НЕВРОЛОГА</td>
-              </tr>
-              <tr>
-                <td>Канал привлечения</td>
-                <td>ВКонтакте</td>
-              </tr>
-              <tr class="visiter-info">
-                <td>Пациент</td>
-                <td>
-                  <a href="visitor-edit-page.html">
-                    <p>
-                      <span>Миронов Роман</span>
-                      <span class="edit-item" title="редактировать"></span>
-                    </p>
-                    <span>8(792)196-48-84
-                      <div class="copy-icon" title="копировать"></div>
-                    </span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>Возраст</td>
-                <td>03.06.1989 (33 года)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="modal-frame__footer mt-auto flex-box">
-        <div class="state-select state-select--opentop">
-          <div class="state-select-current" data-state="state-started">Начат прием</div>
-          <div class="state-select-drop">
-            <div class="state-select-drop__item" data-state="state-started">Начат прием</div>
-            <div class="state-select-drop__item" data-state="state-confirm">Подтвержден</div>
-            <div class="state-select-drop__item" data-state="state-notconfirm">Не подтвержден</div>
-            <div class="state-select-drop__item" data-state="state-done">Выполнен</div>
-            <div class="state-select-drop__item" data-state="state-cancel"> Отменен</div>
-          </div>
-        </div>
-        <div class="ml-auto">
-          <button class="btn btn-44">Сохранить</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--=============== jquery ===================-->
-  <script src="./libs/jquery/jquery-3.0.0.min.js"></script>
-  <!--=============== swiper ===================-->
-  <script src="./libs/swiper/swiper.js"></script>
-  <!--======= кастомный плагин выбра даты в инпуте =============-->
-  <script src="./libs/ui-datapicker/ui-datapicker.js"></script>
-  <!--=============== мои скрипты ===================-->
-  <script src="./js/quiz.js"></script>
-  <script src="./js/main.js"></script>
-</body>
-
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!--======= swipe =============-->
+		<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<link rel="stylesheet" href="./libs/ui-datapicker/ui-datapicker.css">
+		<!--=======убрать перевод цифр в номер телефона на ios  и safari ======-->
+		<meta name="format-detection" content="telephone=no">
+		<!--===================favicon ==================================-->
+		<link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+		<link rel="manifest" href="./img/favicon/site.webmanifest">
+		<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="./img/favicon/favicon.ico">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="msapplication-config" content="./img/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+		<!--===================opengraf=======================================-->
+		<link rel="stylesheet" href="./fonts/fonts.css">
+		<link rel="stylesheet" href="./css/main.css">
+		<title>Кабинет клиента | Пациенты</title>
+	</head>
+	<body class="client-cabinet" style="opacity:0;transition:opacity .7s;">
+		<div id="overlay"></div>
+		<header class="cabinet-header">
+			<div class="container-large">
+				<div class="cabinet-header__content flex-vertical-center">
+					<div class="cabinet-header__logo"><a class="custom-logo" href="index.html"><img src="./img/logo2.png" width="106" alt="logo"/></a></div>
+					<div class="cabinet-header__menu">
+						<div class="myTabs-buttons"><a class="btn-bt myTabs-btn" href="page-schedule.html">Расписание</a><a class="btn-bt myTabs-btn" href="page-tasks.html">Задачи</a><a class="btn-bt myTabs-btn active" href="#!">Пациенты</a><a class="btn-bt myTabs-btn" href="employees-page.html">Сотрудники</a>
+						</div>
+					</div>
+					<div class="cabinet-header__profile flex-vertical-center gap-32">
+						<div class="select-work-place">
+							<div class="mySelect mySelect--absolute">
+								<div class="mySelect-input form-box-input">
+									<input class="selectValue form-input" type="text" readonly="readonly" value="Блюхера, 56"/>
+								</div>
+								<div class="mySelect-drop scroll-vertical">
+									<input class="mySelect-options" type="text" readonly="readonly" value="Блюхера, 56"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="ИП Вердашев"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Клиника &quot;Сова&quot;"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Гиппократ"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Зеленое яблоко"/>
+									<input class="mySelect-options" type="text" readonly="readonly" value="Добрый доктор"/>
+								</div>
+							</div>
+						</div>
+						<div class="help-info">?</div>
+						<div class="customDrop customDrop--right drop-click-close">
+							<div class="customDrop__btn round-icon">
+								<div class="icon-notify"></div>
+							</div>
+							<div class="customDrop__list">
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Включить звук</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 15 минут</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 30 минут</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 1 час</span>
+									</label>
+								</div>
+								<div class="customDrop__list-item">
+									<label class="radiobutton-label flex-box">
+										<input class="real-radio" type="radio" name="currency" value=""/><span class="custom-radio"></span><span class="custom-radio__text">Выключить на 8 часов</span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="cabinet-header__avatar">ГМ</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--=========== основной контент вкладка Задачи ====================-->
+		<div class="cabinet-body">
+			<div class="visitor-page-body">
+				<div class="visitor-page-sidebar">
+					<div class="visitor-page-sidebar-menu cab-menu"><a href="visitor-page.html">Профиль</a>
+						<!--===button Посещения--><a class="active" href="visitor-page2.html">Посещения</a>
+					</div>
+				</div>
+				<div class="visitor-page-content">
+					<div class="visitor-page-content__head"><a class="text-icon flex-box flex-y-center" href="visitor-page.html">
+							<div class="icon-btn arrow-left"></div>
+							<div class="text-16">К списку пациентов</div></a></div>
+					<div class="visitor-page-content__main">
+						<div class="visitor-page-body">
+							<div class="container-large">
+								<div class="visitor-page-table">
+									<div class="visitor-page-table-row visitor-page-table-head">
+										<div class="table-filter-flex customDrop">
+											<p>Дата и время</p>
+											<div class="customDrop__btn">
+												<div class="icon-filter"></div>
+											</div>
+											<div class="customDrop__list">
+												<div class="datepicker mydatepicker">
+													<input class="form-input datepicker" type="hidden" value="01.02.2023">
+												</div>
+											</div>
+										</div>
+										<div class="table-filter-flex customDrop customDrop--slim">
+											<p>Врач</p>
+											<div class="customDrop__btn">
+												<div class="icon-filter"></div>
+											</div>
+											<div class="customDrop__list scroll-vertical">
+												<div class="customDrop__list-item"> 
+													<p>Беридзе Н.а Алла Беридзе Н.на</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p>Зинченко А.И.</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p>Симонов Александр Юрьевич</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p>Голетиани Мариам</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p>Иволгина Алла Чикрадзе Э.на</p>
+												</div>
+											</div>
+										</div>
+										<div class="table-filter-flex customDrop customDrop--slim">
+											<p>Специальность</p>
+											<div class="customDrop__btn">
+												<div class="icon-filter"></div>
+											</div>
+											<div class="customDrop__list scroll-vertical">
+												<div class="customDrop__list-item"> 
+													<p>Стоматолог</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p>Хирург</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p>Дерматолог</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p>Терапевт</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p>Травматолог</p>
+												</div>
+											</div>
+										</div>
+										<div class="table-filter-flex">
+											<p>Стоимость</p>
+										</div>
+										<div class="table-filter-flex customDrop customDrop--slim">
+											<p>Статус</p>
+											<div class="customDrop__btn">
+												<div class="icon-filter"></div>
+											</div>
+											<div class="customDrop__list scroll-vertical">
+												<div class="customDrop__list-item"> 
+													<p class="text-orange">Не подтвежден</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p class="text-primary">Подтвержден</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p class="text-green">Начат визит </p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p class="text-gray">Выполнен</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p class="text-red">Неявка</p>
+												</div>
+												<div class="customDrop__list-item"> 
+													<p class="text-red">Отмена</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="visitor-page-table-body"><a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
+											<p>10.01.2021</p>
+											<p>Лордкипанидзе Мария</p>
+											<p>ортодонт</p>
+											<p>0 &#8382;</p>
+											<p><span class="label-light label--gray">Неявка</span></p></a><a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
+											<p>15.03.2021</p>
+											<p>Лордкипанидзе Мария</p>
+											<p>стоматолог</p>
+											<p>300 &#8382; </p>
+											<p><span class="label-light label--gray">Выполнен</span></p></a><a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
+											<p>17.06.2022</p>
+											<p>Лордкипанидзе Мария</p>
+											<p>стоматолог</p>
+											<p>0 &#8382;</p>
+											<p><span class="label-light label--accent">Неявка</span></p></a><a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
+											<p>08.08.2022</p>
+											<p>Лордкипанидзе Мария</p>
+											<p>стоматолог</p>
+											<p>80 &#8382;</p>
+											<p><span class="label-light label--gray">Выполнен</span></p></a><a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
+											<p>23.09.2022</p>
+											<p>Чиковани Давид</p>
+											<p>ортодонт</p>
+											<p>100 &#8382;</p>
+											<p><span class="label-light label--gray">Выполнен</span></p></a><a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
+											<p>01.10.2022</p>
+											<p>Чиковани Давид</p>
+											<p>ортодонт</p>
+											<p>110 &#8382;</p>
+											<p><span class="label-light label--gray">Выполнен</span></p></a><a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
+											<p>18.11.2022</p>
+											<p>Геловани Зураб</p>
+											<p>ортодонт</p>
+											<p>0 &#8382;</p>
+											<p><span class="label-light label--accent">Неявка</span></p></a><a class="visitor-page-table-row" href="#!" frame-btn="visit-info">
+											<p>26..11.2022</p>
+											<p>Чиковани Давид</p>
+											<p>ортодонт</p>
+											<p>0 &#8382;</p>
+											<p><span class="label-light label--accent">Неявка</span></p></a></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--================== Информация о приеме мод окно ==============-->
+		<div class="modal-frame-wrapper modal-frame-right" frame-modal="visit-info">
+			<div class="modal-frame flex-column">
+				<div class="modal-frame__head border-none flex-box flex-y-center flex-between">
+					<div class="text-24">Информация о приеме</div>
+					<div class="icon-close" frame-close></div>
+				</div>
+				<div class="modal-frame__body">
+					<div class="modal-table">
+						<table>
+							<tbody>
+								<tr>
+									<td>Дата</td>
+									<td class="edit-visit-date">
+										<div class="mydatepicker">
+											<input class="form-input datepicker" type="text" value="20.04.2023">
+										</div>
+									</td>
+								</tr>
+								<tr class="edit-visit-time">
+									<td>Время</td>
+									<td class="flex-vertical-center gap-16">
+										<!--== окошко  tooltip-error-text отображается при наличии класса visible. Оно содержит информацию, что время не может быть выбрано. Сейчас по дефолту у него есть класс visible, что оно отображалось. Рендерить его надо внутри дива с классом pos-rel после инпутов-->
+										<!--=== Инпуту красную рамку задает класс input-notvalid== --><span>c</span>
+										<div class="flex-vertical-center gap-4 pos-rel">
+											<input class="form-input input-notvalid" type="number" name="" value="09"><span>:</span>
+											<input class="form-input input-notvalid" type="number" name="" value="30">
+											<div class="tooltip-error-text tooltip-modal tooltip-modal--mini text-12 visible">
+												<p>Время недоступно, </p>
+												<p>выберите другое</p>
+												<div class="tooltip-close icon-close"></div>
+											</div>
+										</div><span>до</span>
+										<!--==== класс .input-notvalid задает красную рамку для инпут. Класс visible делает видимым  тултип-->
+										<div class="flex-vertical-center gap-4 pos-rel">
+											<input class="form-input" type="number" name="" value="10"><span>:</span>
+											<input class="form-input" type="number" name="" value="30">
+										</div>
+									</td>
+								</tr>
+								<tr class="doctor-info">
+									<td>Врач</td>
+									<td><span>Лордкипанидзе Мария</span><span>Невролог</span></td>
+								</tr>
+								<tr>
+									<td>Цель визита</td>
+									<td>ПРИЕМ НЕВРОЛОГА</td>
+								</tr>
+								<tr>
+									<td>Канал привлечения</td>
+									<td>ВКонтакте</td>
+								</tr>
+								<tr class="visiter-info">
+									<td>Пациент</td>
+									<td><a href="visitor-edit-page.html">
+											<p><span>Миронов Роман</span><span class="edit-item" title="редактировать"></span></p><span>8(792)196-48-84
+												<div class="copy-icon" title="копировать"></div></span></a></td>
+								</tr>
+								<tr>
+									<td>Возраст</td>
+									<td>03.06.1989 (33 года)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="modal-frame__footer mt-auto flex-box">
+					<div class="state-select state-select--opentop">
+						<div class="state-select-current" data-state="state-started">Начат прием</div>
+						<div class="state-select-drop">
+							<div class="state-select-drop__item" data-state="state-started">Начат прием</div>
+							<div class="state-select-drop__item" data-state="state-confirm">Подтвержден</div>
+							<div class="state-select-drop__item" data-state="state-notconfirm">Не подтвержден</div>
+							<div class="state-select-drop__item" data-state="state-done">Выполнен</div>
+							<div class="state-select-drop__item" data-state="state-cancel"> Отменен</div>
+						</div>
+					</div>
+					<div class="ml-auto">
+						<button class="btn btn-44">Сохранить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--=============== jquery ===================-->
+		<script src="./libs/jquery/jquery-3.0.0.min.js"></script>
+		<!--=============== swiper ===================-->
+		<script src="./libs/swiper/swiper.js"></script>
+		<!--======= кастомный плагин выбра даты в инпуте =============-->
+		<script src="./libs/ui-datapicker/ui-datapicker.js"></script>
+		<!--=============== мои скрипты ===================-->
+		<script src="./js/quiz.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
 </html>
